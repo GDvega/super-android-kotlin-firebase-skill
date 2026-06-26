@@ -81,6 +81,6 @@ Respond with: brief diagnosis, change plan, affected files, code or diff summary
 
 # References
 
-- ../../FUENTES_LOCALES.md
+- ../../docs/audits/FUENTES_LOCALES.md
 - references/network-boundaries.md
 - templates/network-repository-template.md

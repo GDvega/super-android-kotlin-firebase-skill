@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.3 - 2026-06-26
+
+- Moved audits and local-source notes to `docs/audits/`.
+- Moved historical release notes to `docs/releases/`.
+- Updated README navigation and documented the purpose of `agents/`.
+- Updated validation to enforce the organized documentation layout.
+
 ## 0.3.1 - 2026-06-25
 
 - Second-pass repository audit.

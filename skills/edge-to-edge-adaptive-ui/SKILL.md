@@ -82,7 +82,7 @@ Respond with: brief diagnosis, change plan, affected files, code or diff summary
 
 # References
 
-- ../../FUENTES_LOCALES.md
+- ../../docs/audits/FUENTES_LOCALES.md
 - references/edge-to-edge-checklist.md
 - references/insets-patterns-compose.md
 - references/adaptive-layouts.md

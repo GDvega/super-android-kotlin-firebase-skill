@@ -80,6 +80,6 @@ Respond with: brief diagnosis, change plan, affected files, code or diff summary
 
 # References
 
-- ../../FUENTES_LOCALES.md
+- ../../docs/audits/FUENTES_LOCALES.md
 - references/review-refactor-playbook.md
 - templates/review-report-template.md

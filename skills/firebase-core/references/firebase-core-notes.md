@@ -5,7 +5,7 @@ Use this reference when the `firebase-core` skill needs more detail than the mai
 ## Source priority
 
 - Prefer official Android, Firebase, Google and Kotlin guidance.
-- Use local source routing in `../../FUENTES_LOCALES.md`.
+- Use local source routing in `../../../docs/audits/FUENTES_LOCALES.md`.
 - Use community repositories as secondary checklists, not as authority over official docs.
 
 ## Operating guidance

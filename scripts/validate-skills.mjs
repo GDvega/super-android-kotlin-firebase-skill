@@ -61,11 +61,19 @@ const expectedRootFiles = [
   'CODE_OF_CONDUCT.md',
   'CHANGELOG.md',
   'CATEGORIES.md',
-  'FUENTES_LOCALES.md',
-  'RELEASE_NOTES_v0.3.1.md',
-  'RELEASE_NOTES_v0.4.0.md',
   'package.json',
   'package-lock.json'
+];
+
+const expectedAuditDocs = [
+  'AUDIT.md',
+  'AUDIT_SECOND_PASS.md',
+  'FUENTES_LOCALES.md'
+];
+
+const expectedReleaseDocs = [
+  'RELEASE_NOTES_v0.3.1.md',
+  'RELEASE_NOTES_v0.4.0.md'
 ];
 
 const expectedChecklists = [
@@ -118,9 +126,9 @@ const auditedGlobs = [
   /^CODE_OF_CONDUCT\.md$/,
   /^CHANGELOG\.md$/,
   /^CATEGORIES\.md$/,
-  /^AUDIT.*\.md$/,
-  /^FUENTES_LOCALES\.md$/,
-  /^RELEASE_NOTES_v[0-9]+\.[0-9]+\.[0-9]+\.md$/,
+  /^docs\/audits\/AUDIT.*\.md$/,
+  /^docs\/audits\/FUENTES_LOCALES\.md$/,
+  /^docs\/releases\/RELEASE_NOTES_v[0-9]+\.[0-9]+\.[0-9]+\.md$/,
   /^package\.json$/,
   /^package-lock\.json$/,
   /^scripts\/[^/]+\.mjs$/,
@@ -348,6 +356,10 @@ for (const file of expectedRootFiles) {
 
 requireFiles('checklists', expectedChecklists, 'checklists');
 rejectExtras('checklists', expectedChecklists, 'checklists');
+requireFiles('docs/audits', expectedAuditDocs, 'docs/audits');
+rejectExtras('docs/audits', expectedAuditDocs, 'docs/audits');
+requireFiles('docs/releases', expectedReleaseDocs, 'docs/releases');
+rejectExtras('docs/releases', expectedReleaseDocs, 'docs/releases');
 requireFiles('templates', expectedTemplates, 'templates');
 rejectExtras('templates', expectedTemplates, 'templates');
 requireFiles('examples', expectedExamples, 'examples');

@@ -33,7 +33,7 @@ Read only the relevant `skills/<name>/SKILL.md` files:
 - Performance/release: `macrobenchmark-baseline-profiles`, `r8-proguard-optimization`, `play-store-release`.
 - Quality/review: `testing`, `security-privacy`, `code-review-refactor`.
 
-Use `FUENTES_LOCALES.md` to locate the local reference repositories when deeper source context is needed.
+Use `docs/audits/FUENTES_LOCALES.md` to locate the local reference repositories when deeper source context is needed.
 
 ## Global agent rules
 

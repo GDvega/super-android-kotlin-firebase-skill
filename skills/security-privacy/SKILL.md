@@ -81,6 +81,6 @@ Respond with: brief diagnosis, change plan, affected files, code or diff summary
 
 # References
 
-- ../../FUENTES_LOCALES.md
+- ../../docs/audits/FUENTES_LOCALES.md
 - references/android-firebase-security.md
 - templates/security-review-template.md

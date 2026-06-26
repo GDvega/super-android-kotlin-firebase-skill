@@ -79,7 +79,7 @@ Respond with: brief diagnosis, change plan, affected files, code or diff summary
 
 # References
 
-- ../../FUENTES_LOCALES.md
+- ../../docs/audits/FUENTES_LOCALES.md
 - references/compose-state-patterns.md
 - references/navigation-patterns.md
 - templates/route-screen-viewmodel-template.md

@@ -118,16 +118,28 @@ Copy this repository to an agent skills directory and restart the agent so it re
 
 ```text
 SKILL.md
+agents/
 skills/<skill-name>/SKILL.md
 skills/<skill-name>/references/
 skills/<skill-name>/templates/
 checklists/
 templates/
 examples/
+docs/audits/
+docs/releases/
 scripts/
 tests/
 .github/workflows/validate.yml
 ```
+
+The `agents/` directory stores agent-facing metadata, such as display names, short descriptions and default prompts for skill UIs. It does not replace `SKILL.md`; it helps compatible tools present the skill clearly.
+
+## Documentation
+
+- [docs/audits/](docs/audits/) keeps repository audits and local-source review notes.
+- [docs/releases/](docs/releases/) keeps historical release notes.
+- [CATEGORIES.md](CATEGORIES.md) is generated from the current skill catalog.
+- [NOTICE.md](NOTICE.md) documents attribution and source-review boundaries.
 
 ## Validation
 
@@ -178,9 +190,9 @@ android, kotlin, firebase, jetpack-compose, agent-skills, claude-code, codex, cu
 
 ## Release
 
-The `v0.4.2` release is a maintenance release for raw Markdown, frontmatter, package metadata and catalog formatting.
+The `v0.4.3` release organizes historical documentation under `docs/` and keeps the public README easier to navigate.
 
 ```bash
-git tag v0.4.2
-git push origin v0.4.2
+git tag v0.4.3
+git push origin v0.4.3
 ```

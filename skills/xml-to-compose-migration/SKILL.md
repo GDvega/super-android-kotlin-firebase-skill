@@ -82,7 +82,7 @@ Respond with: brief diagnosis, change plan, affected files, code or diff summary
 
 # References
 
-- ../../FUENTES_LOCALES.md
+- ../../docs/audits/FUENTES_LOCALES.md
 - references/incremental-migration-strategy.md
 - references/xml-compose-interoperability.md
 - references/theme-migration.md

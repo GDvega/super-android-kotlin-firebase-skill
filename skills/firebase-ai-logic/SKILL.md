@@ -79,6 +79,6 @@ Respond with: brief diagnosis, change plan, affected files, code or diff summary
 
 # References
 
-- ../../FUENTES_LOCALES.md
+- ../../docs/audits/FUENTES_LOCALES.md
 - references/firebase-ai-logic-android.md
 - templates/ai-feature-boundary-template.md

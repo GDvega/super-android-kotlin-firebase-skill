@@ -81,7 +81,7 @@ Respond with: brief diagnosis, change plan, affected files, code or diff summary
 
 # References
 
-- ../../FUENTES_LOCALES.md
+- ../../docs/audits/FUENTES_LOCALES.md
 - references/android-dependency-upgrade-strategy.md
 - references/compose-bom-upgrade.md
 - references/firebase-bom-upgrade.md
