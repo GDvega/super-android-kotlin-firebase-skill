@@ -32,3 +32,17 @@ This project contains original guidance for Android/Kotlin/Firebase Agent Skills
 - If substantial upstream content is incorporated, prefer one of these options: change this repository to Apache-2.0, keep MIT only for original content with a clearer NOTICE, or rewrite the content as original summaries.
 - Original content in this repository is licensed under MIT unless a file says otherwise.
 - Review upstream licenses before copying code, examples or long prose.
+
+## Additional references for v0.4.0
+
+This release adds specialized skills inspired by public Android, Firebase, Kotlin and community resources.
+
+The repository uses ideas, taxonomies, workflows and best-practice patterns from public documentation and repositories. It does not intentionally copy long external text verbatim.
+
+Additional references reviewed:
+
+- Android skills and Android developer documentation for Navigation 3, AGP 9, XML to Compose, edge-to-edge and R8 workflows.
+- Firebase documentation for Emulator Suite, Security Rules testing and CI-oriented local validation.
+- Kotlin agent skills for AGP 9 migration patterns.
+- Android performance documentation for Macrobenchmark and Baseline Profiles.
+- Android open source samples such as Now in Android for benchmark module organization.

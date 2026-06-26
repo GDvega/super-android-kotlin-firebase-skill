@@ -27,7 +27,17 @@ const categories = {
   'accessibility': 'Accessibility',
   'debugging': 'Debugging',
   'play-store-release': 'Release',
-  'code-review-refactor': 'Review'
+  'code-review-refactor': 'Review',
+  'android-navigation-3': 'UI and Compose',
+  'agp9-kotlin-migration': 'Build and migration',
+  'r8-proguard-optimization': 'Release',
+  'xml-to-compose-migration': 'UI and Compose',
+  'edge-to-edge-adaptive-ui': 'UI and Compose',
+  'firebase-emulator-ci': 'Firebase',
+  'firestore-costs-quotas': 'Firebase',
+  'workmanager-background-sync': 'Data and sync',
+  'macrobenchmark-baseline-profiles': 'Performance',
+  'dependency-upgrade-safety': 'Build and migration'
 };
 function parse(text) {
   const end = text.indexOf('\n---', 4);

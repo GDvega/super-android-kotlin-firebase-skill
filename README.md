@@ -26,7 +26,20 @@ This is a public, modular Agent Skills package for Android app work. It gives AI
 
 ## Included skills
 
-Run `node scripts/generate-catalog.mjs` to refresh [CATEGORIES.md](CATEGORIES.md). Current groups include Android platform, Kotlin, Compose, Firebase, local data, networking, DI, testing, security, accessibility, debugging, release and review/refactor.
+Run `node scripts/generate-catalog.mjs` to refresh [CATEGORIES.md](CATEGORIES.md). Current groups include Android platform, Kotlin, UI and Compose, Firebase, build and migration, local data, networking, DI, testing, security, accessibility, debugging, performance, release and review/refactor.
+
+## Specialized skills added in v0.4.0
+
+- `android-navigation-3`: Navigation 3 setup, migration, deep links and back stack.
+- `agp9-kotlin-migration`: Safe migration to Android Gradle Plugin 9 and Kotlin tooling.
+- `r8-proguard-optimization`: Release shrinking, keep rules and R8 troubleshooting.
+- `xml-to-compose-migration`: Incremental migration from XML/ViewBinding to Compose.
+- `edge-to-edge-adaptive-ui`: Insets, system bars, tablets, foldables and adaptive UI.
+- `firebase-emulator-ci`: Firebase Emulator Suite testing in local and CI environments.
+- `firestore-costs-quotas`: Firestore data modeling with cost, quota and listener awareness.
+- `workmanager-background-sync`: Background sync, retries, constraints and offline-first jobs.
+- `macrobenchmark-baseline-profiles`: Startup, scroll, jank measurement and Baseline Profiles.
+- `dependency-upgrade-safety`: Safer dependency upgrades with compatibility checks.
 
 ## Installation
 
@@ -165,9 +178,9 @@ android, kotlin, firebase, jetpack-compose, agent-skills, claude-code, codex, cu
 
 ## Release
 
-The `v0.3.1` tag marks the public release for the current validated package. If new commits are added after that tag, create a new patch tag instead of moving the existing release tag.
+The `v0.4.0` release adds specialized Android/Firebase skills for migrations, navigation, release shrinking, emulator CI, Firestore costs, background sync and performance measurement.
 
 ```bash
-git tag v0.3.2
-git push origin v0.3.2
+git tag v0.4.0
+git push origin v0.4.0
 ```

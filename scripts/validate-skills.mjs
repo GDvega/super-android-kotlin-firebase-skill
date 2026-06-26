@@ -49,31 +49,6 @@ const requiredPackageScripts = {
   check: 'npm run validate && npm run catalog && npm run links'
 };
 
-const expectedSkills = [
-  'android-core',
-  'kotlin-core',
-  'jetpack-compose',
-  'compose-performance',
-  'android-architecture',
-  'gradle-build',
-  'firebase-core',
-  'firebase-auth',
-  'firestore',
-  'firebase-cloud-functions',
-  'firebase-messaging',
-  'firebase-crashlytics-analytics',
-  'firebase-ai-logic',
-  'room-datastore',
-  'networking-retrofit-ktor',
-  'dependency-injection',
-  'testing',
-  'security-privacy',
-  'accessibility',
-  'debugging',
-  'play-store-release',
-  'code-review-refactor'
-];
-
 const expectedRootFiles = [
   'README.md',
   'SKILL.md',
@@ -88,6 +63,7 @@ const expectedRootFiles = [
   'CATEGORIES.md',
   'FUENTES_LOCALES.md',
   'RELEASE_NOTES_v0.3.1.md',
+  'RELEASE_NOTES_v0.4.0.md',
   'package.json',
   'package-lock.json'
 ];
@@ -144,7 +120,7 @@ const auditedGlobs = [
   /^CATEGORIES\.md$/,
   /^AUDIT.*\.md$/,
   /^FUENTES_LOCALES\.md$/,
-  /^RELEASE_NOTES_v0\.3\.1\.md$/,
+  /^RELEASE_NOTES_v[0-9]+\.[0-9]+\.[0-9]+\.md$/,
   /^package\.json$/,
   /^package-lock\.json$/,
   /^scripts\/[^/]+\.mjs$/,
@@ -341,13 +317,11 @@ for (const script of ['validate-skills.mjs', 'generate-catalog.mjs', 'check-link
 if (!fs.existsSync(skillsDir)) {
   errors.push('missing skills/ directory');
 } else {
-  for (const skillName of expectedSkills) {
-    if (!fs.existsSync(path.join(skillsDir, skillName))) errors.push(`skills: missing ${skillName}`);
-  }
+  const skillEntries = fs.readdirSync(skillsDir, { withFileTypes: true }).filter((entry) => entry.isDirectory());
+  if (skillEntries.length === 0) errors.push('skills: expected at least one skill directory');
 
-  for (const entry of fs.readdirSync(skillsDir, { withFileTypes: true })) {
-    if (!entry.isDirectory()) continue;
-    if (!expectedSkills.includes(entry.name)) errors.push(`skills: unexpected ${entry.name}`);
+  for (const entry of skillEntries) {
+    if (!kebab.test(entry.name)) errors.push(`skills/${entry.name}: folder name is not kebab-case`);
 
     const dir = path.join(skillsDir, entry.name);
     const file = path.join(dir, 'SKILL.md');

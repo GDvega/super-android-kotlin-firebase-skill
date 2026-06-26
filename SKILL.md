@@ -25,11 +25,13 @@ Use this as an orchestrator, not as a giant implementation guide. Select the sma
 Read only the relevant `skills/<name>/SKILL.md` files:
 
 - Platform: `android-core`, `gradle-build`, `debugging`.
+- Build and migration: `agp9-kotlin-migration`, `dependency-upgrade-safety`.
 - Kotlin/state: `kotlin-core`, `dependency-injection`.
-- UI: `jetpack-compose`, `compose-performance`, `accessibility`.
-- Architecture/data: `android-architecture`, `room-datastore`, `networking-retrofit-ktor`.
-- Firebase: `firebase-core`, `firebase-auth`, `firestore`, `firebase-cloud-functions`, `firebase-messaging`, `firebase-crashlytics-analytics`, `firebase-ai-logic`.
-- Quality/release: `testing`, `security-privacy`, `play-store-release`, `code-review-refactor`.
+- UI: `jetpack-compose`, `android-navigation-3`, `xml-to-compose-migration`, `edge-to-edge-adaptive-ui`, `compose-performance`, `accessibility`.
+- Architecture/data: `android-architecture`, `room-datastore`, `networking-retrofit-ktor`, `workmanager-background-sync`.
+- Firebase: `firebase-core`, `firebase-auth`, `firestore`, `firestore-costs-quotas`, `firebase-emulator-ci`, `firebase-cloud-functions`, `firebase-messaging`, `firebase-crashlytics-analytics`, `firebase-ai-logic`.
+- Performance/release: `macrobenchmark-baseline-profiles`, `r8-proguard-optimization`, `play-store-release`.
+- Quality/review: `testing`, `security-privacy`, `code-review-refactor`.
 
 Use `FUENTES_LOCALES.md` to locate the local reference repositories when deeper source context is needed.
 
