@@ -46,6 +46,7 @@ Use `docs/audits/FUENTES_LOCALES.md` to locate the local reference repositories 
 7. Explain files modified and commands to validate.
 8. Propose or add tests when logic changes.
 9. Never request or expose private credentials.
+10. Preserve real line breaks in Markdown, YAML and JSON files; do not compress frontmatter, headings or code blocks into single-line raw output.
 
 ## Architecture rules
 

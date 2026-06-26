@@ -190,9 +190,9 @@ android, kotlin, firebase, jetpack-compose, agent-skills, claude-code, codex, cu
 
 ## Release
 
-The `v0.4.3` release organizes historical documentation under `docs/` and keeps the public README easier to navigate.
+The `v0.4.4` release hardens raw Markdown, YAML and JSON formatting checks for GitHub raw readability.
 
 ```bash
-git tag v0.4.3
-git push origin v0.4.3
+git tag v0.4.4
+git push origin v0.4.4
 ```

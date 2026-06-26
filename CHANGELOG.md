@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.4 - 2026-06-26
+
+- Hardened raw formatting validation for README, root SKILL frontmatter and package metadata.
+- Added a root skill rule to preserve real line breaks in Markdown, YAML and JSON files.
+- Updated release metadata for the raw formatting maintenance release.
+
 ## 0.4.3 - 2026-06-26
 
 - Moved audits and local-source notes to `docs/audits/`.

@@ -181,6 +181,11 @@ function walk(dir, files = []) {
 }
 
 function parseFrontmatter(text, file) {
+  if (text.includes('--- name:')) {
+    errors.push(`${file}: frontmatter starts on the same line as the opening delimiter`);
+    return null;
+  }
+
   if (/^---[^\n]+---/.test(text)) {
     errors.push(`${file}: frontmatter appears compressed into one line`);
     return null;
@@ -260,8 +265,12 @@ function validateFormatting() {
       errors.push(`${fileRel}: appears compressed into one giant line`);
     }
 
-    if (fileRel === 'README.md' && lines.length < 50) {
-      errors.push('README.md: must have at least 50 lines so GitHub raw output stays readable');
+    if (fileRel === 'README.md' && lines.length < 100) {
+      errors.push('README.md: must have at least 100 lines so GitHub raw output stays readable');
+    }
+
+    if (fileRel === 'SKILL.md' && lines.length < 80) {
+      errors.push('SKILL.md: root skill must have at least 80 lines so GitHub raw output stays readable');
     }
 
     if (fileRel.endsWith('.md')) validateMarkdownFormatting(fileRel, text, lines);
@@ -292,6 +301,12 @@ function validateMarkdownFormatting(fileRel, text, lines) {
       errors.push(`${fileRel}:${index + 1}: multiple Markdown headings appear on one line`);
     }
 
+    const proseLine = line.replace(/`[^`]*`/g, '');
+    const inlineHeadingIndex = proseLine.search(/#{1,6}\s+\S/);
+    if (inlineHeadingIndex > 0 && proseLine.slice(0, inlineHeadingIndex).trim()) {
+      errors.push(`${fileRel}:${index + 1}: Markdown heading is attached to previous text on the same line`);
+    }
+
     if (/^#{1,6}[^#\s]/.test(line)) {
       errors.push(`${fileRel}:${index + 1}: Markdown heading is missing a space after #`);
     }
@@ -304,7 +319,7 @@ function validatePackageJson() {
   const text = readText(file);
   const lines = text.split(/\r?\n/);
 
-  if (lines.length <= 2 && text.length > 100) {
+  if (lines.filter((line) => line.trim()).length <= 1) {
     errors.push('package.json: appears compressed into one line');
   }
 
