@@ -47,7 +47,12 @@ function parse(text) {
     const m = line.match(/^([^:]+):\s*(.*)$/);
     if (m) data[m[1].trim()] = m[2].replace(/^['"]|['"]$/g, '').trim();
   }
-  const when = (text.match(/# When to use\n\n([\s\S]*?)\n\n# Inputs to inspect/) || [,''])[1].trim().replace(/\n/g, '<br>');
+  const when = (text.match(/# When to use\n\n([\s\S]*?)\n\n# Inputs to inspect/) || [,''])[1]
+    .trim()
+    .split(/\r?\n/)
+    .map((line) => line.replace(/^-\s*/, '').trim())
+    .filter(Boolean)
+    .join('; ');
   return { data, when };
 }
 for (const entry of fs.readdirSync(skillsDir, { withFileTypes: true }).filter(e => e.isDirectory()).sort((a,b)=>a.name.localeCompare(b.name))) {

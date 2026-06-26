@@ -178,9 +178,9 @@ android, kotlin, firebase, jetpack-compose, agent-skills, claude-code, codex, cu
 
 ## Release
 
-The `v0.4.0` release adds specialized Android/Firebase skills for migrations, navigation, release shrinking, emulator CI, Firestore costs, background sync and performance measurement.
+The `v0.4.2` release is a maintenance release for raw Markdown, frontmatter, package metadata and catalog formatting.
 
 ```bash
-git tag v0.4.0
-git push origin v0.4.0
+git tag v0.4.2
+git push origin v0.4.2
 ```

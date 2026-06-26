@@ -252,6 +252,10 @@ function validateFormatting() {
       errors.push(`${fileRel}: appears compressed into one giant line`);
     }
 
+    if (fileRel === 'README.md' && lines.length < 50) {
+      errors.push('README.md: must have at least 50 lines so GitHub raw output stays readable');
+    }
+
     if (fileRel.endsWith('.md')) validateMarkdownFormatting(fileRel, text, lines);
 
     lines.forEach((line, index) => {
@@ -379,6 +383,7 @@ if (!fs.existsSync(skillsDir)) {
 validateSkillFile(path.join(root, 'SKILL.md'), 'super-android-kotlin-firebase', requiredRootSections);
 validatePackageJson();
 validateWorkflow();
+validateCategories();
 validateFormatting();
 
 if (errors.length) {
@@ -387,3 +392,16 @@ if (errors.length) {
 }
 
 console.log('Skill validation passed.');
+
+function validateCategories() {
+  const file = path.join(root, 'CATEGORIES.md');
+  if (!fs.existsSync(file)) return;
+
+  const lines = readText(file).split(/\r?\n/);
+  lines.forEach((line, index) => {
+    if (!line.startsWith('|')) return;
+    if (line.includes('<br>-') || /\|\s*-\s+/.test(line)) {
+      errors.push(`CATEGORIES.md:${index + 1}: table row mixes Markdown list markers inside a table cell`);
+    }
+  });
+}
