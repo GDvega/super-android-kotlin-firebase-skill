@@ -127,7 +127,7 @@ const auditedGlobs = [
   /^\.github\/workflows\/[^/]+\.ya?ml$/,
   /^skills\/[^/]+\/SKILL\.md$/,
   /^skills\/[^/]+\/references\/[^/]+\.md$/,
-  /^skills\/[^/]+\/templates\/[^/]+\.md$/,
+  /^skills\/[^/]+\/templates\/[^/]+\.(md|kt|pro|ya?ml)$/,
   /^checklists\/[^/]+\.md$/,
   /^templates\/[^/]+\.md$/,
   /^examples\/[^/]+\.md$/,
@@ -173,6 +173,11 @@ function walk(dir, files = []) {
 }
 
 function parseFrontmatter(text, file) {
+  if (/^---[^\n]+---/.test(text)) {
+    errors.push(`${file}: frontmatter appears compressed into one line`);
+    return null;
+  }
+
   if (!text.startsWith('---\n')) {
     errors.push(`${file}: missing opening YAML frontmatter delimiter`);
     return null;
@@ -246,9 +251,8 @@ function validateFormatting() {
     if (lines.length <= 2 && text.length > 500) {
       errors.push(`${fileRel}: appears compressed into one giant line`);
     }
-    if (fileRel.endsWith('.md') && (text.match(/```/g) || []).length % 2 !== 0) {
-      errors.push(`${fileRel}: unclosed fenced code block`);
-    }
+
+    if (fileRel.endsWith('.md')) validateMarkdownFormatting(fileRel, text, lines);
 
     lines.forEach((line, index) => {
       if (line.length > 500) {
@@ -258,13 +262,43 @@ function validateFormatting() {
   }
 }
 
+function validateMarkdownFormatting(fileRel, text, lines) {
+  const fenceCount = (text.match(/```/g) || []).length;
+  if (fenceCount % 2 !== 0) errors.push(`${fileRel}: unclosed fenced code block`);
+
+  const headingLines = lines.filter((line) => /^#{1,6}\s+\S/.test(line));
+  if (lines.length < 5 && headingLines.length > 1) {
+    errors.push(`${fileRel}: too many headings for a Markdown file with fewer than 5 lines`);
+  }
+
+  let inFence = false;
+  lines.forEach((line, index) => {
+    if (line.trim().startsWith('```')) inFence = !inFence;
+    if (inFence) return;
+
+    if (/^#{1,6}\s+.+#{1,6}\s+\S/.test(line)) {
+      errors.push(`${fileRel}:${index + 1}: multiple Markdown headings appear on one line`);
+    }
+
+    if (/^#{1,6}[^#\s]/.test(line)) {
+      errors.push(`${fileRel}:${index + 1}: Markdown heading is missing a space after #`);
+    }
+  });
+}
+
 function validatePackageJson() {
   const file = path.join(root, 'package.json');
   if (!fs.existsSync(file)) return;
+  const text = readText(file);
+  const lines = text.split(/\r?\n/);
+
+  if (lines.length <= 2 && text.length > 100) {
+    errors.push('package.json: appears compressed into one line');
+  }
 
   let data;
   try {
-    data = JSON.parse(readText(file));
+    data = JSON.parse(text);
   } catch (error) {
     errors.push(`package.json: invalid JSON: ${error.message}`);
     return;
@@ -285,6 +319,11 @@ function validateWorkflow() {
   }
 
   const text = readText(file);
+  const lines = text.split(/\r?\n/);
+  if (lines.length <= 2 && text.length > 100) {
+    errors.push('.github/workflows/validate.yml: appears compressed into one line');
+  }
+
   for (const needle of [
     'actions/checkout@v4',
     'actions/setup-node@v4',
