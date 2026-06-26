@@ -12,7 +12,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node scripts/validate-skills.mjs
-      - run: node scripts/generate-catalog.mjs
+      - run: npm ci
+      - run: npm run validate
+      - run: npm run catalog
       - run: git diff --exit-code CATEGORIES.md
-      - run: node scripts/check-links.mjs
+      - run: npm run links

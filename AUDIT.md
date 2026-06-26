@@ -30,7 +30,10 @@ Generated before the professionalization pass.
 - Extra/renamed skills detected: none
 - Skills too short: none
 - Skills too long: none
-- Skills missing requested sections: ['skills/accessibility/SKILL.md missing # Purpose', 'skills/accessibility/SKILL.md missing # When to use', 'skills/accessibility/SKILL.md missing # References', 'skills/ai-gemini-integration/SKILL.md missing # Purpose', 'skills/ai-gemini-integration/SKILL.md missing # When to use', 'skills/ai-gemini-integration/SKILL.md missing # References', 'skills/android-architecture/SKILL.md missing # Purpose', 'skills/android-architecture/SKILL.md missing # When to use', 'skills/android-architecture/SKILL.md missing # References', 'skills/android-core/SKILL.md missing # Purpose', 'skills/android-core/SKILL.md missing # When to use', 'skills/android-core/SKILL.md missing # References', 'skills/code-review-refactor/SKILL.md missing # Purpose', 'skills/code-review-refactor/SKILL.md missing # When to use', 'skills/code-review-refactor/SKILL.md missing # References', 'skills/compose-performance/SKILL.md missing # Purpose', 'skills/compose-performance/SKILL.md missing # When to use', 'skills/compose-performance/SKILL.md missing # References', 'skills/debugging/SKILL.md missing # Purpose', 'skills/debugging/SKILL.md missing # When to use']
+- Skills missing requested sections included many old Spanish-heading files:
+  `accessibility`, `ai-gemini-integration`, `android-architecture`, `android-core`,
+  `code-review-refactor`, `compose-performance`, `debugging` and other pre-rewrite
+  subskills were missing one or more of `# Purpose`, `# When to use` and `# References`.
 - Additional missing-section findings omitted for brevity.
 
 ## Security and licensing concerns

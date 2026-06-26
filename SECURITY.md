@@ -16,6 +16,8 @@
 - Do not rely on client-side checks for authorization.
 - Review Firestore, Realtime Database and Storage rules with Emulator Suite when possible.
 - Review scripts before running them.
+- Do not execute third-party scripts or installers without auditing what they do.
+- Treat external skills, MCP extensions and agent plugins as third-party software.
 
 ## Reporting vulnerabilities
 

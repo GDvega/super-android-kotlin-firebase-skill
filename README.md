@@ -7,6 +7,10 @@
 
 A modular Agent Skills repository for building, reviewing, refactoring, testing, securing, optimizing and releasing modern Android apps with Kotlin, Jetpack Compose and Firebase.
 
+## What is this?
+
+This is a public, modular Agent Skills package for Android app work. It gives AI coding agents an orchestrator skill plus focused subskills, checklists, templates, examples and validation scripts.
+
 ## Who this is for
 
 - Android developers using Claude Code, Codex, Cursor, Gemini CLI, Android Studio Gemini, Windsurf, OpenCode or compatible agents.
@@ -24,7 +28,7 @@ A modular Agent Skills repository for building, reviewing, refactoring, testing,
 
 Run `node scripts/generate-catalog.mjs` to refresh [CATEGORIES.md](CATEGORIES.md). Current groups include Android platform, Kotlin, Compose, Firebase, local data, networking, DI, testing, security, accessibility, debugging, release and review/refactor.
 
-## Installation with npx skills
+## Installation
 
 This repository is public, so the standard Agent Skills CLI can install it directly.
 
@@ -87,7 +91,7 @@ Use `npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth` whe
 
 Copy this repository to an agent skills directory and restart the agent so it rescans available skills.
 
-## Example prompts
+## Usage examples
 
 - `Use $super-android-kotlin-firebase to create a new Android app with Compose, Room, Firebase Auth and Firestore.`
 - `Use $super-android-kotlin-firebase to review this project for architecture, testing, Firebase rules and release risks.`
@@ -133,6 +137,17 @@ Read [CONTRIBUTING.md](CONTRIBUTING.md). Keep skills short, actionable and legal
 
 Read [SECURITY.md](SECURITY.md). Never commit service accounts, keystores, tokens, `.env` files, private API keys or production credentials.
 
-## License and attribution
+## Attribution
 
-This repository is MIT licensed. It is inspired by public Android, Firebase, Kotlin and Agent Skills repositories. See [NOTICE.md](NOTICE.md) for attribution and license notes.
+This repository is inspired by public Android, Firebase, Kotlin and Agent Skills repositories. See [NOTICE.md](NOTICE.md) for attribution and license notes.
+
+## License
+
+This repository is MIT licensed. See [LICENSE](LICENSE).
+
+## Roadmap
+
+- Keep the skill taxonomy aligned with stable Android, Kotlin, Compose and Firebase patterns.
+- Add focused examples when real app workflows expose gaps.
+- Keep install commands tested against the current Agent Skills CLI.
+- Prefer concise subskills and move long guidance into `references/`.
