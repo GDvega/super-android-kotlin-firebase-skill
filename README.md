@@ -11,13 +11,13 @@ A modular Agent Skills repository for building, reviewing, refactoring, testing,
 
 This is a public, modular Agent Skills package for Android app work. It gives AI coding agents an orchestrator skill plus focused subskills, checklists, templates, examples and validation scripts.
 
-## Who this is for
+## Who is this for?
 
 - Android developers using Claude Code, Codex, Cursor, Gemini CLI, Android Studio Gemini, Windsurf, OpenCode or compatible agents.
 - Teams that want consistent Android/Kotlin/Firebase architecture, testing, security and release guidance.
 - Projects using Compose, Material 3, Room, DataStore, Retrofit/Ktor, Hilt/Koin and Firebase.
 
-## Problems it solves
+## Problems this repository solves
 
 - Keeps agents from inventing Android, Compose, Firebase or Gradle APIs.
 - Routes work to focused subskills instead of one giant prompt.
@@ -40,6 +40,8 @@ npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth --agent c
 npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth -g
 npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth -g -a codex -y
 ```
+
+## Why --full-depth?
 
 Use `--full-depth` because this repository has a root orchestrator skill plus nested subskills under `skills/`. Without it, the CLI may list only the root `super-android-kotlin-firebase` skill.
 
@@ -161,9 +163,11 @@ A modular Agent Skills repository for Android, Kotlin, Jetpack Compose and Fireb
 Topics:
 android, kotlin, firebase, jetpack-compose, agent-skills, claude-code, codex, cursor, gemini-cli, android-studio, ai-agents.
 
-Recommended release commands:
+## Release
+
+The `v0.3.1` tag marks the public release for the current validated package. If new commits are added after that tag, create a new patch tag instead of moving the existing release tag.
 
 ```bash
-git tag v0.3.1
-git push origin v0.3.1
+git tag v0.3.2
+git push origin v0.3.2
 ```

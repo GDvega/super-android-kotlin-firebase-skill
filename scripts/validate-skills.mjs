@@ -86,6 +86,8 @@ const expectedRootFiles = [
   'CODE_OF_CONDUCT.md',
   'CHANGELOG.md',
   'CATEGORIES.md',
+  'FUENTES_LOCALES.md',
+  'RELEASE_NOTES_v0.3.1.md',
   'package.json',
   'package-lock.json'
 ];
@@ -142,6 +144,7 @@ const auditedGlobs = [
   /^CATEGORIES\.md$/,
   /^AUDIT.*\.md$/,
   /^FUENTES_LOCALES\.md$/,
+  /^RELEASE_NOTES_v0\.3\.1\.md$/,
   /^package\.json$/,
   /^package-lock\.json$/,
   /^scripts\/[^/]+\.mjs$/,
