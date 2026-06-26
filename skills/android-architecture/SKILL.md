@@ -1,78 +1,87 @@
 ---
 name: android-architecture
-description: "Arquitectura Android: Clean Architecture, MVVM, MVI, multimodulo, domain/data/presentation, repositories, use cases, mapping y offline-first."
+description: "Use for Clean Architecture, MVVM, MVI, multimodule design, domain/data/presentation boundaries, repositories, use cases, DTO/entity/domain mapping and offline-first architecture."
 ---
 
-# Proposito
+# Purpose
 
+Design or review pragmatic Android architecture for real apps without over-engineering.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/android__nowinandroid`
-- `repositorios-referencia-super-skill/android__architecture-samples`
-- `repositorios-referencia-super-skill/dpconde__claude-android-skill`
-- `repositorios-referencia-super-skill/Drjacky__claude-android-ninja`
-- `repositorios-referencia-super-skill/AliAsadi__Android-Clean-Architecture`
+- Creating a new app structure.
+- Refactoring UI, domain and data boundaries.
+- Introducing multimodule structure or offline-first behavior.
+- Reviewing repositories, use cases and mappers.
 
-Disenar o revisar estructura profesional para apps Android reales.
+# Inputs to inspect
 
-# Cuando usar
+- Module tree and dependency graph.
+- Current package structure.
+- Data sources and sync requirements.
+- Tests and build times.
 
-- Crear arquitectura.
-- Refactor capas.
-- Separar modulos.
-- Implementar offline-first.
-- Revisar repositories/use cases.
+# Required workflow
 
-# Entradas esperadas
+1. Map current architecture and dependencies.
+2. Identify concrete coupling or testability problems.
+3. Propose the smallest boundary that solves the problem.
+4. Refactor around contracts and tests.
+5. Validate build and affected tests.
 
-- Arbol de modulos.
-- Dependencias.
-- Flujos de datos.
-- Fuentes local/remota.
-- Tests existentes.
+# Rules
 
-# Reglas obligatorias
+- UI must not know Firebase, Room or Retrofit details directly.
+- Domain should not depend on Android SDK.
+- Repositories hide local/remote data sources.
+- Add modules only when they reduce real coupling.
+- Prefer offline-first when product requirements need resilience.
 
-- UI no conoce SDKs remotos.
-- Domain no depende de Android/Firebase.
-- Repositories esconden data sources.
-- Mappings claros.
-- Cambios pequenos.
+# Files commonly touched
 
-# Flujo recomendado
+- `settings.gradle.kts`
+- `feature modules`
+- `core/data`
+- `core/domain`
+- `core/database`
+- `core/network`
+- `repository and mapper files`
 
-1. Mapear arquitectura actual.
-2. Detectar acoplamientos.
-3. Proponer frontera minima.
-4. Refactor con tests.
-5. Verificar build.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew projects
+./gradlew test
+./gradlew assembleDebug
+./gradlew lint
+```
 
-- Crear capas vacias.
-- Cambios gigantes.
-- Usar use cases triviales por dogma.
-- Romper API publica sin plan.
+# Common mistakes to avoid
+
+- Adding empty layers for dogma.
+- Moving everything in one giant refactor.
+- Creating trivial use cases for every repository call.
+- Breaking dependency direction.
 
 # Checklist
 
-- Capas claras.
-- Dependencias correctas.
-- Offline-first si aplica.
-- Tests alrededor de logica.
-- Plan incremental.
+- Boundaries named.
+- Dependencies directional.
+- Repositories testable.
+- Offline strategy explicit.
+- Incremental plan exists.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to review my Android architecture.
+- Use $super-android-kotlin-firebase to split this feature into UI/domain/data.
 
-```text
-Analiza mi proyecto Android y dime que problemas de arquitectura tiene.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Dare hallazgos priorizados, riesgos, archivos y un plan de refactor gradual.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/clean-architecture-pragmatic.md
+- templates/feature-module-template.md

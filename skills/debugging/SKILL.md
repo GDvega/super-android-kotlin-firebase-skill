@@ -1,78 +1,85 @@
 ---
 name: debugging
-description: "Debugging Android: build errors, Gradle sync, Logcat, adb, crashes, ANR, Firebase Crashlytics y reproducciones minimas."
+description: "Use for Android debugging, Gradle build errors, Gradle sync, Logcat, adb, crashes, ANR, Firebase Crashlytics evidence and minimal reproductions."
 ---
 
-# Proposito
+# Purpose
 
+Find root causes with evidence and apply minimal fixes.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/skydoves__android-testing-skills/adb`
-- `repositorios-referencia-super-skill/android__skills/devtools`
-- `repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-crashlytics`
+- A build, sync, runtime crash or ANR occurs.
+- Logcat, adb or Crashlytics evidence needs triage.
+- A minimal reproduction is needed.
 
-Diagnosticar errores con evidencia y cambios minimos.
+# Inputs to inspect
 
-# Cuando usar
+- Exact command that failed.
+- Full stacktrace and first error.
+- Relevant Gradle versions and files.
+- Reproduction steps and device/API.
 
-- Error Gradle.
-- Crash.
-- ANR.
-- Logcat.
-- adb.
-- Crashlytics.
-- Reproduccion minima.
+# Required workflow
 
-# Entradas esperadas
+1. Separate first cause from downstream noise.
+2. Locate the file or config responsible.
+3. Apply one minimal fix.
+4. Re-run the failing command.
+5. Document remaining uncertainty and next diagnostic step.
 
-- Stacktrace completo.
-- Comando fallido.
-- Versiones.
-- Archivo relacionado.
-- Pasos de reproduccion.
+# Rules
 
-# Reglas obligatorias
+- Do not shotgun-update dependencies.
+- Do not delete caches as the main solution.
+- Do not silence warnings that indicate real incompatibility.
+- Preserve crash evidence.
+- Mention local-only issues separately.
 
-- No adivinar sin leer error.
-- Cambiar una causa a la vez.
-- No borrar caches como primera opcion permanente.
-- Preservar evidencia.
-- No ignorar warnings criticos.
+# Files commonly touched
 
-# Flujo recomendado
+- `build.gradle.kts`
+- `Gradle logs`
+- `Logcat output`
+- `Crashlytics reports`
+- `source file in stacktrace`
 
-1. Leer error.
-2. Identificar primera causa.
-3. Ubicar archivo.
-4. Aplicar fix minimo.
-5. Reejecutar comando.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew --stacktrace <task>
+./gradlew build --scan
+adb logcat
+adb bugreport
+./gradlew test
+```
 
-- Soluciones shotgun.
-- Actualizar todo sin compatibilidad.
-- Borrar archivos sin confirmar.
-- Silenciar errores.
+# Common mistakes to avoid
+
+- Fixing the last error instead of the first cause.
+- Changing many versions at once.
+- Ignoring device/API-specific reproduction.
+- Removing code without explaining risk.
 
 # Checklist
 
-- Causa probable.
-- Fix minimo.
-- Comando para verificar.
-- Riesgo de version.
-- Reproduccion documentada.
+- First cause identified.
+- Minimal fix proposed.
+- Verification command given.
+- Reproduction documented.
+- Risk/rollback noted.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to debug this Gradle error.
+- Use $super-android-kotlin-firebase to triage this Crashlytics stacktrace.
 
-```text
-Revisa este error de Gradle/Compose/Firebase y dame solucion paso a paso.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Separare causa raiz de ruido, dare fix minimo y comando exacto.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/android-debugging-triage.md
+- templates/debugging-report-template.md

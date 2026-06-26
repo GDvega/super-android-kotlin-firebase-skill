@@ -1,158 +1,129 @@
 # Super Android Kotlin Firebase Skill
 
-Paquete modular de Agent Skills para crear, revisar, refactorizar y escalar apps Android modernas con Kotlin, Jetpack Compose y Firebase.
+![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-blue)
+![Android](https://img.shields.io/badge/Android-Kotlin-green)
+![Firebase](https://img.shields.io/badge/Firebase-ready-orange)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
-## Fuentes locales
+A modular Agent Skills repository for building, reviewing, refactoring, testing, securing, optimizing and releasing modern Android apps with Kotlin, Jetpack Compose and Firebase.
 
-Este paquete fue rehecho usando:
+## Who this is for
 
-- Los 36 repos clonados en `repositorios-referencia-super-skill/`.
-- Los documentos `repositorios_skills_android_kotlin_firebase.docx` y `repositorios_skills_android_kotlin_firebase_busqueda_ampliada.docx`.
-- El mapa `FUENTES_LOCALES.md`, que conecta cada subskill con sus repos de referencia.
+- Android developers using Claude Code, Codex, Cursor, Gemini CLI, Android Studio Gemini, Windsurf, OpenCode or compatible agents.
+- Teams that want consistent Android/Kotlin/Firebase architecture, testing, security and release guidance.
+- Projects using Compose, Material 3, Room, DataStore, Retrofit/Ktor, Hilt/Koin and Firebase.
 
-Para auditar exactamente que commit se uso, revisa:
+## Problems it solves
 
-```text
-repositorios-referencia-super-skill/REPOS_INSTALADOS.md
-repositorios-referencia-super-skill/AUDITORIA_REPOS.md
-```
+- Keeps agents from inventing Android, Compose, Firebase or Gradle APIs.
+- Routes work to focused subskills instead of one giant prompt.
+- Provides checklists, templates, examples and validation scripts.
+- Documents attribution and safety boundaries for an open source skill repo.
 
-## Para quien sirve
+## Included skills
 
-- Desarrolladores Android que usan Claude Code, Codex, Cursor, Gemini CLI, Windsurf u OpenCode.
-- Equipos que quieren reglas consistentes de arquitectura, seguridad, testing y release.
-- Proyectos Android con Kotlin, Compose, Firebase, Room, DataStore, Retrofit/Ktor y CI/CD.
+Run `node scripts/generate-catalog.mjs` to refresh [CATEGORIES.md](CATEGORIES.md). Current groups include Android platform, Kotlin, Compose, Firebase, local data, networking, DI, testing, security, accessibility, debugging, release and review/refactor.
 
-## Instalacion local
+## Installation with npx skills
 
-Copiar el paquete completo:
+Because this repository is private, make sure your GitHub CLI/git credentials can read `GDvega/super-android-kotlin-firebase-skill` before running these commands.
 
 ```bash
-cp -R super-android-kotlin-firebase-skill ~/.codex/skills/
+npx skills add GDvega/super-android-kotlin-firebase-skill
+npx skills add GDvega/super-android-kotlin-firebase-skill --skill jetpack-compose
+npx skills add GDvega/super-android-kotlin-firebase-skill --agent codex
+npx skills add GDvega/super-android-kotlin-firebase-skill --agent cursor
+npx skills add GDvega/super-android-kotlin-firebase-skill -g
+```
+
+## Claude Code
+
+```bash
+mkdir -p ~/.claude/skills
 cp -R super-android-kotlin-firebase-skill ~/.claude/skills/
 ```
 
-Para un proyecto Android, tambien puedes copiar `AGENTS.md` a la raiz del repo:
+## Codex
 
 ```bash
-cp super-android-kotlin-firebase-skill/AGENTS.md /ruta/a/tu/app/AGENTS.md
+mkdir -p ~/.codex/skills
+cp -R super-android-kotlin-firebase-skill ~/.codex/skills/
 ```
 
-## Uso con Claude Code
+## Cursor
 
-Instala la carpeta en `~/.claude/skills/` y pide:
+Use `npx skills add GDvega/super-android-kotlin-firebase-skill --agent cursor`, or copy the relevant `SKILL.md` guidance into Cursor project rules if your setup does not load Agent Skills directly.
 
-```text
-Usa $super-android-kotlin-firebase para revisar este proyecto Android.
+## Gemini CLI
+
+If your Gemini CLI supports skills, install through a compatible skills location or use:
+
+```bash
+cp super-android-kotlin-firebase-skill/GEMINI.md /path/to/android-project/GEMINI.md
 ```
 
-## Uso con Codex
+For Firebase-specific MCP support, also consider:
 
-Instala la carpeta en `~/.codex/skills/` y pide:
-
-```text
-Use $super-android-kotlin-firebase to build this Android feature with Compose, Firebase and tests.
+```bash
+gemini extensions install https://github.com/firebase/agent-skills
 ```
 
-## Uso con Cursor, Gemini CLI, Windsurf u OpenCode
+## Android Studio Gemini
 
-Si tu herramienta soporta Agent Skills, importa la carpeta. Si no, pega `SKILL.md` como regla maestra y carga subskills/checklists segun la tarea.
-
-## Uso con Gemini en Android Studio
-
-Gemini en Android Studio espera skills en `~/.agents/skills`.
+Gemini in Android Studio expects skills under `~/.agents/skills`:
 
 ```bash
 mkdir -p ~/.agents/skills
 cp -R super-android-kotlin-firebase-skill ~/.agents/skills/
 ```
 
-Luego pide:
+## Windsurf and OpenCode
+
+Use `npx skills add GDvega/super-android-kotlin-firebase-skill` when supported. Otherwise, attach `SKILL.md`, `AGENTS.md`, `GEMINI.md` or the relevant subskill file as project instructions.
+
+## Manual installation
+
+Copy this repository to an agent skills directory and restart the agent so it rescans available skills.
+
+## Example prompts
+
+- `Use $super-android-kotlin-firebase to create a new Android app with Compose, Room, Firebase Auth and Firestore.`
+- `Use $super-android-kotlin-firebase to review this project for architecture, testing, Firebase rules and release risks.`
+- `Use $super-android-kotlin-firebase to fix this Gradle error and explain the smallest safe change.`
+- `Use $super-android-kotlin-firebase to optimize this LazyColumn and add validation commands.`
+
+## Repository structure
 
 ```text
-Usa $super-android-kotlin-firebase para revisar este proyecto Android.
+SKILL.md
+skills/<skill-name>/SKILL.md
+skills/<skill-name>/references/
+skills/<skill-name>/templates/
+checklists/
+templates/
+examples/
+scripts/
+tests/
+.github/workflows/validate.yml
 ```
 
-## Uso con Gemini CLI
-
-Si tu version de Gemini CLI lista skills con `gemini skills list`, copia esta carpeta a un directorio de skills compatible o usa la copia instalada en `~/.agents/skills`.
-
-Tambien puedes usar el archivo `GEMINI.md` incluido en este paquete como instruccion de proyecto:
+## Updating
 
 ```bash
-cp super-android-kotlin-firebase-skill/GEMINI.md /ruta/a/tu/app/GEMINI.md
+git pull
+node scripts/validate-skills.mjs
+node scripts/generate-catalog.mjs
+node scripts/check-links.mjs
 ```
 
-Para Firebase especifico, la ruta oficial recomendada por Firebase es instalar su extension:
+## Contributing
 
-```bash
-gemini extensions install https://github.com/firebase/agent-skills
-```
+Read [CONTRIBUTING.md](CONTRIBUTING.md). Keep skills short, actionable and legally clean. Put long details in `references/` and code examples in `templates/`.
 
-Esta super skill complementa esa extension con arquitectura Android, Compose, testing, seguridad y release.
+## Security
 
-## Uso con Antigravity
+Read [SECURITY.md](SECURITY.md). Never commit service accounts, keystores, tokens, `.env` files, private API keys or production credentials.
 
-Antigravity usa configuracion bajo `~/.gemini/antigravity/`. Para skills:
+## License and attribution
 
-```bash
-mkdir -p ~/.gemini/antigravity/skills
-cp -R super-android-kotlin-firebase-skill ~/.gemini/antigravity/skills/
-```
-
-## Uso con npx skills
-
-Este paquete local no esta publicado. Si lo publicas en GitHub, una instalacion podria verse asi:
-
-```bash
-npx skills add usuario/super-android-kotlin-firebase-skill -g -a codex -y
-```
-
-## Estructura
-
-```text
-super-android-kotlin-firebase-skill/
-  SKILL.md
-  skills/*/SKILL.md
-  checklists/*.md
-  templates/*.md
-  examples/*.md
-  AGENTS.md
-  README.md
-  LICENSE
-  CHANGELOG.md
-```
-
-## Ejemplos de prompts
-
-- `Crea una app Android Kotlin con Jetpack Compose, arquitectura limpia, Room, Firebase Auth y Firestore.`
-- `Agrega una pantalla de presupuesto semanal con Compose y ViewModel.`
-- `Analiza este proyecto Android y dime problemas de arquitectura, seguridad y testing.`
-- `Revisa este error de Gradle/Compose/Firebase y dame solucion paso a paso.`
-- `Detecta recomposiciones innecesarias y mejora rendimiento.`
-- `Genera pruebas unitarias y Compose UI tests para esta feature.`
-
-## Advertencias de seguridad
-
-- No pegues service accounts, keystores, tokens privados ni secretos en prompts.
-- No uses reglas Firebase abiertas en produccion.
-- No guardes credenciales bancarias ni datos sensibles sin threat model.
-- Revisa scripts de skills comunitarias antes de ejecutarlos.
-
-## Fuentes y atribuciones
-
-Esta super skill esta inspirada en buenas practicas publicas y documentacion de:
-
-- `android/skills`
-- `firebase/agent-skills`
-- `google/skills`
-- `Kotlin/kotlin-agent-skills`
-- `android/nowinandroid`
-- `android/architecture-samples`
-- `android/compose-samples`
-- `firebase/quickstart-android`
-- `auth0/agent-skills`, `RevenueCat/play-billing-skills`, `GetStream/agent-skills`
-- `skydoves/android-testing-skills`, `skydoves/compose-performance-skills`, `aldefy/compose-skill`
-- repos comunitarios de Compose, testing, performance y arquitectura Android
-
-El contenido de este paquete esta resumido, reorganizado y adaptado. No copia textualmente contenido protegido de terceros.
+This repository is MIT licensed. It is inspired by public Android, Firebase, Kotlin and Agent Skills repositories. See [NOTICE.md](NOTICE.md) for attribution and license notes.

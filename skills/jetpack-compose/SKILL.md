@@ -1,77 +1,85 @@
 ---
 name: jetpack-compose
-description: "Jetpack Compose para Composables, state hoisting, remember, rememberSaveable, ViewModel + StateFlow, Material 3, Navigation, previews, adaptive UI y accesibilidad basica."
+description: "Use for Jetpack Compose screens, Route + Screen structure, state hoisting, remember, rememberSaveable, ViewModel + StateFlow, Material 3, Navigation, previews, adaptive UI and basic accessibility."
 ---
 
-# Proposito
+# Purpose
 
+Build Compose UI that is maintainable, state-driven, accessible and aligned with Material 3.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/android__skills/jetpack-compose`
-- `repositorios-referencia-super-skill/aldefy__compose-skill`
-- `repositorios-referencia-super-skill/Meet-Miyani__compose-skill`
-- `repositorios-referencia-super-skill/android__compose-samples`
+- Creating or refactoring a Compose screen.
+- Connecting ViewModel and StateFlow to UI.
+- Adding Navigation, previews, adaptive layouts or accessibility semantics.
 
-Crear o revisar UI Compose mantenible, accesible y alineada con Material 3.
+# Inputs to inspect
 
-# Cuando usar
+- Composable files, UI state and ViewModel.
+- Theme/design system and Material 3 usage.
+- Navigation graph and route parameters.
+- Preview and UI test setup.
 
-- Crear pantalla Compose.
-- Refactor UI.
-- Agregar Navigation.
-- Conectar ViewModel + StateFlow.
-- Agregar previews.
+# Required workflow
 
-# Entradas esperadas
+1. Define UI state and user events.
+2. Create a Route composable for ViewModel and navigation wiring.
+3. Create a stateless Screen composable that renders state.
+4. Add previews for loading, empty, content and error states.
+5. Add semantics and tests for the critical flow.
 
-- Composables existentes.
-- Estado UI esperado.
-- Eventos de usuario.
-- Tema Material.
-- Navigation graph.
+# Rules
 
-# Reglas obligatorias
+- Use Route + Screen for stateful screens.
+- Hoist state and keep reusable components stateless.
+- Do not perform network, database or Firebase calls in Composables.
+- Use Material 3 theme tokens.
+- Add stable keys for lazy lists.
 
-- Separar Route y Screen.
-- Hoistear estado.
-- No hacer red/base de datos en Composable.
-- Usar Material 3.
-- Agregar semantics/contentDescription.
+# Files commonly touched
 
-# Flujo recomendado
+- `feature/*/*Screen.kt`
+- `feature/*/*Route.kt`
+- `feature/*/*ViewModel.kt`
+- `navigation files`
+- `ui/theme files`
+- `androidTest Compose tests`
 
-1. Definir UI state.
-2. Crear Route con ViewModel.
-3. Crear Screen stateless.
-4. Agregar previews.
-5. Probar estados principales.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew assembleDebug
+./gradlew test
+./gradlew connectedDebugAndroidTest
+```
 
-- Pasar ViewModel a componentes reutilizables.
-- Usar remember para estado de negocio.
-- LazyColumn sin keys.
-- Texto/iconos inaccesibles.
+# Common mistakes to avoid
+
+- Passing ViewModel into reusable leaf components.
+- Using remember for business state that belongs in ViewModel.
+- Missing previews for error/empty states.
+- Ignoring semantics, content descriptions and font scale.
 
 # Checklist
 
+- Route and Screen separated.
 - State hoisted.
-- Material 3.
-- Previews.
-- A11y basica.
-- Navigation clara.
+- Material 3 used.
+- Previews added.
+- Accessibility and UI tests considered.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to create a weekly budget Compose screen.
+- Use $super-android-kotlin-firebase to refactor this Compose screen into Route + Screen.
 
-```text
-Agrega una pantalla de presupuesto semanal con Compose y ViewModel.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Creare State, Event, ViewModel, Route, Screen y previews; indicare tests y comandos.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/compose-state-patterns.md
+- references/navigation-patterns.md
+- templates/route-screen-viewmodel-template.md

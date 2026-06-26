@@ -1,237 +1,111 @@
 ---
 name: super-android-kotlin-firebase
-description: Skill maestra para construir, revisar, refactorizar y escalar apps Android modernas con Kotlin, Jetpack Compose, Firebase, arquitectura limpia, testing, rendimiento, seguridad y publicacion en Play Store.
+description: "Master orchestration skill for building, reviewing, refactoring, testing, securing, optimizing and releasing modern Android apps with Kotlin, Jetpack Compose, Firebase, pragmatic architecture, performance and Play Store readiness."
 ---
 
 # Super Android Kotlin Firebase
 
-Skill maestra para agentes de IA que trabajan en apps Android profesionales. Usa esta skill como router: primero entiende el problema, luego selecciona las subskills necesarias en `skills/`, checklists en `checklists/` y templates en `templates/`.
+Use this as an orchestrator, not as a giant implementation guide. Select the smallest set of subskills needed for the user's task, inspect the repository first, then act with small verifiable changes.
 
-## Fuentes locales y prioridad
+## When to use this super skill
 
-Antes de inventar reglas, revisar fuentes locales si existen:
+- Building or reviewing Android apps with Kotlin, Compose, Material 3, Gradle, Firebase, Room, DataStore, Retrofit/Ktor, Hilt/Koin or Play release concerns.
+- Creating features that cross UI, state, domain, data, local storage, remote APIs or Firebase.
+- Auditing architecture, security, Firebase rules, tests, accessibility, performance or release readiness.
+- Fixing Gradle, Compose, Firebase, Android Studio, adb, Logcat, Crashlytics or CI failures.
 
-1. `repositorios-referencia-super-skill/android__skills` para Android oficial, AGP, R8, Play, edge-to-edge, Navigation, testing, profilers y seguridad.
-2. `repositorios-referencia-super-skill/firebase__agent-skills` y `firebase__skills` para Firebase, Firestore, Auth, reglas, Crashlytics y AI Logic.
-3. `repositorios-referencia-super-skill/google__skills` para Google Cloud, Gemini, Vertex AI y productos Google.
-4. `repositorios-referencia-super-skill/Kotlin__kotlin-agent-skills` para Kotlin, tooling y migraciones AGP/Kotlin.
-5. Repos especializados: `aldefy__compose-skill`, `skydoves__compose-performance-skills`, `skydoves__android-testing-skills`.
-6. Apps/ejemplos reales: `android__nowinandroid`, `android__architecture-samples`, `android__compose-samples`, `firebase__quickstart-android`.
-7. Repos comunitarios y catalogos solo como apoyo: `dpconde__claude-android-skill`, `Drjacky__claude-android-ninja`, `affaan-m__everything-claude-code`, `wshobson__agents`, `JetBrains__skills`, `VoltAgent__awesome-agent-skills`.
+## When not to use it
 
-Usar los `.docx` de la raiz como curaduria y ranking historico; usar los repos clonados como fuente operativa.
+- Non-Android apps unless Firebase, Kotlin Multiplatform or Android-specific code is involved.
+- Unauthorized security testing, credential extraction, bypasses or destructive operations.
+- Bulk rewrites without a user goal, tests or rollback path.
 
+## How to select subskills
 
-## 1. Cuando usar esta skill
+Read only the relevant `skills/<name>/SKILL.md` files:
 
-- Crear apps Android con Kotlin, Compose, Material 3 y arquitectura moderna.
-- Agregar features Android con ViewModel, StateFlow, Room, DataStore, Retrofit/Ktor o Firebase.
-- Integrar Firebase Auth, Firestore, Realtime Database, Storage, Cloud Functions, FCM, Crashlytics, Analytics, Remote Config o AI Logic.
-- Revisar arquitectura, seguridad, performance, testing, accesibilidad o readiness de Play Store.
-- Arreglar errores de Gradle, AGP, Kotlin, Compose, Firebase o CI/CD.
-- Preparar prompts, templates o reglas para Claude Code, Codex, Cursor, Gemini CLI, Windsurf u OpenCode.
+- Platform: `android-core`, `gradle-build`, `debugging`.
+- Kotlin/state: `kotlin-core`, `dependency-injection`.
+- UI: `jetpack-compose`, `compose-performance`, `accessibility`.
+- Architecture/data: `android-architecture`, `room-datastore`, `networking-retrofit-ktor`.
+- Firebase: `firebase-core`, `firebase-auth`, `firestore`, `firebase-cloud-functions`, `firebase-messaging`, `firebase-crashlytics-analytics`, `firebase-ai-logic`.
+- Quality/release: `testing`, `security-privacy`, `play-store-release`, `code-review-refactor`.
 
-## 2. Cuando NO usar esta skill
+Use `FUENTES_LOCALES.md` to locate the local reference repositories when deeper source context is needed.
 
-- Apps iOS puras, Flutter puro o React Native puro, salvo que haya un modulo Android o backend Firebase compartido.
-- Pentesting no autorizado, bypass de seguridad, scraping de credenciales o extraccion de secretos.
-- Cambios masivos de arquitectura sin objetivo verificable.
-- Actualizaciones de versiones hechas por moda sin revisar compatibilidad.
+## Global agent rules
 
-## 3. Modo de trabajo del agente
+1. Understand the user's goal before editing.
+2. Detect whether the project is Android Kotlin, Compose, Firebase, KMP or mixed.
+3. Inspect structure, Gradle files, modules, tests and existing patterns before changing code.
+4. Do not invent APIs.
+5. Do not update Gradle, AGP, Kotlin, Compose or Firebase versions without compatibility checks.
+6. Prefer small, safe, verifiable changes.
+7. Explain files modified and commands to validate.
+8. Propose or add tests when logic changes.
+9. Never request or expose private credentials.
 
-1. Entender el objetivo real del usuario y el contexto del proyecto.
-2. Detectar si el proyecto usa Android Kotlin, Compose, Firebase, KMP o una mezcla.
-3. Revisar estructura, Gradle, modulos, tests y patrones existentes antes de tocar codigo.
-4. Elegir cambios pequenos, seguros y verificables.
-5. Implementar siguiendo el estilo del repo.
-6. Proponer o agregar tests cuando haya logica.
-7. Dar comandos concretos para probar.
-8. Cerrar con diagnostico, archivos afectados, verificacion y riesgos.
+## Architecture rules
 
-## 4. Orden recomendado de razonamiento
+Separate UI, domain and data in real apps. Hide Firebase, Room and network SDKs behind repositories. Add modules only when they reduce coupling or build/test complexity. Preserve the existing architecture unless the user asks for a migration or the current design blocks the task.
 
-1. Producto: que flujo de usuario se quiere lograr.
-2. Plataforma: Android, Compose, Firebase, local data, red, IA, release.
-3. Arquitectura: capas, modulos, limites, contratos y dependencias.
-4. Datos: modelo, fuente local/remota, sincronizacion, privacidad y reglas.
-5. UI: estado, eventos, Material 3, accesibilidad y adaptabilidad.
-6. Calidad: tests, rendimiento, seguridad, debugging y release.
-7. Entrega: archivos modificados, comandos, resultados y siguiente paso.
+## Kotlin rules
 
-## 5. Como decidir que subskill usar
+Use structured concurrency. Do not use `GlobalScope`. Preserve cancellation. Model state and errors explicitly. Avoid `!!` unless the invariant is enforced nearby. Keep domain logic testable.
 
-- `android-core`: proyecto Android, manifest, lifecycle, permisos, edge-to-edge, debugging basico.
-- `kotlin-core`: Kotlin, null safety, sealed types, coroutines, Flow, errores.
-- `jetpack-compose`: pantallas Compose, estado, Material 3, Navigation, previews.
-- `compose-performance`: recomposicion, stability, LazyColumn, baseline profiles, medicion.
-- `android-architecture`: Clean Architecture, MVVM/MVI, multimodulo, offline-first.
-- `firebase-core`: setup Firebase, BoM, Gradle, ambientes, emulator, Storage y Realtime Database.
-- `firebase-auth`: login, auth state, perfiles, errores de autenticacion.
-- `firestore`: colecciones, queries, indices, transactions, rules, costos.
-- `firebase-cloud-functions`: callable/HTTP functions, triggers, validacion servidor.
-- `firebase-messaging`: FCM, tokens, notifications, Android 13+ permissions.
-- `firebase-crashlytics-analytics`: crashes, non-fatals, eventos, privacidad.
-- `local-data-room-datastore`: Room, DAO, migrations, DataStore, cache, sync.
-- `networking-retrofit-ktor`: Retrofit, Ktor, OkHttp, errores, retries, DTOs.
-- `dependency-injection`: Hilt, Koin, scopes, ViewModel injection, tests.
-- `testing`: unit, coroutine, Flow, Compose UI, instrumented, Firebase emulator.
-- `security-privacy`: secretos, reglas, cifrado local, datos sensibles.
-- `accessibility`: TalkBack, semantics, touch targets, contraste.
-- `debugging`: Gradle sync, Logcat, adb, crashes, ANR, reproducciones.
-- `gradle-build`: version catalogs, AGP, Kotlin plugin, Firebase BoM, variants.
-- `play-store-release`: signing, R8, AAB, Play Console, Data Safety.
-- `ai-gemini-integration`: Gemini/AI, prompts, privacidad, fallback, claves.
-- `code-review-refactor`: auditoria, refactor paso a paso, evitar cambios gigantes.
+## Compose rules
 
-## 6. Reglas obligatorias de arquitectura
+Use Route + Screen for stateful screens. Hoist state. Keep reusable Composables stateless. Use Material 3 theme tokens. Add previews and semantics. Treat recomposition and lazy list performance as measurable.
 
-- Separar UI, domain y data en apps reales.
-- Respetar la arquitectura existente si ya es coherente.
-- No poner logica de negocio pesada en Composables.
-- Usar repositories para ocultar Room, Retrofit, Ktor y Firebase.
-- Usar modelos claros: DTO/entity/domain/UI model cuando haya frontera real.
-- Mantener dependencias apuntando hacia capas internas, no al reves.
-- Preferir offline-first cuando el producto necesita operar sin conexion.
+## Firebase rules
 
-## 7. Reglas obligatorias de Kotlin
+Design data model and Security Rules together. Use Emulator Suite for rules/functions when possible. Separate dev/staging/prod. Avoid open production rules. Consider indexes, listener cost, Storage metadata and Realtime Database validation.
 
-- No usar `GlobalScope`.
-- No bloquear el hilo principal.
-- Manejar nullability de forma explicita.
-- Usar sealed interfaces/classes para estados cerrados.
-- Usar `Result` o tipos de error propios cuando el consumidor necesite reaccionar.
-- No tragarse `CancellationException`.
-- Mantener funciones pequenas y nombres claros.
+## Security rules
 
-## 8. Reglas obligatorias de Compose
+Do not commit service accounts, keystores, `.env`, private tokens or credentials. Do not log PII. Do not store production secrets in BuildConfig. Review scripts before running them.
 
-- Usar Route + Screen cuando haya ViewModel.
-- Hoistear estado; Composables renderizan estado y emiten eventos.
-- Usar Material 3 y tokens del tema.
-- Usar `remember`/`rememberSaveable` solo donde corresponda.
-- Colectar Flow con lifecycle-aware APIs si estan disponibles.
-- Agregar previews para estados importantes cuando el proyecto lo soporte.
-- Revisar accesibilidad: semantics, contentDescription, contraste y touch targets.
+## Testing rules
 
-## 9. Reglas obligatorias de Firebase
+Test domain and ViewModel logic first. Use fakes for repository behavior. Use coroutine test APIs and virtual time. Add Compose UI tests for critical flows. Add Firebase emulator tests for sensitive rules.
 
-- No exponer secretos ni pedir claves privadas.
-- No guardar service accounts, tokens privados o keystores en el repo.
-- Usar Firebase BoM y plugins Gradle compatibles.
-- Disenar modelo Firestore/Realtime Database/Storage junto con Security Rules.
-- Validar reglas y funciones en Emulator Suite cuando sea posible.
-- Separar ambientes dev/staging/prod.
-- No usar reglas abiertas como solucion de produccion.
+## Performance rules
 
-## 10. Reglas de seguridad y privacidad
+Measure before broad optimization. Check recomposition, stability, Lazy keys, images, database/network listeners and release-mode behavior. Consider baseline profiles for startup and critical journeys.
 
-- Aplicar minimo privilegio.
-- No pedir credenciales bancarias, tokens privados ni claves secretas.
-- No loguear datos sensibles en Logcat, Crashlytics o Analytics.
-- Validar permisos y datos sensibles en cliente y servidor/reglas.
-- Cifrar localmente solo cuando el threat model lo justifique y se pueda mantener.
-- Documentar riesgos cuando una dependencia o regla sea insegura.
+## Accessibility rules
 
-## 11. Reglas de testing
+Check labels, touch targets, contrast, font scale, TalkBack order and error semantics. Do not communicate status by color alone.
 
-- Proponer tests cuando se agrega logica.
-- Priorizar unit tests para domain, mappers, parsers, calculos y ViewModels.
-- Usar fakes para repositorios cuando se prueban transiciones de estado.
-- Agregar tests de reglas Firebase para allow/deny criticos.
-- Cubrir loading, empty, success, error, offline y permission-denied.
+## Release rules
 
-## 12. Reglas de rendimiento
+Validate release builds, signing, R8, privacy policy, Data Safety, permissions, Crashlytics and staged rollout. Never commit signing secrets.
 
-- Medir antes de refactors grandes.
-- Revisar recomposicion, estabilidad, claves en Lazy lists, imagenes y side effects.
-- Evitar trabajo pesado en Composables.
-- Usar paging/cache cuando datos grandes lo exijan.
-- Considerar baseline profiles para startup o flujos criticos.
+## Required response format
 
-## 13. Reglas de accesibilidad
+Use this order unless the user asks for a different format:
 
-- Touch targets de 48dp cuando aplique.
-- Texto legible con font scale.
-- Icon-only buttons con descripcion o marcados como decorativos.
-- Estados no deben depender solo del color.
-- TalkBack debe entender flujo, errores y acciones principales.
+1. Brief diagnosis.
+2. Change plan.
+3. Affected files.
+4. Code or change summary.
+5. Commands to validate.
+6. Tests added or recommended.
+7. Risks or warnings.
+8. Next step.
 
-## 14. Reglas de Gradle y dependencias
+## Checklist before editing
 
-- No actualizar Gradle, AGP, Kotlin o Firebase sin revisar compatibilidad.
-- Preferir version catalogs y convention plugins en proyectos multimodulo.
-- Evitar dependencias nuevas si el proyecto ya tiene una alternativa valida.
-- Mantener build variants, flavors y signing fuera de secretos.
+- Relevant files inspected.
+- Correct subskills selected.
+- Existing architecture understood.
+- Security and privacy implications considered.
+- Validation command identified.
 
-## 15. Reglas de entrega final
+## Checklist before responding
 
-La respuesta final debe incluir:
-
-1. Diagnostico breve.
-2. Plan de cambios.
-3. Archivos afectados.
-4. Codigo propuesto o resumen de cambios.
-5. Comandos para probar.
-6. Tests recomendados o ejecutados.
-7. Riesgos o advertencias.
-8. Siguiente paso recomendado.
-
-## 16. Checklist antes de responder
-
-- Entendi el objetivo y el tipo de proyecto.
-- Revise archivos relevantes antes de editar.
-- No invente APIs.
-- No rompi arquitectura existente sin explicacion.
-- No expuse secretos ni datos sensibles.
-- Agregue/propose tests si hubo logica.
-- Di comandos de verificacion.
-- Mencione riesgos y limites.
-
-## 17. Plantilla de respuesta para crear una app
-
-```text
-Diagnostico breve: stack propuesto y supuestos.
-Plan: modulos, pantallas, datos, Firebase/local, tests.
-Archivos a crear/modificar: lista por modulo.
-Implementacion: primera vertical slice.
-Comandos: ./gradlew assembleDebug test lint.
-Tests: domain, ViewModel, repository, Compose UI.
-Riesgos: compatibilidad, permisos, reglas, secretos.
-Siguiente paso: ejecutar app y validar flujo principal.
-```
-
-## 18. Plantilla de respuesta para crear una feature
-
-```text
-Diagnostico breve: feature y punto de integracion.
-Plan: UI state, ViewModel, repository/use case, data source, tests.
-Archivos afectados: rutas exactas.
-Codigo: cambios principales.
-Comandos para probar: tareas Gradle relevantes.
-Tests recomendados: casos loading/success/error/offline.
-Riesgos: migraciones, permisos, reglas, compatibilidad.
-Siguiente paso: probar flujo manual.
-```
-
-## 19. Plantilla de respuesta para revisar codigo
-
-```text
-Hallazgos: severidad, archivo y linea cuando sea posible.
-Riesgos: arquitectura, seguridad, rendimiento, testing.
-Recomendaciones: cambios pequenos por prioridad.
-Comandos de verificacion: tests/lint/build.
-Siguiente paso: primer refactor seguro.
-```
-
-## 20. Plantilla de respuesta para arreglar errores
-
-```text
-Diagnostico breve: causa probable.
-Evidencia: mensaje de error y archivo relacionado.
-Plan: pasos minimos.
-Cambios: archivo y razon.
-Comandos: limpiar/reintentar tarea especifica.
-Tests: que validar para evitar regresion.
-Riesgos: versiones, cache Gradle, configuracion local.
-```
+- Changes are scoped.
+- APIs are real or verified.
+- Tests/commands are included.
+- Secrets are not exposed.
+- Remaining risks are named.

@@ -1,12 +1,9 @@
 # Android Project Checklist
 
-- `settings.gradle(.kts)` lista modulos necesarios y nombres coherentes.
-- Gradle usa Kotlin DSL o estilo consistente.
-- `compileSdk`, `minSdk`, `targetSdk` estan definidos y justificados.
-- Manifest no declara permisos innecesarios.
-- Permisos runtime tienen flujo UX y fallback.
-- App maneja lifecycle, process death y configuracion cuando aplica.
-- Edge-to-edge/insets estan resueltos.
-- Recursos usan tema y qualifiers cuando hace falta.
-- No hay secretos en repo, Gradle, Manifest o resources.
-- `./gradlew assembleDebug test lint` o equivalentes estan documentados.
+- Modules and package structure are understandable.
+- Gradle Kotlin DSL and version catalog strategy are consistent.
+- Manifest permissions are minimal and justified.
+- minSdk, targetSdk and compileSdk are compatible with features used.
+- Lifecycle, process death and configuration changes are considered.
+- Edge-to-edge and insets are handled.
+- Tests and lint commands are documented.

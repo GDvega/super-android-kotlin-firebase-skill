@@ -1,77 +1,88 @@
 ---
 name: firebase-core
-description: "Firebase base: configuracion, google-services.json, BoM, plugins Gradle, emulator suite, seguridad y ambientes dev/staging/prod."
+description: "Use for Firebase Android setup, google-services files, Firebase BoM, Gradle plugins, Emulator Suite, dev/staging/prod environments, Storage, Realtime Database, Remote Config and AI Logic foundations."
 ---
 
-# Proposito
+# Purpose
 
+Set up Firebase products safely and consistently in Android apps.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/firebase__agent-skills`
-- `repositorios-referencia-super-skill/firebase__skills`
-- `repositorios-referencia-super-skill/firebase__quickstart-android`
-- `repositorios-referencia-super-skill/google__skills`
+- Adding Firebase to an Android app.
+- Fixing Firebase Gradle or google-services setup.
+- Separating environments.
+- Configuring Emulator Suite, Storage, Realtime Database, Remote Config or AI Logic.
 
-Configurar Firebase de forma compatible, segura y mantenible.
+# Inputs to inspect
 
-# Cuando usar
+- Firebase products required.
+- Gradle files and version catalog.
+- google-services policy and environments.
+- Existing rules and emulator config.
 
-- Agregar Firebase.
-- Corregir Gradle Firebase.
-- Configurar emulator.
-- Integrar Storage o Realtime Database cuando el producto lo requiera.
-- Separar ambientes.
+# Required workflow
 
-# Entradas esperadas
+1. Identify required Firebase products and environments.
+2. Review Gradle and BoM setup.
+3. Add the minimum SDKs/plugins.
+4. Plan rules and Emulator Suite validation.
+5. Run Android build and document manual Firebase console steps.
 
-- build.gradle raiz/app.
-- Version catalog.
-- google-services policy.
-- Productos Firebase requeridos, incluyendo Storage, Realtime Database, Remote Config o AI Logic si aplican.
-- Ambientes.
+# Rules
 
-# Reglas obligatorias
+- Do not ask for private service accounts or production secrets.
+- Separate dev/staging/prod projects when possible.
+- Do not ship open rules.
+- Use Emulator Suite for rules/functions when available.
+- Consider costs and quotas for realtime listeners and storage.
 
-- Usar BoM compatible.
-- No exponer secretos.
-- Separar dev/staging/prod.
-- No abrir reglas Firestore, Realtime Database ni Storage para produccion.
-- Documentar configuracion local.
+# Files commonly touched
 
-# Flujo recomendado
+- `app/build.gradle.kts`
+- `settings.gradle.kts`
+- `gradle/libs.versions.toml`
+- `google-services.json policy docs`
+- `firebase.json`
+- `firestore.rules`
+- `database.rules.json`
+- `storage.rules`
 
-1. Revisar Gradle.
-2. Elegir productos.
-3. Agregar plugins/deps minimas.
-4. Configurar emulators si aplica.
-5. Probar build.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew assembleDebug
+firebase emulators:start
+firebase emulators:exec "npm test"
+firebase deploy --only <target>
+```
 
-- Commit de claves privadas.
-- Duplicar versiones Firebase fuera del BoM.
-- Mezclar proyectos dev/prod.
-- Ignorar rules.
+# Common mistakes to avoid
+
+- Committing service accounts.
+- Mixing dev and prod Firebase projects.
+- Using allow read, write: if true in production.
+- Ignoring Storage/Realtime Database rules.
 
 # Checklist
 
-- BoM configurado.
-- Ambientes claros.
-- Emulator considerado.
-- Build probado.
-- Secrets protegidos.
+- BoM configured.
+- Environments separated.
+- Rules planned.
+- Emulator path known.
+- Secrets not committed.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to add Firebase Auth and Firestore safely.
+- Use $super-android-kotlin-firebase to review my Firebase setup for dev/staging/prod.
 
-```text
-Agrega Firebase a esta app Android.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Revisare Gradle, agregare BoM/plugins necesarios y advertire sobre google-services y rules.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/firebase-setup-android.md
+- templates/firebase-product-setup-template.md

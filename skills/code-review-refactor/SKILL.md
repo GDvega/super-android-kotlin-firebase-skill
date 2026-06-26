@@ -1,77 +1,85 @@
 ---
 name: code-review-refactor
-description: "Revision y refactor Android: arquitectura, UI, seguridad, performance, refactor paso a paso y evitar cambios gigantes."
+description: "Use for Android code review, architecture review, UI/security/performance/testing review and safe step-by-step refactoring without giant changes."
 ---
 
-# Proposito
+# Purpose
 
+Provide senior review findings and turn risky refactors into small verifiable steps.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/android__skills`
-- `repositorios-referencia-super-skill/affaan-m__everything-claude-code`
-- `repositorios-referencia-super-skill/JetBrains__skills`
-- `repositorios-referencia-super-skill/github__awesome-copilot`
+- Reviewing a diff or project.
+- Planning a refactor.
+- Finding architecture, security, testing or performance risks.
+- Reducing technical debt safely.
 
-Actuar como arquitecto senior revisando riesgos y proponiendo mejoras verificables.
+# Inputs to inspect
 
-# Cuando usar
+- Diff, files or module tree.
+- User goal and risk tolerance.
+- Existing tests and failing commands.
+- Architecture constraints.
 
-- Code review.
-- Refactor.
-- Auditoria arquitectura.
-- UI/security/performance review.
-- Plan incremental.
+# Required workflow
 
-# Entradas esperadas
+1. Read relevant files before judging.
+2. Lead with findings ordered by severity.
+3. Separate bugs from preferences.
+4. Propose the smallest safe refactor.
+5. Add tests/validation before broad cleanup.
 
-- Diff o archivos.
-- Objetivo.
-- Tests actuales.
-- Restricciones.
-- Riesgo aceptable.
+# Rules
 
-# Reglas obligatorias
+- Findings first for reviews.
+- Do not do cosmetic rewrites unless requested.
+- Do not revert unrelated user changes.
+- Preserve behavior unless asked to change it.
+- Mention test gaps honestly.
 
-- Findings primero.
-- Priorizar severidad.
-- No refactor cosmetico grande.
-- Proteger comportamiento.
-- Agregar tests antes de cambios riesgosos.
+# Files commonly touched
 
-# Flujo recomendado
+- `Any changed files`
+- `README/AGENTS`
+- `build files`
+- `tests`
+- `rules files`
 
-1. Inspeccionar codigo.
-2. Listar hallazgos.
-3. Elegir primer refactor seguro.
-4. Aplicar cambios si se pidio.
-5. Verificar.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew test
+./gradlew lint
+./gradlew assembleDebug
+node scripts/validate-skills.mjs
+```
 
-- Cambios gigantes.
-- Opiniones sin evidencia.
-- Romper comportamiento.
-- Ignorar tests.
+# Common mistakes to avoid
+
+- Large unrelated refactors.
+- No file/line evidence.
+- Ignoring security or test gaps.
+- Mixing personal style with correctness.
 
 # Checklist
 
-- Hallazgos con archivos.
-- Plan incremental.
-- Tests.
-- Riesgos.
-- Comandos.
+- Findings prioritized.
+- Evidence included.
+- Safe plan given.
+- Tests/commands included.
+- Residual risks named.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to review this Android project.
+- Use $super-android-kotlin-firebase to refactor this repository layer safely.
 
-```text
-Analiza este proyecto Android y dime que problemas de arquitectura, seguridad y testing tiene.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Dare hallazgos priorizados, evidencia, plan de refactor y comandos.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/review-refactor-playbook.md
+- templates/review-report-template.md

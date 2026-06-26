@@ -1,77 +1,85 @@
 ---
 name: firebase-cloud-functions
-description: "Cloud Functions para Firebase: callable functions, HTTP functions, triggers, validacion servidor, seguridad, despliegue y testing local."
+description: "Use for Firebase Cloud Functions callable functions, HTTP functions, triggers, server-side validation, security, deployment and local testing."
 ---
 
-# Proposito
+# Purpose
 
+Move privileged or trusted logic server-side while keeping Android clients simple.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/firebase__quickstart-android/functions`
-- `repositorios-referencia-super-skill/firebase__agent-skills`
-- `repositorios-referencia-super-skill/google__skills`
+- Adding callable or HTTP functions.
+- Adding Firestore/Auth triggers.
+- Validating operations that rules cannot express.
+- Testing functions locally.
 
-Mover logica confiable al servidor cuando el cliente o rules no bastan.
+# Inputs to inspect
 
-# Cuando usar
+- Use case and trust boundary.
+- Input schema and auth/role requirements.
+- Runtime, region and emulator setup.
+- Android caller contract.
 
-- Callable/HTTP function.
-- Triggers Firestore/Auth.
-- Validacion servidor.
-- Operaciones privilegiadas.
-- Testing local.
+# Required workflow
 
-# Entradas esperadas
+1. Choose callable, HTTP or trigger based on caller and event source.
+2. Define input/output and error contract.
+3. Validate auth, roles and data server-side.
+4. Test locally with Emulator Suite.
+5. Document deploy command and rollback risk.
 
-- Caso de uso.
-- Datos de entrada.
-- Auth/roles.
-- Emulator config.
-- Region/runtime.
-- Errores esperados.
+# Rules
 
-# Reglas obligatorias
+- Do not use functions as an insecure bypass.
+- Validate every input.
+- Do not log secrets or sensitive payloads.
+- Make idempotency explicit for triggers.
+- Control region and cost implications.
 
-- Validar input y auth.
-- No confiar en cliente.
-- No loguear secretos.
-- Idempotencia cuando aplique.
-- Probar local antes de deploy.
+# Files commonly touched
 
-# Flujo recomendado
+- `functions/src/*`
+- `firebase.json`
+- `firestore.rules`
+- `Android repository/service caller`
+- `function tests`
 
-1. Decidir callable vs HTTP vs trigger.
-2. Definir schema input.
-3. Implementar validacion.
-4. Agregar tests/emulator.
-5. Documentar deploy.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+npm test
+firebase emulators:start --only functions,firestore
+firebase emulators:exec "npm test"
+firebase deploy --only functions:<name>
+```
 
-- Usar function como bypass inseguro.
-- Errores sin codigo.
-- No controlar region/costos.
-- Deploy sin probar.
+# Common mistakes to avoid
+
+- No auth checks.
+- Returning inconsistent error shapes.
+- Deploying without emulator test.
+- Creating duplicate writes from non-idempotent triggers.
 
 # Checklist
 
-- Auth validada.
-- Input validado.
-- Errores tipados.
-- Emulator probado.
-- Costos/riesgos anotados.
+- Auth checked.
+- Input validated.
+- Errors typed.
+- Emulator tested.
+- Deploy command documented.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to create a callable invite validation function.
+- Use $super-android-kotlin-firebase to review this Firestore trigger.
 
-```text
-Crea una callable function para validar una invitacion.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Definire contrato, validaciones, seguridad, tests locales y cliente Android.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/functions-validation-and-emulator.md
+- templates/cloud-functions-template.md

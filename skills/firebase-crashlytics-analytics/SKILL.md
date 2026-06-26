@@ -1,77 +1,86 @@
 ---
 name: firebase-crashlytics-analytics
-description: "Crashlytics y Analytics: logs, non-fatal errors, eventos, user properties y privacidad."
+description: "Use for Firebase Crashlytics, non-fatal errors, logs, Analytics events, user properties, Remote Config experiment context and privacy-safe observability."
 ---
 
-# Proposito
+# Purpose
 
+Observe Android app quality and behavior without collecting unnecessary sensitive data.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-crashlytics`
-- `repositorios-referencia-super-skill/firebase__quickstart-android/crash`
-- `repositorios-referencia-super-skill/firebase__quickstart-android/analytics`
-- `repositorios-referencia-super-skill/firebase__quickstart-android/perf`
+- Adding Crashlytics or Analytics.
+- Defining event taxonomy.
+- Logging non-fatal errors.
+- Adding privacy-aware user properties.
+- Connecting Remote Config context to diagnostics.
 
-Observar app sin capturar datos sensibles ni crear telemetria ruidosa.
+# Inputs to inspect
 
-# Cuando usar
+- Events and funnels desired.
+- Sensitive data classes.
+- Build types and release behavior.
+- Privacy policy requirements.
 
-- Crashlytics.
-- Eventos Analytics.
-- Non-fatal errors.
-- User properties.
-- Privacidad.
+# Required workflow
 
-# Entradas esperadas
+1. Define minimal useful events and non-fatal signals.
+2. Add wrappers if the project already uses abstraction.
+3. Remove PII from logs/events.
+4. Differentiate debug and release.
+5. Validate dashboards or test logs manually.
 
-- Eventos deseados.
-- Errores criticos.
-- Politica de privacidad.
-- Datos sensibles.
-- Build types.
+# Rules
 
-# Reglas obligatorias
+- Never log tokens, emails, medical/financial data or secrets.
+- Use stable event names.
+- Do not use Analytics as authorization.
+- Respect consent/opt-out requirements.
+- Keep breadcrumbs useful and minimal.
 
-- No loguear datos sensibles.
-- Eventos con nombres estables.
-- User IDs anonimizados si aplica.
-- Diferenciar debug/release.
-- No usar Analytics para seguridad.
+# Files commonly touched
 
-# Flujo recomendado
+- `analytics wrapper`
+- `Crashlytics setup`
+- `ViewModels/use cases for non-fatals`
+- `privacy docs`
+- `build.gradle.kts`
 
-1. Definir eventos.
-2. Agregar wrappers si conviene.
-3. Registrar non-fatals utiles.
-4. Verificar privacy.
-5. Probar en debug/release.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew assembleRelease
+./gradlew test
+adb logcat
+firebase crashlytics:symbols:upload --help
+```
 
-- Mandar email/telefono/token.
-- Eventos sin taxonomia.
-- Logs excesivos.
-- User property con dato sensible.
+# Common mistakes to avoid
+
+- Logging raw exception context with PII.
+- Too many noisy events.
+- Debug-only verification for release behavior.
+- User properties containing sensitive values.
 
 # Checklist
 
-- Eventos documentados.
 - No PII.
-- Non-fatals utiles.
-- Build types correctos.
-- Opt-out considerado.
+- Events documented.
+- Non-fatals actionable.
+- Build type behavior clear.
+- Privacy policy impact mentioned.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to add Crashlytics non-fatal logging.
+- Use $super-android-kotlin-firebase to define Analytics events for onboarding.
 
-```text
-Agrega Crashlytics y eventos de Analytics para onboarding.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Definire eventos minimos, privacidad, archivos y comandos de verificacion.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/privacy-safe-observability.md
+- templates/analytics-event-taxonomy-template.md

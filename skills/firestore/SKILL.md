@@ -1,80 +1,88 @@
 ---
 name: firestore
-description: "Cloud Firestore y Realtime Database: modelado, colecciones/documentos, paths, queries, indexes, transactions, batch writes, offline persistence, security rules y costos."
+description: "Use for Firestore and Realtime Database data modeling, collections/documents/paths, queries, indexes, transactions, batch writes, offline persistence, Security Rules and cost-aware access patterns."
 ---
 
-# Proposito
+# Purpose
 
+Design Firebase databases around access patterns, rules, sync and cost.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-firestore`
-- `repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-security-rules-auditor`
-- `repositorios-referencia-super-skill/firebase__quickstart-android/firestore`
-- `repositorios-referencia-super-skill/firebase__quickstart-android/database`
+- Modeling Firestore collections or Realtime Database paths.
+- Adding queries, listeners, transactions or batch writes.
+- Writing or auditing Security Rules.
+- Designing caregiver/patient, team, role or ownership access.
 
-Disenar Firestore con acceso, seguridad, queries y costos en mente.
+# Inputs to inspect
 
-# Cuando usar
+- Entities and access patterns.
+- Readers, writers and roles.
+- Queries, indexes and listener frequency.
+- Current firestore.rules/database.rules.json.
+- Expected data volume and offline needs.
 
-- Crear colecciones Firestore o paths Realtime Database.
-- Agregar queries.
-- Firestore/Realtime Database Security Rules.
-- Transactions/batches.
-- Offline sync.
-- Costos.
+# Required workflow
 
-# Entradas esperadas
+1. List access patterns before schema.
+2. Choose paths/collections and denormalization intentionally.
+3. Design rules with schema and roles.
+4. Identify indexes and cost-sensitive listeners.
+5. Add repository code and emulator allow/deny tests.
 
-- Entidades.
-- Lectores/escritores.
-- Queries esperadas.
-- Roles.
-- Volumen aproximado.
-- Rules actuales.
+# Rules
 
-# Reglas obligatorias
+- Rules are part of the feature, not an afterthought.
+- Do not trust client-provided owner fields alone.
+- Validate required fields, types and immutable fields.
+- Use transactions for invariants.
+- Mention cost risks for broad listeners.
 
-- Disenar reglas junto al modelo.
-- No confiar en UID cliente.
-- Validar campos/tipos.
-- Evitar queries caras.
-- Usar transactions para invariantes.
+# Files commonly touched
 
-# Flujo recomendado
+- `firestore.rules`
+- `database.rules.json`
+- `indexes config`
+- `repository/data source files`
+- `Firebase emulator tests`
 
-1. Listar access patterns.
-2. Proponer paths.
-3. Definir indexes.
-4. Escribir repository.
-5. Escribir rules/tests.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+firebase emulators:start
+firebase emulators:exec "npm test"
+./gradlew test
+./gradlew assembleDebug
+```
 
-- Subcolecciones sin razon.
-- Rules abiertas.
-- Consultas sin indice.
-- Denormalizar sin documentar.
-- Ignorar costos de listeners.
+# Common mistakes to avoid
+
+- Open rules.
+- Queries that rules cannot authorize.
+- Missing indexes.
+- Unbounded realtime listeners.
+- Denormalization without write strategy.
 
 # Checklist
 
-- Access patterns claros.
-- Rules least privilege.
-- Indexes identificados.
-- Offline definido.
-- Costos considerados.
+- Access patterns documented.
+- Rules least-privilege.
+- Indexes considered.
+- Offline behavior defined.
+- Cost risks mentioned.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to design Firestore for patients and caregivers.
+- Use $super-android-kotlin-firebase to audit these Firestore rules.
 
-```text
-Disena Firestore para pacientes y cuidadores.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Propondre modelo, roles, rules, queries, indices y pruebas allow/deny.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/firestore-data-modeling.md
+- references/security-rules-patterns.md
+- templates/firestore-rules-template.md

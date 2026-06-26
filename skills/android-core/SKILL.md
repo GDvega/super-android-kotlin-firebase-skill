@@ -1,73 +1,85 @@
 ---
 name: android-core
-description: "Base Android para estructura de proyecto, Manifest, lifecycle, permisos, recursos, compatibilidad, edge-to-edge, Android Studio y debugging basico."
+description: "Use for Android project structure, AndroidManifest, lifecycle, permissions, resources, compatibility, edge-to-edge, Android Studio and basic device debugging."
 ---
 
-# Proposito
+# Purpose
 
+Guide base Android decisions before touching Compose, Firebase, architecture or release work.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/android__skills`
-- `repositorios-referencia-super-skill/android__architecture-components-samples`
-- `repositorios-referencia-super-skill/android__ai-samples`
+- Creating or auditing an Android project baseline.
+- Changing AndroidManifest.xml, permissions, resources, minSdk/targetSdk or edge-to-edge behavior.
+- Debugging Android Studio, emulator, adb, Logcat or lifecycle issues.
 
-Guiar decisiones base de una app Android antes de entrar a Compose, Firebase o arquitectura avanzada.
+# Inputs to inspect
 
-# Cuando usar
+- settings.gradle(.kts), root build files and app/build.gradle(.kts).
+- AndroidManifest.xml, permissions, resources and themes.
+- minSdk, targetSdk, compileSdk and device/API constraints.
+- Crash, Logcat, adb or Android Studio messages.
 
-- Crear o revisar un proyecto Android.
-- Modificar Manifest, permisos, resources o lifecycle.
-- Configurar edge-to-edge, compatibilidad o debugging basico.
+# Required workflow
 
-# Entradas esperadas
+1. Map the project structure and modules before editing.
+2. Inspect Manifest, permissions, themes and lifecycle entry points.
+3. Choose the smallest compatible Android API or Jetpack API change.
+4. Apply the change and keep behavior explicit for older SDKs.
+5. Run build/lint or the narrowest available validation command.
 
-- Estructura de modulos.
-- Manifest y permisos existentes.
-- minSdk/targetSdk/compileSdk.
-- Errores de Android Studio, Logcat o adb.
+# Rules
 
-# Reglas obligatorias
+- Explain every sensitive permission.
+- Respect lifecycle and process death.
+- Do not block the main thread.
+- Do not add platform APIs that conflict with minSdk without guards.
+- Prefer official Android skills for AGP, R8, Play, edge-to-edge, Navigation and security tasks.
 
-- Revisar Manifest antes de agregar permisos.
-- Explicar permisos sensibles.
-- Respetar lifecycle.
-- No bloquear main thread.
-- Usar APIs compatibles con minSdk.
+# Files commonly touched
 
-# Flujo recomendado
+- `settings.gradle.kts`
+- `build.gradle.kts`
+- `app/build.gradle.kts`
+- `src/main/AndroidManifest.xml`
+- `src/main/res/values/*.xml`
+- `MainActivity.kt`
 
-1. Inspeccionar `settings.gradle`, build files y Manifest.
-2. Identificar cambios minimos.
-3. Aplicar cambio.
-4. Probar build/debug.
-5. Documentar permisos y riesgos.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew assembleDebug
+./gradlew lint
+adb logcat
+adb shell dumpsys package <package>
+```
 
-- Agregar permisos sin justificar.
-- Ignorar target SDK policy.
-- Poner trabajo pesado en Activity.
-- Tratar warnings de compatibilidad como ruido.
+# Common mistakes to avoid
+
+- Adding broad permissions without runtime flow.
+- Treating target SDK behavior changes as warnings only.
+- Putting platform work in Composables or Activities instead of appropriate owners.
+- Ignoring edge-to-edge insets on modern Android.
 
 # Checklist
 
-- Manifest consistente.
-- Permisos minimos.
-- Edge-to-edge probado.
-- No hay trabajo bloqueante en UI.
-- Comandos de prueba incluidos.
+- Manifest reviewed.
+- Permissions minimized and justified.
+- SDK compatibility checked.
+- Lifecycle and configuration changes considered.
+- Build/lint command provided.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to review my Manifest, permissions and edge-to-edge setup.
+- Use $super-android-kotlin-firebase to fix this Android Studio/adb device issue.
 
-```text
-Revisa por que mi app no maneja bien permisos y edge-to-edge.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Revisare Manifest, targetSdk, permisos runtime, insets y dare cambios concretos con comandos para probar.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/android-project-baseline.md
+- templates/android-manifest-permission-note.md

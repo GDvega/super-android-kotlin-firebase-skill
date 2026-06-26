@@ -1,76 +1,86 @@
 ---
 name: networking-retrofit-ktor
-description: "Networking Android: Retrofit, Ktor client, OkHttp, interceptors, error handling, DTO mapping, retries y timeouts."
+description: "Use for Retrofit, Ktor Client, OkHttp, interceptors, DTO mapping, error handling, retries, timeouts and repository-backed network integration."
 ---
 
-# Proposito
+# Purpose
 
+Integrate remote APIs without coupling UI to transport details.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/android__nowinandroid/core/network`
-- `repositorios-referencia-super-skill/Kotlin__kotlin-agent-skills`
+- Adding Retrofit or Ktor client.
+- Handling HTTP errors and retries.
+- Mapping DTOs to domain models.
+- Adding auth headers or interceptors.
 
-Integrar APIs remotas sin filtrar red a UI ni ocultar errores importantes.
+# Inputs to inspect
 
-# Cuando usar
+- API contract and base URL handling.
+- Existing network stack.
+- Serialization library.
+- Error and retry requirements.
+- Security requirements for headers/logging.
 
-- Agregar Retrofit/Ktor.
-- Interceptors.
-- Errores HTTP.
-- DTO mapping.
-- Retries/timeouts.
+# Required workflow
 
-# Entradas esperadas
+1. Reuse the existing network client if present.
+2. Define DTOs and service/client methods.
+3. Map DTOs to domain at the data boundary.
+4. Model errors and retry policy.
+5. Add tests with fakes or mock server when available.
 
-- API contract.
-- Auth headers.
-- Timeouts.
-- Errores esperados.
-- Serializacion.
-- Tests.
+# Rules
 
-# Reglas obligatorias
+- Do not call network directly from UI.
+- Do not log tokens or secrets.
+- Avoid infinite retries.
+- Keep DTOs out of domain unless intentionally shared.
+- Respect coroutine cancellation.
 
-- No llamar red desde UI.
-- DTOs no deben dominar domain.
-- Timeouts definidos.
-- Retries acotados.
-- No loguear secrets.
+# Files commonly touched
 
-# Flujo recomendado
+- `network module`
+- `DTOs`
+- `API service/client`
+- `repository implementation`
+- `interceptors`
+- `tests`
 
-1. Elegir cliente existente.
-2. Definir DTO/service.
-3. Mapear errores.
-4. Repository consume client.
-5. Agregar tests con fake/mock server si existe.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew test
+./gradlew assembleDebug
+./gradlew lint
+```
 
-- Retries infinitos.
-- Interceptors con tokens en logs.
-- Exponer Response crudo a UI.
-- Ignorar cancelacion.
+# Common mistakes to avoid
+
+- Returning raw Response to UI.
+- Logging Authorization headers.
+- No timeout policy.
+- Swallowing HTTP error details needed by UX.
 
 # Checklist
 
-- Cliente configurado.
-- Errores modelados.
-- DTO mapping.
-- Timeouts.
-- Tests/fakes.
+- Client reused/configured.
+- Errors modeled.
+- DTO mapping tested.
+- Timeouts/retries explicit.
+- No secrets logged.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to connect this screen to a REST API.
+- Use $super-android-kotlin-firebase to migrate a repository from Retrofit to Ktor.
 
-```text
-Conecta esta pantalla a una API REST.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Creare service, DTOs, repository, errores y tests sin acoplar UI a red.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/network-boundaries.md
+- templates/network-repository-template.md

@@ -1,76 +1,84 @@
 ---
 name: dependency-injection
-description: "Dependency Injection Android: Hilt, Koin, modulos, scopes, ViewModel injection y testing con DI."
+description: "Use for Hilt, Koin, DI modules, scopes, ViewModel injection, repository bindings and testing with dependency injection."
 ---
 
-# Proposito
+# Purpose
 
+Make dependencies explicit and replaceable without adding unnecessary framework weight.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/android__nowinandroid`
-- `repositorios-referencia-super-skill/android__architecture-samples`
-- `repositorios-referencia-super-skill/dpconde__claude-android-skill`
+- Adding Hilt or Koin.
+- Injecting ViewModels, repositories or data sources.
+- Fixing scope or binding problems.
+- Replacing dependencies in tests.
 
-Configurar DI de forma simple, testeable y alineada con el proyecto.
+# Inputs to inspect
 
-# Cuando usar
+- Existing DI framework or manual DI.
+- Object lifetimes and scopes.
+- ViewModel and repository constructors.
+- Test replacement needs.
 
-- Agregar Hilt/Koin.
-- Inyectar ViewModel/repository.
-- Scopes.
-- Testing con fakes.
-- Modulos DI.
+# Required workflow
 
-# Entradas esperadas
+1. Detect current DI pattern.
+2. Add the smallest binding/module needed.
+3. Use scopes intentionally.
+4. Wire ViewModel and repository dependencies.
+5. Add test fakes or replacement modules.
 
-- Framework actual.
-- Dependencias a inyectar.
-- Scopes.
-- Build setup.
-- Tests.
+# Rules
 
-# Reglas obligatorias
+- Do not mix Hilt and Koin without strong reason.
+- Avoid hidden service locators.
+- Do not inject Context unless needed.
+- Keep singletons immutable or thread-safe.
+- Do not break Compose previews.
 
-- No mezclar Hilt y Koin sin razon.
-- Scopes claros.
-- No inyectar Context innecesario.
-- Fakes para tests.
-- Evitar service locator manual accidental.
+# Files commonly touched
 
-# Flujo recomendado
+- `di modules`
+- `Application class`
+- `ViewModels`
+- `repositories`
+- `test modules`
 
-1. Detectar DI actual.
-2. Agregar bindings minimos.
-3. Conectar ViewModel.
-4. Reemplazar en tests.
-5. Verificar build.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew test
+./gradlew assembleDebug
+./gradlew lint
+```
 
-- Agregar DI para todo.
-- Singletons globales mutables.
-- Dependencias circulares.
-- Romper previews.
+# Common mistakes to avoid
+
+- Injecting everything by default.
+- Creating circular dependencies.
+- Using singletons for mutable state.
+- Forgetting test replacements.
 
 # Checklist
 
-- Bindings minimos.
-- Scopes correctos.
-- ViewModel inyectado.
-- Tests posibles.
-- Previews no rotas.
+- Bindings minimal.
+- Scopes correct.
+- Tests can replace dependencies.
+- Previews still work.
+- Build passes.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to add Hilt for repositories and ViewModels.
+- Use $super-android-kotlin-firebase to fix this DI binding error.
 
-```text
-Agrega Hilt para repositorios y ViewModels.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Revisare setup, agregare modulos minimos y explicare tests con fakes.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/di-scopes-and-tests.md
+- templates/hilt-module-template.md

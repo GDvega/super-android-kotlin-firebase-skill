@@ -1,76 +1,85 @@
 ---
 name: firebase-messaging
-description: "Firebase Cloud Messaging: tokens, notifications, data messages, permisos Android 13+, background handling y casos de prueba."
+description: "Use for Firebase Cloud Messaging, tokens, notifications, data messages, Android 13+ notification permission, foreground/background handling and push testing."
 ---
 
-# Proposito
+# Purpose
 
+Integrate push messaging with clear permissions, safe payloads and testable token handling.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/firebase__quickstart-android/messaging`
-- `repositorios-referencia-super-skill/firebase__agent-skills`
+- Adding FCM notifications or data messages.
+- Managing device tokens.
+- Handling POST_NOTIFICATIONS permission.
+- Debugging foreground/background push behavior.
 
-Integrar notificaciones push respetando permisos, estados de app y privacidad.
+# Inputs to inspect
 
-# Cuando usar
+- Message type and target audience.
+- Payload shape and sensitivity.
+- Token lifecycle code.
+- Permission UX and backend sender.
 
-- FCM.
-- Tokens.
-- Notificaciones.
-- Data messages.
-- Android 13+ POST_NOTIFICATIONS.
-- Background handling.
+# Required workflow
 
-# Entradas esperadas
+1. Define notification vs data message behavior.
+2. Add token storage/update strategy.
+3. Add contextual notification permission flow.
+4. Handle foreground/background display.
+5. Test token refresh and message delivery states.
 
-- Tipo de mensaje.
-- Target users/topics.
-- Permisos.
-- Estados foreground/background.
-- Backend/functions.
+# Rules
 
-# Reglas obligatorias
+- Do not put sensitive data in push payloads.
+- Do not assume tokens are permanent.
+- Handle Android 13+ notification permission.
+- Avoid duplicate notifications.
+- Document backend and topic risks.
 
-- Pedir permiso contextual.
-- No enviar datos sensibles en payload.
-- Rotar/actualizar tokens.
-- Manejar foreground/background.
-- Probar casos reales.
+# Files commonly touched
 
-# Flujo recomendado
+- `FirebaseMessagingService`
+- `notification permission UI`
+- `backend/functions sender`
+- `AndroidManifest.xml`
+- `tests/fakes`
 
-1. Definir payload.
-2. Configurar token handling.
-3. Agregar permission flow.
-4. Implementar notification display.
-5. Probar foreground/background.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew assembleDebug
+adb shell pm grant <package> android.permission.POST_NOTIFICATIONS
+adb logcat
+firebase emulators:start
+```
 
-- Mandar PHI/secretos en payload.
-- Ignorar permiso Android 13.
-- Asumir token eterno.
-- Duplicar notificaciones.
+# Common mistakes to avoid
+
+- Sending PHI or secrets in payload.
+- Ignoring token refresh.
+- No fallback when permission is denied.
+- Assuming foreground and background behave the same.
 
 # Checklist
 
-- Permiso manejado.
-- Token actualizado.
-- Payload seguro.
-- Estados probados.
-- Fallback definido.
+- Permission flow exists.
+- Token lifecycle handled.
+- Payload safe.
+- Foreground/background tested.
+- Backend sender documented.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to add FCM reminders.
+- Use $super-android-kotlin-firebase to debug missing push notifications.
 
-```text
-Agrega recordatorios push con FCM.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Revisare permisos, token lifecycle, payload seguro y pruebas de foreground/background.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/fcm-android-permissions.md
+- templates/fcm-token-handling-template.md

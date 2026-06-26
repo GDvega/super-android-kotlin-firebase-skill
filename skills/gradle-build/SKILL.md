@@ -1,78 +1,86 @@
 ---
 name: gradle-build
-description: "Gradle/Build Android: version catalogs, Gradle Kotlin DSL, AGP, Kotlin plugin, Firebase BoM, convention plugins, modularizacion y build variants."
+description: "Use for Gradle Kotlin DSL, Android Gradle Plugin, Kotlin plugin, version catalogs, Firebase BoM, convention plugins, build variants and modularized Android builds."
 ---
 
-# Proposito
+# Purpose
 
+Keep the Android build reproducible, compatible and easy to evolve.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/android__skills/build`
-- `repositorios-referencia-super-skill/Kotlin__kotlin-agent-skills/skills/kotlin-tooling-agp9-migration`
-- `repositorios-referencia-super-skill/android__nowinandroid/build-logic`
+- Fixing Gradle sync/build errors.
+- Adding dependencies or plugins.
+- Migrating to version catalogs or convention plugins.
+- Changing build variants, flavors, AGP, Kotlin or Firebase BoM.
 
-Mantener builds Android reproducibles, compatibles y faciles de escalar.
+# Inputs to inspect
 
-# Cuando usar
+- settings.gradle(.kts), build.gradle(.kts), gradle/libs.versions.toml.
+- Gradle, AGP, Kotlin and Java versions.
+- Full build error and command.
+- CI workflow if relevant.
 
-- Gradle sync.
-- Actualizar dependencias.
-- Version catalogs.
-- Convention plugins.
-- Build variants.
-- Firebase BoM.
+# Required workflow
 
-# Entradas esperadas
+1. Read current version strategy before changing versions.
+2. Check compatibility between Gradle, AGP, Kotlin and Firebase BoM.
+3. Change the narrowest build file.
+4. Run sync/build validation.
+5. Document impact and rollback path.
 
-- Archivos Gradle.
-- Versiones actuales.
-- Error sync/build.
-- Modulos.
-- Plugins.
-- CI tasks.
+# Rules
 
-# Reglas obligatorias
+- Do not upgrade versions blindly.
+- Do not duplicate Firebase dependency versions outside the BoM.
+- Keep Kotlin DSL consistent.
+- Keep signing secrets out of Gradle files.
+- Use convention plugins only when the project already benefits from them.
 
-- Revisar compatibilidad antes de actualizar.
-- No duplicar versiones con BoM.
-- Mantener Kotlin DSL consistente.
-- No romper variants/signing.
-- Usar convention plugins si el repo los usa.
+# Files commonly touched
 
-# Flujo recomendado
+- `settings.gradle.kts`
+- `build.gradle.kts`
+- `gradle/libs.versions.toml`
+- `build-logic/*`
+- `.github/workflows/*`
 
-1. Inspeccionar settings/build files.
-2. Identificar compatibilidad.
-3. Cambiar minimo.
-4. Sync/build.
-5. Documentar impacto.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew help
+./gradlew assembleDebug
+./gradlew test
+./gradlew lint
+./gradlew --version
+```
 
-- Actualizar AGP/Kotlin a ciegas.
-- Mezclar Groovy/Kotlin DSL sin razon.
-- Dependencias duplicadas.
-- Secrets en Gradle.
+# Common mistakes to avoid
+
+- Changing AGP and Kotlin together without reason.
+- Mixing Groovy and Kotlin DSL patterns.
+- Adding duplicate plugin declarations.
+- Committing local SDK paths or secrets.
 
 # Checklist
 
-- Versiones coherentes.
-- BoM correcto.
-- Variants preservados.
-- Build probado.
-- CI considerado.
+- Version compatibility checked.
+- BoM used correctly.
+- Variants preserved.
+- Build command passes or failure is documented.
+- CI considered.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to fix this Gradle sync error.
+- Use $super-android-kotlin-firebase to add Firebase BoM using version catalogs.
 
-```text
-Arregla este error de Gradle sync.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Revisare plugins/versiones, aplicare cambio minimo y dare comando de verificacion.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/version-catalogs-and-agp.md
+- templates/version-catalog-template.md

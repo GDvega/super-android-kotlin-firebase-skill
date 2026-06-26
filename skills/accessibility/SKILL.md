@@ -1,77 +1,83 @@
 ---
 name: accessibility
-description: "Accesibilidad Android/Compose: contentDescription, touch targets, contraste, TalkBack, semantics y navegacion por teclado si aplica."
+description: "Use for Android and Compose accessibility, contentDescription, touch targets, contrast, TalkBack, semantics, keyboard navigation and font-scale resilience."
 ---
 
-# Proposito
+# Purpose
 
+Make mobile UI understandable and operable for more users.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/aldefy__compose-skill`
-- `repositorios-referencia-super-skill/wshobson__agents`
-- `repositorios-referencia-super-skill/addyosmani__web-quality-skills`
+- Reviewing a Compose screen for accessibility.
+- Adding semantics or content descriptions.
+- Fixing font scale, contrast, touch target or TalkBack issues.
+- Designing older-adult or patient-friendly flows.
 
-Hacer UI usable para mas personas y cumplir expectativas basicas de accesibilidad.
+# Inputs to inspect
 
-# Cuando usar
+- Composables and UI states.
+- Icons/images and labels.
+- Theme colors and typography.
+- Forms, error messages and navigation order.
 
-- Revisar pantalla.
-- Agregar semantics.
-- Corregir TalkBack.
-- Contraste/touch targets.
-- Keyboard/foldables/tablets.
+# Required workflow
 
-# Entradas esperadas
+1. Inspect visual and semantics hierarchy.
+2. Add labels, roles and error descriptions.
+3. Check touch targets, contrast and font scale.
+4. Review TalkBack/focus order if possible.
+5. Add UI tests or manual checks.
 
-- Composables.
-- Estados UI.
-- Iconos/imagenes.
-- Colores.
-- Formularios.
-- Dispositivos objetivo.
+# Rules
 
-# Reglas obligatorias
+- Content descriptions must add useful information.
+- Do not rely on color alone.
+- Preserve readable text at large font scale.
+- Prefer clear labels and recoverable errors.
+- Keep semantics aligned with visual order.
 
-- Content descriptions utiles.
-- Touch targets adecuados.
-- Contraste suficiente.
-- Errores anunciables.
-- No depender solo del color.
+# Files commonly touched
 
-# Flujo recomendado
+- `Compose screen files`
+- `design system components`
+- `theme files`
+- `Compose UI tests`
 
-1. Revisar jerarquia.
-2. Corregir labels/semantics.
-3. Validar font scale.
-4. Probar TalkBack si posible.
-5. Documentar pendientes.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew connectedDebugAndroidTest
+./gradlew lint
+adb shell settings put system font_scale 1.3
+```
 
-- Descripciones redundantes.
-- Iconos sin descripcion.
-- Texto cortado con font scale.
-- Color como unica senal.
+# Common mistakes to avoid
+
+- Redundant descriptions.
+- Icon-only buttons without labels.
+- Text clipped at font scale.
+- Hidden error state for screen readers.
 
 # Checklist
 
-- TalkBack entiende flujo.
-- Touch targets.
-- Contraste.
-- Errores claros.
-- Font scale.
+- Labels useful.
+- Touch targets checked.
+- Contrast checked.
+- Font scale considered.
+- TalkBack/focus order considered.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to review accessibility of this Compose screen.
+- Use $super-android-kotlin-firebase to make this form TalkBack-friendly.
 
-```text
-Revisa accesibilidad de esta pantalla Compose.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Dare problemas concretos, cambios de semantics/labels y pruebas manuales.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/compose-accessibility-review.md
+- templates/accessibility-review-template.md

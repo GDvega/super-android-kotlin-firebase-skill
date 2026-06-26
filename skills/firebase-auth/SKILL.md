@@ -1,76 +1,85 @@
 ---
 name: firebase-auth
-description: "Firebase Auth: email/password, Google Sign-In, anonymous auth, perfil de usuario, auth state, errores y seguridad."
+description: "Use for Firebase Auth email/password, Google Sign-In, anonymous auth, auth state, user profile, error handling and authorization-aware UI/data flows."
 ---
 
-# Proposito
+# Purpose
 
+Implement authentication without leaking SDK details or weakening authorization.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-auth-basics`
-- `repositorios-referencia-super-skill/firebase__quickstart-android/auth`
-- `repositorios-referencia-super-skill/auth0__agent-skills`
+- Adding login, signup or logout.
+- Handling auth state in ViewModel/UI.
+- Linking user profile data.
+- Mapping Firebase Auth errors safely.
 
-Implementar autenticacion sin filtrar detalles de seguridad ni acoplar UI al SDK.
+# Inputs to inspect
 
-# Cuando usar
+- Required providers and UX flow.
+- Auth state handling.
+- User profile model.
+- Firestore/Storage rules that depend on auth.
 
-- Login/signup.
-- Google Sign-In.
-- Auth state.
-- Perfil de usuario.
-- Errores Auth.
+# Required workflow
 
-# Entradas esperadas
+1. Define providers and session UX.
+2. Create or update an AuthRepository boundary.
+3. Expose auth state to ViewModel.
+4. Map errors to user-safe messages.
+5. Add fakes/tests and rule checks.
 
-- Metodos requeridos.
-- Flujo UX.
-- Modelo user.
-- Reglas de datos asociadas.
-- Manejo de sesion.
+# Rules
 
-# Reglas obligatorias
+- Do not store passwords or tokens manually.
+- Do not call FirebaseAuth directly from reusable Composables.
+- Never trust UI checks as authorization.
+- Rules must validate request.auth.uid.
+- Keep errors useful but not secret-revealing.
 
-- No guardar passwords.
-- No loguear tokens.
-- Auth SDK detras de repository.
-- Validar reglas por UID.
-- Mensajes de error seguros.
+# Files commonly touched
 
-# Flujo recomendado
+- `AuthRepository.kt`
+- `AuthViewModel.kt`
+- `login Compose screens`
+- `firestore.rules`
+- `storage.rules`
+- `tests/fakes`
 
-1. Definir flujo.
-2. Crear AuthRepository.
-3. Exponer auth state.
-4. Conectar ViewModel/UI.
-5. Agregar tests/fakes.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew test
+./gradlew assembleDebug
+firebase emulators:exec "npm test"
+```
 
-- Llamar FirebaseAuth desde Composable.
-- Confiar solo en UI para autorizacion.
-- Mostrar errores internos crudos.
-- Persistir tokens manualmente.
+# Common mistakes to avoid
+
+- Persisting provider tokens.
+- Showing raw Firebase exception internals.
+- Creating profile documents without rules.
+- Ignoring anonymous account upgrade flows.
 
 # Checklist
 
+- AuthRepository boundary exists.
 - Auth state observable.
-- Errores manejados.
-- Rules consideradas.
-- Fakes para tests.
-- UX de sesion clara.
+- Rules checked.
+- Errors mapped.
+- Tests/fakes added.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to add Google Sign-In and email login.
+- Use $super-android-kotlin-firebase to review auth state handling.
 
-```text
-Agrega login con Google y email/password.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Creare repository, ViewModel, estados UI y notas de rules sin pedir secretos.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/auth-state-and-rules.md
+- templates/auth-repository-template.md

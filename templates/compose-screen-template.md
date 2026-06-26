@@ -1,30 +1,14 @@
 # Compose Screen Template
 
 ```kotlin
-data class FeatureUiState(
-    val isLoading: Boolean = false,
-    val items: List<String> = emptyList(),
-    val error: String? = null,
-)
-
-sealed interface FeatureEvent {
-    data object Retry : FeatureEvent
-}
-
 @Composable
-fun FeatureRoute(
-    viewModel: FeatureViewModel = hiltViewModel(),
-) {
+fun FeatureRoute(viewModel: FeatureViewModel = hiltViewModel()) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
-    FeatureScreen(state = state, onEvent = viewModel::onEvent)
+    FeatureScreen(state = state, onAction = viewModel::onAction)
 }
 
 @Composable
-fun FeatureScreen(
-    state: FeatureUiState,
-    onEvent: (FeatureEvent) -> Unit,
-    modifier: Modifier = Modifier,
-) {
+fun FeatureScreen(state: FeatureUiState, onAction: (FeatureAction) -> Unit) {
     // Render loading, empty, content and error states.
 }
 ```

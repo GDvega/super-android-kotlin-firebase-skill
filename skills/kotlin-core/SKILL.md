@@ -1,73 +1,83 @@
 ---
 name: kotlin-core
-description: "Buenas practicas Kotlin para null safety, data/sealed classes, coroutines, Flow, Result, extension functions y manejo de errores."
+description: "Use for Kotlin null safety, data classes, sealed classes/interfaces, coroutines, Flow, Result, extension functions and error handling."
 ---
 
-# Proposito
+# Purpose
 
+Keep Kotlin code idiomatic, cancellable, explicit and testable.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/Kotlin__kotlin-agent-skills`
-- `repositorios-referencia-super-skill/JetBrains__skills`
+- Refactoring Kotlin domain, data or ViewModel code.
+- Modeling UI state, domain results or errors.
+- Fixing coroutine, Flow, cancellation or nullability issues.
 
-Evitar Kotlin fragil, APIs inventadas y codigo asincrono inseguro.
+# Inputs to inspect
 
-# Cuando usar
+- Kotlin version and compiler/plugin setup.
+- Code under change and tests.
+- Coroutine scopes, dispatchers and Flow operators.
+- Expected error and state behavior.
 
-- Refactor Kotlin.
-- Errores de coroutines/Flow.
-- Modelar estados o resultados.
-- Mejorar manejo de errores.
+# Required workflow
 
-# Entradas esperadas
+1. Read the current Kotlin style and version.
+2. Identify state, error and async boundaries.
+3. Choose sealed types, Result or domain errors intentionally.
+4. Preserve cancellation and structured concurrency.
+5. Add or update unit tests for changed behavior.
 
-- Version Kotlin.
-- Codigo actual.
-- Dependencias coroutines.
-- Necesidad de estado, errores o streams.
+# Rules
 
-# Reglas obligatorias
+- Never use GlobalScope.
+- Do not swallow CancellationException.
+- Avoid !! except at hard verified boundaries.
+- Keep extension functions focused and discoverable.
+- Expose immutable state to consumers.
 
-- No usar GlobalScope.
-- No tragar CancellationException.
-- Usar nullability explicita.
-- Preferir sealed types para estados cerrados.
-- Mantener extension functions enfocadas.
+# Files commonly touched
 
-# Flujo recomendado
+- `*.kt`
+- `ViewModel files`
+- `domain models`
+- `repository interfaces`
+- `test files`
 
-1. Leer codigo y version.
-2. Identificar estados/errores.
-3. Elegir sealed/Result/domain error.
-4. Actualizar tests.
-5. Verificar compilacion.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew test
+./gradlew compileDebugKotlin
+./gradlew lint
+```
 
-- Usar `!!` por comodidad.
-- Lanzar coroutines sin scope.
-- Mezclar errores UI con errores domain.
-- Crear extensions magicas.
+# Common mistakes to avoid
+
+- Launching coroutines without lifecycle or owner scope.
+- Mixing UI strings into domain errors.
+- Using nullable types where a sealed state is clearer.
+- Creating magical extensions that hide side effects.
 
 # Checklist
 
-- Null safety clara.
-- Scopes correctos.
-- Flow testeable.
-- Errores modelados.
-- Tests sugeridos.
+- Nullability explicit.
+- Cancellation preserved.
+- Flow/state testable.
+- Errors modeled.
+- Tests added or recommended.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to convert this callback API to Flow.
+- Use $super-android-kotlin-firebase to model loading/success/error state in Kotlin.
 
-```text
-Convierte este callback a Flow seguro.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Identificare scope, cancelacion, backpressure y pruebas de Flow antes de cambiar codigo.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/kotlin-state-and-errors.md
+- templates/result-state-template.md

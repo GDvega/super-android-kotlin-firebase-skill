@@ -1,76 +1,85 @@
 ---
 name: compose-performance
-description: "Rendimiento Compose: recomposition, stability, LazyColumn, derivedStateOf, remember, keys, baseline profiles, tracing y medicion."
+description: "Use for Compose recomposition, stability, LazyColumn/LazyGrid performance, derivedStateOf, remember, keys, baseline profiles, tracing and measurement."
 ---
 
-# Proposito
+# Purpose
 
+Diagnose and fix measurable Compose performance issues without guessing.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/skydoves__compose-performance-skills`
-- `repositorios-referencia-super-skill/android__skills/profilers`
-- `repositorios-referencia-super-skill/android__nowinandroid/benchmarks`
+- A screen scrolls poorly or drops frames.
+- Recomposition counts spike unexpectedly.
+- Lazy lists, side effects or state reads are suspected performance causes.
+- Baseline profiles, tracing or performance CI are needed.
 
-Encontrar y corregir problemas medibles de performance Compose sin optimizar a ciegas.
+# Inputs to inspect
 
-# Cuando usar
+- Affected composables and state models.
+- Profiler, compiler report or benchmark evidence if available.
+- Lazy list item models and keys.
+- Build variants and benchmark tasks.
 
-- Pantallas lentas.
-- Scroll con jank.
-- Recomposiciones excesivas.
-- Listas grandes.
-- Baseline profiles.
+# Required workflow
 
-# Entradas esperadas
+1. Reproduce or describe the performance symptom.
+2. Inspect state reads, stability, keys and side effects.
+3. Apply the smallest targeted fix.
+4. Measure again with available tools.
+5. Document residual risks and validation gaps.
 
-- Pantalla afectada.
-- Datos de medicion si existen.
-- Lazy lists.
-- Estado y parametros.
-- Tareas benchmark disponibles.
+# Rules
 
-# Reglas obligatorias
+- Measure before large rewrites.
+- Do not add remember everywhere blindly.
+- Do not use @Stable/@Immutable unless the contract is true.
+- Use stable lazy keys and content types when needed.
+- Prefer release-mode measurement for meaningful performance claims.
 
-- Medir antes de refactor grande.
-- Usar keys estables.
-- Evitar trabajo pesado en composables.
-- No abusar de @Stable.
-- Probar cambios.
+# Files commonly touched
 
-# Flujo recomendado
+- `Compose screens`
+- `UI models`
+- `benchmark module`
+- `baseline-prof.txt`
+- `build.gradle.kts`
 
-1. Reproducir problema.
-2. Revisar recomposition/stability.
-3. Corregir causas concretas.
-4. Ejecutar pruebas/benchmarks.
-5. Documentar resultado.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew assembleRelease
+./gradlew connectedBenchmarkAndroidTest
+./gradlew test
+adb shell am profile start
+```
 
-- Agregar remember en todas partes.
-- Anotar estabilidad sin contrato.
-- Ignorar imagenes grandes.
-- Optimizar sin evidencia.
+# Common mistakes to avoid
+
+- Optimizing from intuition only.
+- Ignoring image size/loading.
+- Using unstable mutable models as parameters.
+- Missing lazy item keys.
 
 # Checklist
 
-- Keys estables.
-- Estado minimo.
-- Trabajo pesado fuera de UI.
-- Medicion propuesta.
-- Riesgos anotados.
+- Symptom known.
+- Stability/recomposition checked.
+- Lazy keys checked.
+- Measurement command provided.
+- Fix does not harm readability.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to diagnose jank in this LazyColumn.
+- Use $super-android-kotlin-firebase to review Compose stability and recomposition.
 
-```text
-Detecta recomposiciones innecesarias y mejora rendimiento.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Revisare estado, parametros, lazy lists y propondre cambios medibles con comandos.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/recomposition-checklist.md
+- templates/performance-investigation-template.md

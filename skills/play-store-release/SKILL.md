@@ -1,80 +1,85 @@
 ---
 name: play-store-release
-description: "Publicacion Play Store: signing, release build, ProGuard/R8, App Bundle, Play Console, privacy policy, Data Safety y testing tracks."
+description: "Use for Play Store release readiness, signing, release builds, ProGuard/R8, App Bundle, Play Console, privacy policy, Data Safety, testing tracks and billing/subscription checks."
 ---
 
-# Proposito
+# Purpose
 
+Prepare Android apps for release without compromising signing, privacy or runtime correctness.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/android__skills/play`
-- `repositorios-referencia-super-skill/RevenueCat__play-billing-skills`
-- `repositorios-referencia-super-skill/android__nowinandroid`
+- Preparing release build or App Bundle.
+- Reviewing R8/ProGuard.
+- Completing Play Console, Data Safety or privacy policy work.
+- Checking billing/subscriptions or testing tracks.
 
-Preparar una app Android para release sin descuidar privacidad, signing ni R8.
+# Inputs to inspect
 
-# Cuando usar
+- Release build config and signing approach.
+- Permissions, SDKs and data collected.
+- R8 rules and crash reporting.
+- Play Console rollout plan.
 
-- Release build.
-- AAB.
-- Signing.
-- R8/ProGuard.
-- Play Console.
-- Data Safety.
-- Testing tracks.
+# Required workflow
 
-# Entradas esperadas
+1. Audit release build and signing without exposing secrets.
+2. Build minified release/AAB.
+3. Review R8 rules, permissions and SDK disclosures.
+4. Check privacy policy and Data Safety consistency.
+5. Plan staged rollout and monitoring.
 
-- Build variants.
-- Signing config.
-- Permisos.
-- SDKs.
-- Crashlytics.
-- Privacy policy.
-- Data collected.
+# Rules
 
-# Reglas obligatorias
+- Never commit keystores or signing passwords.
+- Do not disable R8 just to hide issues.
+- Test release behavior, not only debug.
+- Data Safety must match actual collection.
+- Use tracks before broad production rollout.
 
-- No commitear keystores/passwords.
-- Probar release build.
-- Revisar R8 rules.
-- Completar Data Safety honestamente.
-- Usar tracks antes de produccion.
+# Files commonly touched
 
-# Flujo recomendado
+- `app/build.gradle.kts`
+- `proguard-rules.pro`
+- `privacy docs`
+- `release notes`
+- `CI config`
 
-1. Auditar config release.
-2. Generar bundle.
-3. Probar minified build.
-4. Revisar privacidad/permisos.
-5. Preparar checklist Play.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+./gradlew bundleRelease
+./gradlew assembleRelease
+./gradlew test
+./gradlew lint
+```
 
-- Solo probar debug.
-- Desactivar R8 por miedo.
-- Ignorar Data Safety.
-- Guardar signing secrets en repo.
+# Common mistakes to avoid
+
+- Shipping only debug-tested code.
+- Keeping debug logging in release.
+- Incorrect Data Safety answers.
+- No rollback/monitoring plan.
 
 # Checklist
 
-- AAB genera.
-- Release probado.
-- R8 revisado.
-- Privacy/Data Safety.
-- Track definido.
+- AAB builds.
+- Signing secrets safe.
+- R8 tested.
+- Privacy/Data Safety reviewed.
+- Rollout and monitoring planned.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to prepare my app for Play Store release.
+- Use $super-android-kotlin-firebase to review R8 and Data Safety risks.
 
-```text
-Prepara mi app para publicar en Play Store.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Revisare signing, release build, R8, permisos, privacidad y comandos.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/release-readiness.md
+- templates/play-release-template.md

@@ -1,0 +1,12 @@
+{
+  "name": "super-android-kotlin-firebase-skill",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-skills.mjs",
+    "catalog": "node scripts/generate-catalog.mjs",
+    "links": "node scripts/check-links.mjs",
+    "check": "npm run validate && npm run catalog && npm run links"
+  }
+}

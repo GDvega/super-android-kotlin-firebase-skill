@@ -1,81 +1,86 @@
 ---
 name: security-privacy
-description: "Seguridad y privacidad: secrets, API keys, Firebase rules, cifrado local, biometrics, minimo privilegio, local-first y datos sensibles."
+description: "Use for Android and Firebase security, secrets, API keys, Firebase Security Rules, local encryption, biometrics, least privilege, privacy-first data handling and sensitive data reviews."
 ---
 
-# Proposito
+# Purpose
 
+Reduce real security and privacy risks in Android/Firebase apps.
 
+# When to use
 
-Fuentes locales sugeridas:
-- `repositorios-referencia-super-skill/android__skills/security`
-- `repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-security-rules-auditor`
-- `repositorios-referencia-super-skill/addyosmani__web-quality-skills`
+- Auditing sensitive data handling.
+- Reviewing Firebase rules.
+- Checking secrets, logs or permissions.
+- Adding biometric or local encryption flows.
 
-Detectar y reducir riesgos reales en apps Android/Firebase.
+# Inputs to inspect
 
-# Cuando usar
+- Data classification and threat model.
+- Rules files and storage paths.
+- Logs, analytics and Crashlytics usage.
+- Permissions and local storage.
 
-- Revisar seguridad.
-- Datos sensibles.
-- Firebase rules para Firestore, Realtime Database y Storage.
-- Secrets.
-- Biometrics.
-- Local encryption.
-- Privacy review.
+# Required workflow
 
-# Entradas esperadas
+1. Classify data and trust boundaries.
+2. Search for secrets and sensitive logs.
+3. Review Firebase rules and Android permissions.
+4. Propose least-privilege fixes.
+5. Add tests or manual verification steps.
 
-- Tipos de datos.
-- Amenazas.
-- Rules.
-- Storage.
-- Logs.
-- Secrets.
-- Politica privacidad.
+# Rules
 
-# Reglas obligatorias
+- Never exfiltrate or print secrets.
+- No open production rules.
+- Do not rely on client-only authorization.
+- Do not log PII, tokens or sensitive health/financial data.
+- Use encryption only with a clear threat model.
 
-- No exfiltrar secretos.
-- No reglas abiertas.
-- Minimo privilegio.
-- No loguear PII.
-- Cifrado con threat model.
-- Biometrics como UX, no unica seguridad.
+# Files commonly touched
 
-# Flujo recomendado
+- `firestore.rules`
+- `database.rules.json`
+- `storage.rules`
+- `AndroidManifest.xml`
+- `logging/analytics code`
+- `local storage code`
 
-1. Clasificar datos.
-2. Buscar secretos/logs.
-3. Revisar rules.
-4. Proponer mitigaciones.
-5. Agregar tests/auditoria.
+# Commands to validate
 
-# Errores comunes a evitar
+```bash
+git grep -n "apiKey\|secret\|password\|token"
+firebase emulators:exec "npm test"
+./gradlew lint
+./gradlew test
+```
 
-- Guardar tokens privados en cliente.
-- Ocultar bugs con reglas abiertas.
-- Confiar solo en UI.
-- Copiar secrets a prompts.
+# Common mistakes to avoid
+
+- Putting private keys in BuildConfig.
+- Treating Firebase API keys as authorization.
+- Logging user identifiers unnecessarily.
+- Opening rules for convenience.
 
 # Checklist
 
-- Secrets protegidos.
-- Rules auditadas.
-- Logs limpios.
-- Permisos minimos.
-- Riesgos documentados.
+- Secrets not committed.
+- Rules least-privilege.
+- Logs safe.
+- Permissions minimal.
+- Risks documented.
 
-# Ejemplo de uso
+# Example prompts
 
-Usuario:
+- Use $super-android-kotlin-firebase to audit Firestore and Storage rules.
+- Use $super-android-kotlin-firebase to check this app for secret leaks.
 
-```text
-Audita seguridad de Firestore y datos sensibles.
-```
+# Expected response style
 
-Respuesta esperada:
+Respond with: brief diagnosis, change plan, affected files, code or diff summary, validation commands, tests added or recommended, risks, and next step. For review tasks, lead with findings ordered by severity.
 
-```text
-Revisare rules, paths, roles, logs y dare allow/deny tests.
-```
+# References
+
+- ../../FUENTES_LOCALES.md
+- references/android-firebase-security.md
+- templates/security-review-template.md
