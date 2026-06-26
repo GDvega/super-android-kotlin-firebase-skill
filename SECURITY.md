@@ -11,7 +11,7 @@
 
 ## Android/Firebase rules
 
-- Do not use open Firebase rules in production.
+- Do not use open Firebase Security Rules in production.
 - Do not store production secrets in `BuildConfig`.
 - Do not rely on client-side checks for authorization.
 - Review Firestore, Realtime Database and Storage rules with Emulator Suite when possible.

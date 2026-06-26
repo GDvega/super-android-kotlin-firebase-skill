@@ -38,6 +38,7 @@ npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth --skill j
 npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth --agent codex
 npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth --agent cursor
 npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth -g
+npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth -g -a codex -y
 ```
 
 Use `--full-depth` because this repository has a root orchestrator skill plus nested subskills under `skills/`. Without it, the CLI may list only the root `super-android-kotlin-firebase` skill.
@@ -151,3 +152,18 @@ This repository is MIT licensed. See [LICENSE](LICENSE).
 - Add focused examples when real app workflows expose gaps.
 - Keep install commands tested against the current Agent Skills CLI.
 - Prefer concise subskills and move long guidance into `references/`.
+
+## Recommended GitHub metadata
+
+Description:
+A modular Agent Skills repository for Android, Kotlin, Jetpack Compose and Firebase development.
+
+Topics:
+android, kotlin, firebase, jetpack-compose, agent-skills, claude-code, codex, cursor, gemini-cli, android-studio, ai-agents.
+
+Recommended release commands:
+
+```bash
+git tag v0.3.1
+git push origin v0.3.1
+```

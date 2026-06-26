@@ -28,8 +28,18 @@ const requiredRootSections = [
   '## When not to use it',
   '## How to select subskills',
   '## Global agent rules',
-  '## Checklist before editing',
-  '## Checklist before responding'
+  '## Architecture rules',
+  '## Kotlin rules',
+  '## Compose rules',
+  '## Firebase rules',
+  '## Security rules',
+  '## Testing rules',
+  '## Performance rules',
+  '## Accessibility rules',
+  '## Release rules',
+  '## Required response format',
+  '## Before editing checklist',
+  '## Before final answer checklist'
 ];
 
 const requiredPackageScripts = {
@@ -131,14 +141,18 @@ const auditedGlobs = [
   /^CHANGELOG\.md$/,
   /^CATEGORIES\.md$/,
   /^AUDIT.*\.md$/,
+  /^FUENTES_LOCALES\.md$/,
   /^package\.json$/,
   /^package-lock\.json$/,
   /^scripts\/[^/]+\.mjs$/,
   /^\.github\/workflows\/[^/]+\.ya?ml$/,
   /^skills\/[^/]+\/SKILL\.md$/,
+  /^skills\/[^/]+\/references\/[^/]+\.md$/,
+  /^skills\/[^/]+\/templates\/[^/]+\.md$/,
   /^checklists\/[^/]+\.md$/,
   /^templates\/[^/]+\.md$/,
-  /^examples\/[^/]+\.md$/
+  /^examples\/[^/]+\.md$/,
+  /^tests\/[^/]+\.md$/
 ];
 
 function rel(file) {
@@ -253,6 +267,9 @@ function validateFormatting() {
     if (lines.length <= 2 && text.length > 500) {
       errors.push(`${fileRel}: appears compressed into one giant line`);
     }
+    if (fileRel.endsWith('.md') && (text.match(/```/g) || []).length % 2 !== 0) {
+      errors.push(`${fileRel}: unclosed fenced code block`);
+    }
 
     lines.forEach((line, index) => {
       if (line.length > 500) {
@@ -292,7 +309,7 @@ function validateWorkflow() {
   for (const needle of [
     'actions/checkout@v4',
     'actions/setup-node@v4',
-    "node-version: '22'",
+    'node-version: "22"',
     'npm ci',
     'npm run validate',
     'npm run catalog',

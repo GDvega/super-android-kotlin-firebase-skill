@@ -1,6 +1,6 @@
 ---
 name: super-android-kotlin-firebase
-description: "Master orchestration skill for building, reviewing, refactoring, testing, securing, optimizing and releasing modern Android apps with Kotlin, Jetpack Compose, Firebase, pragmatic architecture, performance and Play Store readiness."
+description: Master orchestration skill for building, reviewing, refactoring, testing, securing, optimizing and releasing modern Android apps with Kotlin, Jetpack Compose and Firebase.
 ---
 
 # Super Android Kotlin Firebase
@@ -94,7 +94,7 @@ Use this order unless the user asks for a different format:
 7. Risks or warnings.
 8. Next step.
 
-## Checklist before editing
+## Before editing checklist
 
 - Relevant files inspected.
 - Correct subskills selected.
@@ -102,7 +102,7 @@ Use this order unless the user asks for a different format:
 - Security and privacy implications considered.
 - Validation command identified.
 
-## Checklist before responding
+## Before final answer checklist
 
 - Changes are scoped.
 - APIs are real or verified.

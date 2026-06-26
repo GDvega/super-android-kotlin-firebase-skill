@@ -30,4 +30,5 @@ This project contains original guidance for Android/Kotlin/Firebase Agent Skills
 - Do not copy external text, code or examples into this repository without reviewing the upstream license first.
 - If future contributors copy Apache-2.0 content, they must preserve required notices.
 - If substantial upstream content is incorporated, prefer one of these options: change this repository to Apache-2.0, keep MIT only for original content with a clearer NOTICE, or rewrite the content as original summaries.
+- Original content in this repository is licensed under MIT unless a file says otherwise.
 - Review upstream licenses before copying code, examples or long prose.
