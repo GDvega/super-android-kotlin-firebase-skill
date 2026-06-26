@@ -1,0 +1,30 @@
+# Fuentes locales usadas
+
+Mapa de repos clonados y como usarlos al trabajar con `super-android-kotlin-firebase`.
+
+La carpeta auditada tiene 36 repos instalados. Ver tambien `repositorios-referencia-super-skill/AUDITORIA_REPOS.md` y `REPOS_INSTALADOS.md`.
+
+| Area | Fuentes locales |
+|---|---|
+| `android-core` | `repositorios-referencia-super-skill/android__skills`<br>`repositorios-referencia-super-skill/android__architecture-components-samples`<br>`repositorios-referencia-super-skill/android__ai-samples` |
+| `kotlin-core` | `repositorios-referencia-super-skill/Kotlin__kotlin-agent-skills`<br>`repositorios-referencia-super-skill/JetBrains__skills` |
+| `jetpack-compose` | `repositorios-referencia-super-skill/android__skills/jetpack-compose`<br>`repositorios-referencia-super-skill/aldefy__compose-skill`<br>`repositorios-referencia-super-skill/Meet-Miyani__compose-skill`<br>`repositorios-referencia-super-skill/android__compose-samples` |
+| `compose-performance` | `repositorios-referencia-super-skill/skydoves__compose-performance-skills`<br>`repositorios-referencia-super-skill/android__skills/profilers`<br>`repositorios-referencia-super-skill/android__nowinandroid/benchmarks` |
+| `android-architecture` | `repositorios-referencia-super-skill/android__nowinandroid`<br>`repositorios-referencia-super-skill/android__architecture-samples`<br>`repositorios-referencia-super-skill/dpconde__claude-android-skill`<br>`repositorios-referencia-super-skill/Drjacky__claude-android-ninja`<br>`repositorios-referencia-super-skill/AliAsadi__Android-Clean-Architecture` |
+| `firebase-core` | `repositorios-referencia-super-skill/firebase__agent-skills`<br>`repositorios-referencia-super-skill/firebase__skills`<br>`repositorios-referencia-super-skill/firebase__quickstart-android`<br>`repositorios-referencia-super-skill/google__skills` |
+| `firebase-auth` | `repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-auth-basics`<br>`repositorios-referencia-super-skill/firebase__quickstart-android/auth`<br>`repositorios-referencia-super-skill/auth0__agent-skills` |
+| `firestore` | `repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-firestore`<br>`repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-security-rules-auditor`<br>`repositorios-referencia-super-skill/firebase__quickstart-android/firestore`<br>`repositorios-referencia-super-skill/firebase__quickstart-android/database` |
+| `firebase-cloud-functions` | `repositorios-referencia-super-skill/firebase__quickstart-android/functions`<br>`repositorios-referencia-super-skill/firebase__agent-skills`<br>`repositorios-referencia-super-skill/google__skills` |
+| `firebase-messaging` | `repositorios-referencia-super-skill/firebase__quickstart-android/messaging`<br>`repositorios-referencia-super-skill/firebase__agent-skills` |
+| `firebase-crashlytics-analytics` | `repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-crashlytics`<br>`repositorios-referencia-super-skill/firebase__quickstart-android/crash`<br>`repositorios-referencia-super-skill/firebase__quickstart-android/analytics`<br>`repositorios-referencia-super-skill/firebase__quickstart-android/perf` |
+| `local-data-room-datastore` | `repositorios-referencia-super-skill/android__architecture-samples`<br>`repositorios-referencia-super-skill/android__architecture-components-samples`<br>`repositorios-referencia-super-skill/android__nowinandroid/core/database` |
+| `networking-retrofit-ktor` | `repositorios-referencia-super-skill/android__nowinandroid/core/network`<br>`repositorios-referencia-super-skill/Kotlin__kotlin-agent-skills` |
+| `dependency-injection` | `repositorios-referencia-super-skill/android__nowinandroid`<br>`repositorios-referencia-super-skill/android__architecture-samples`<br>`repositorios-referencia-super-skill/dpconde__claude-android-skill` |
+| `testing` | `repositorios-referencia-super-skill/skydoves__android-testing-skills`<br>`repositorios-referencia-super-skill/android__skills/testing`<br>`repositorios-referencia-super-skill/android__architecture-samples`<br>`repositorios-referencia-super-skill/firebase__agent-skills` |
+| `security-privacy` | `repositorios-referencia-super-skill/android__skills/security`<br>`repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-security-rules-auditor`<br>`repositorios-referencia-super-skill/addyosmani__web-quality-skills` |
+| `accessibility` | `repositorios-referencia-super-skill/aldefy__compose-skill`<br>`repositorios-referencia-super-skill/wshobson__agents`<br>`repositorios-referencia-super-skill/addyosmani__web-quality-skills` |
+| `debugging` | `repositorios-referencia-super-skill/skydoves__android-testing-skills/adb`<br>`repositorios-referencia-super-skill/android__skills/devtools`<br>`repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-crashlytics` |
+| `gradle-build` | `repositorios-referencia-super-skill/android__skills/build`<br>`repositorios-referencia-super-skill/Kotlin__kotlin-agent-skills/skills/kotlin-tooling-agp9-migration`<br>`repositorios-referencia-super-skill/android__nowinandroid/build-logic` |
+| `play-store-release` | `repositorios-referencia-super-skill/android__skills/play`<br>`repositorios-referencia-super-skill/RevenueCat__play-billing-skills`<br>`repositorios-referencia-super-skill/android__nowinandroid` |
+| `ai-gemini-integration` | `repositorios-referencia-super-skill/firebase__agent-skills/skills/firebase-ai-logic-basics`<br>`repositorios-referencia-super-skill/google__skills`<br>`repositorios-referencia-super-skill/android__ai-samples`<br>`repositorios-referencia-super-skill/joreilly__GeminiKMP`<br>`repositorios-referencia-super-skill/genkit-ai__genkit`<br>`repositorios-referencia-super-skill/google__adk-samples` |
+| `code-review-refactor` | `repositorios-referencia-super-skill/android__skills`<br>`repositorios-referencia-super-skill/affaan-m__everything-claude-code`<br>`repositorios-referencia-super-skill/JetBrains__skills`<br>`repositorios-referencia-super-skill/github__awesome-copilot` |

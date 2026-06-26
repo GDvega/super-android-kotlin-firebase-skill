@@ -1,0 +1,6 @@
+interface:
+  display_name: "Super Android Kotlin Firebase"
+  short_description: "Build, review, and scale Android Kotlin Firebase apps"
+  default_prompt: "Use $super-android-kotlin-firebase to build, review, test, or secure this Android app."
+policy:
+  allow_implicit_invocation: true
