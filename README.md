@@ -26,7 +26,7 @@ Run `node scripts/generate-catalog.mjs` to refresh [CATEGORIES.md](CATEGORIES.md
 
 ## Installation with npx skills
 
-Because this repository is private, make sure your GitHub CLI/git credentials can read `GDvega/super-android-kotlin-firebase-skill` before running these commands.
+This repository is public, so the standard Agent Skills CLI can install it directly.
 
 ```bash
 npx skills add GDvega/super-android-kotlin-firebase-skill
@@ -107,13 +107,20 @@ tests/
 .github/workflows/validate.yml
 ```
 
+## Validation
+
+```bash
+node scripts/validate-skills.mjs
+node scripts/generate-catalog.mjs
+node scripts/check-links.mjs
+npm run check
+```
+
 ## Updating
 
 ```bash
 git pull
-node scripts/validate-skills.mjs
-node scripts/generate-catalog.mjs
-node scripts/check-links.mjs
+npm run check
 ```
 
 ## Contributing

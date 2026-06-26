@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.1 - 2026-06-25
+
+- Second-pass repository audit.
+- Updated README for public `npx skills` installation.
+- Strengthened `scripts/validate-skills.mjs` to validate required root files, checklists, templates, examples, scripts, workflow and exact skill set.
+- Added `AUDIT_SECOND_PASS.md`.
+
 ## 0.3.0 - 2026-06-25
 
 - Professionalized repository structure.

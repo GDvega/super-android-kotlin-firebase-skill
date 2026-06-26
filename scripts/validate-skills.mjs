@@ -8,6 +8,28 @@ const requiredSections = ['# Purpose', '# When to use', '# Inputs to inspect', '
 const kebab = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 let errors = [];
 
+const expectedSkills = ['android-core','kotlin-core','jetpack-compose','compose-performance','android-architecture','gradle-build','firebase-core','firebase-auth','firestore','firebase-cloud-functions','firebase-messaging','firebase-crashlytics-analytics','firebase-ai-logic','room-datastore','networking-retrofit-ktor','dependency-injection','testing','security-privacy','accessibility','debugging','play-store-release','code-review-refactor'];
+const expectedRootFiles = ['README.md','SKILL.md','AGENTS.md','GEMINI.md','LICENSE','NOTICE.md','SECURITY.md','CONTRIBUTING.md','CODE_OF_CONDUCT.md','CHANGELOG.md','CATEGORIES.md'];
+const expectedChecklists = ['android-project-checklist.md','compose-ui-checklist.md','firebase-checklist.md','firestore-rules-checklist.md','testing-checklist.md','security-checklist.md','performance-checklist.md','release-checklist.md','repo-maintenance-checklist.md'];
+const expectedTemplates = ['compose-screen-template.md','viewmodel-template.md','repository-template.md','usecase-template.md','room-database-template.md','datastore-template.md','firebase-feature-template.md','firestore-rules-template.md','cloud-functions-template.md','unit-test-template.md','compose-ui-test-template.md','gradle-version-catalog-template.md'];
+const expectedExamples = ['create-new-android-app.md','add-firebase-auth.md','add-firestore-feature.md','create-compose-screen.md','review-architecture.md','optimize-compose-performance.md','fix-gradle-error.md','generate-tests.md','prepare-play-store-release.md'];
+
+function requireFiles(base, expected, label) {
+  for (const name of expected) {
+    if (!fs.existsSync(path.join(root, base, name))) errors.push(`${label}: missing ${name}`);
+  }
+}
+
+function rejectExtras(base, expected, label) {
+  const dir = path.join(root, base);
+  if (!fs.existsSync(dir)) return;
+  const allowed = new Set(expected);
+  for (const entry of fs.readdirSync(dir)) {
+    if (!allowed.has(entry)) errors.push(`${label}: unexpected ${entry}`);
+  }
+}
+
+
 function parseFrontmatter(text, file) {
   if (!text.startsWith('---\n')) return null;
   const end = text.indexOf('\n---', 4);
@@ -22,8 +44,23 @@ function parseFrontmatter(text, file) {
   return { data, body: text.slice(end + 5) };
 }
 
+for (const file of expectedRootFiles) if (!fs.existsSync(path.join(root, file))) errors.push(`root: missing ${file}`);
+requireFiles('checklists', expectedChecklists, 'checklists');
+rejectExtras('checklists', expectedChecklists, 'checklists');
+requireFiles('templates', expectedTemplates, 'templates');
+rejectExtras('templates', expectedTemplates, 'templates');
+requireFiles('examples', expectedExamples, 'examples');
+rejectExtras('examples', expectedExamples, 'examples');
+if (!fs.existsSync(path.join(root, 'scripts', 'validate-skills.mjs'))) errors.push('scripts: missing validate-skills.mjs');
+if (!fs.existsSync(path.join(root, 'scripts', 'generate-catalog.mjs'))) errors.push('scripts: missing generate-catalog.mjs');
+if (!fs.existsSync(path.join(root, 'scripts', 'check-links.mjs'))) errors.push('scripts: missing check-links.mjs');
+if (!fs.existsSync(path.join(root, '.github', 'workflows', 'validate.yml'))) errors.push('github: missing .github/workflows/validate.yml');
 if (!fs.existsSync(skillsDir)) errors.push('missing skills/ directory');
+for (const skillName of expectedSkills) {
+  if (!fs.existsSync(path.join(skillsDir, skillName))) errors.push(`skills: missing ${skillName}`);
+}
 for (const entry of fs.readdirSync(skillsDir, { withFileTypes: true })) {
+  if (entry.isDirectory() && !expectedSkills.includes(entry.name)) errors.push(`skills: unexpected ${entry.name}`);
   if (!entry.isDirectory()) continue;
   const dir = path.join(skillsDir, entry.name);
   const file = path.join(dir, 'SKILL.md');
