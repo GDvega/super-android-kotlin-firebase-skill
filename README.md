@@ -29,12 +29,14 @@ Run `node scripts/generate-catalog.mjs` to refresh [CATEGORIES.md](CATEGORIES.md
 This repository is public, so the standard Agent Skills CLI can install it directly.
 
 ```bash
-npx skills add GDvega/super-android-kotlin-firebase-skill
-npx skills add GDvega/super-android-kotlin-firebase-skill --skill jetpack-compose
-npx skills add GDvega/super-android-kotlin-firebase-skill --agent codex
-npx skills add GDvega/super-android-kotlin-firebase-skill --agent cursor
-npx skills add GDvega/super-android-kotlin-firebase-skill -g
+npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth
+npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth --skill jetpack-compose
+npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth --agent codex
+npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth --agent cursor
+npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth -g
 ```
+
+Use `--full-depth` because this repository has a root orchestrator skill plus nested subskills under `skills/`. Without it, the CLI may list only the root `super-android-kotlin-firebase` skill.
 
 ## Claude Code
 
@@ -52,7 +54,7 @@ cp -R super-android-kotlin-firebase-skill ~/.codex/skills/
 
 ## Cursor
 
-Use `npx skills add GDvega/super-android-kotlin-firebase-skill --agent cursor`, or copy the relevant `SKILL.md` guidance into Cursor project rules if your setup does not load Agent Skills directly.
+Use `npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth --agent cursor`, or copy the relevant `SKILL.md` guidance into Cursor project rules if your setup does not load Agent Skills directly.
 
 ## Gemini CLI
 
@@ -79,7 +81,7 @@ cp -R super-android-kotlin-firebase-skill ~/.agents/skills/
 
 ## Windsurf and OpenCode
 
-Use `npx skills add GDvega/super-android-kotlin-firebase-skill` when supported. Otherwise, attach `SKILL.md`, `AGENTS.md`, `GEMINI.md` or the relevant subskill file as project instructions.
+Use `npx skills add GDvega/super-android-kotlin-firebase-skill --full-depth` when supported. Otherwise, attach `SKILL.md`, `AGENTS.md`, `GEMINI.md` or the relevant subskill file as project instructions.
 
 ## Manual installation
 
