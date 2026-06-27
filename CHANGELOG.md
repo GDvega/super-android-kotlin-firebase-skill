@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0 - 2026-06-27
+
+- Added contextual Android design and UX skills: `design-test-gate`, `context-aware-ui-design`, `compose-contextual-design-system`, `screen-ux-audit` and `ui-state-design`.
+- Added a mandatory build/tests-first rule before visual design changes.
+- Updated catalog generation, validation, README and NOTICE for the new design layer.
+
 ## 0.4.4 - 2026-06-26
 
 - Hardened raw formatting validation for README, root SKILL frontmatter and package metadata.

@@ -23,6 +23,26 @@ const requiredSubskillSections = [
   '# References'
 ];
 
+const requiredDesignSkillSections = [
+  ...requiredSubskillSections.slice(0, 5),
+  '# Related existing skills',
+  ...requiredSubskillSections.slice(5)
+];
+
+const expectedDesignSkills = [
+  'design-test-gate',
+  'context-aware-ui-design',
+  'compose-contextual-design-system',
+  'screen-ux-audit',
+  'ui-state-design'
+];
+
+const postponedDesignSkills = [
+  'accessibility-design-review',
+  'visual-regression-testing',
+  'design-refactor-safe'
+];
+
 const requiredRootSections = [
   '## When to use this super skill',
   '## When not to use it',
@@ -389,6 +409,15 @@ if (!fs.existsSync(skillsDir)) {
 } else {
   const skillEntries = fs.readdirSync(skillsDir, { withFileTypes: true }).filter((entry) => entry.isDirectory());
   if (skillEntries.length === 0) errors.push('skills: expected at least one skill directory');
+  const skillNames = new Set(skillEntries.map((entry) => entry.name));
+
+  for (const name of expectedDesignSkills) {
+    if (!skillNames.has(name)) errors.push(`skills: missing v0.5.0 design skill ${name}`);
+  }
+
+  for (const name of postponedDesignSkills) {
+    if (skillNames.has(name)) errors.push(`skills: postponed design skill must not exist yet: ${name}`);
+  }
 
   for (const entry of skillEntries) {
     if (!kebab.test(entry.name)) errors.push(`skills/${entry.name}: folder name is not kebab-case`);
@@ -400,7 +429,10 @@ if (!fs.existsSync(skillsDir)) {
       continue;
     }
 
-    validateSkillFile(file, entry.name, requiredSubskillSections);
+    const requiredSections = expectedDesignSkills.includes(entry.name)
+      ? requiredDesignSkillSections
+      : requiredSubskillSections;
+    validateSkillFile(file, entry.name, requiredSections);
     if (readText(file).split(/\r?\n/).length < 40) errors.push(`${rel(file)}: appears too short`);
     if (!fs.existsSync(path.join(dir, 'references'))) errors.push(`${entry.name}: missing references/`);
     if (!fs.existsSync(path.join(dir, 'templates'))) errors.push(`${entry.name}: missing templates/`);

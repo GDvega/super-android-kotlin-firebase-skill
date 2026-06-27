@@ -46,3 +46,20 @@ Additional references reviewed:
 - Kotlin agent skills for AGP 9 migration patterns.
 - Android performance documentation for Macrobenchmark and Baseline Profiles.
 - Android open source samples such as Now in Android for benchmark module organization.
+
+## Additional references for v0.5.0
+
+This release adds contextual Android design and UX skills. The new content is original guidance synthesized from repository review and Android platform documentation; no external skill body, table, script or long prose was intentionally copied.
+
+Additional references reviewed for ideas and taxonomy:
+
+- aldefy/compose-skill for Compose, Material 3, design-system and design-to-code skill organization ideas.
+- skydoves/android-testing-skills for Android and Compose testing taxonomy, accessibility-check routing and preview/screenshot validation ideas.
+- skydoves/compose-performance-skills for Compose performance audit, stability, recomposition and measurement workflow ideas.
+- android/skills for first-party Android skill structure, adaptive UI, edge-to-edge, Compose theming/styles and testing setup ideas.
+- Android Developers Compose Design Systems documentation for design-system concepts in Compose.
+- Android Developers Material 3 in Compose documentation for Material 3 theming and component guidance.
+- Android Developers Accessibility in Compose documentation for semantics, labels, focus and accessibility checks.
+- Android Developers Compose Testing documentation for UI test, semantics and preview validation concepts.
+
+The v0.5.0 design skills should be treated as original summaries and workflows. If future contributors copy external examples or source text, they must review upstream licenses and preserve required notices.

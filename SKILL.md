@@ -10,6 +10,7 @@ Use this as an orchestrator, not as a giant implementation guide. Select the sma
 ## When to use this super skill
 
 - Building or reviewing Android apps with Kotlin, Compose, Material 3, Gradle, Firebase, Room, DataStore, Retrofit/Ktor, Hilt/Koin or Play release concerns.
+- Improving Android UI/UX design according to app context after build/tests are known.
 - Creating features that cross UI, state, domain, data, local storage, remote APIs or Firebase.
 - Auditing architecture, security, Firebase rules, tests, accessibility, performance or release readiness.
 - Fixing Gradle, Compose, Firebase, Android Studio, adb, Logcat, Crashlytics or CI failures.
@@ -28,6 +29,7 @@ Read only the relevant `skills/<name>/SKILL.md` files:
 - Build and migration: `agp9-kotlin-migration`, `dependency-upgrade-safety`.
 - Kotlin/state: `kotlin-core`, `dependency-injection`.
 - UI: `jetpack-compose`, `android-navigation-3`, `xml-to-compose-migration`, `edge-to-edge-adaptive-ui`, `compose-performance`, `accessibility`.
+- Design and UX: `design-test-gate`, `context-aware-ui-design`, `compose-contextual-design-system`, `screen-ux-audit`, `ui-state-design`.
 - Architecture/data: `android-architecture`, `room-datastore`, `networking-retrofit-ktor`, `workmanager-background-sync`.
 - Firebase: `firebase-core`, `firebase-auth`, `firestore`, `firestore-costs-quotas`, `firebase-emulator-ci`, `firebase-cloud-functions`, `firebase-messaging`, `firebase-crashlytics-analytics`, `firebase-ai-logic`.
 - Performance/release: `macrobenchmark-baseline-profiles`, `r8-proguard-optimization`, `play-store-release`.
@@ -47,6 +49,7 @@ Use `docs/audits/FUENTES_LOCALES.md` to locate the local reference repositories 
 8. Propose or add tests when logic changes.
 9. Never request or expose private credentials.
 10. Preserve real line breaks in Markdown, YAML and JSON files; do not compress frontmatter, headings or code blocks into single-line raw output.
+11. For visual design work, run or request build/tests first; if they fail, stop and report the failure before redesigning.
 
 ## Architecture rules
 
@@ -59,6 +62,8 @@ Use structured concurrency. Do not use `GlobalScope`. Preserve cancellation. Mod
 ## Compose rules
 
 Use Route + Screen for stateful screens. Hoist state. Keep reusable Composables stateless. Use Material 3 theme tokens. Add previews and semantics. Treat recomposition and lazy list performance as measurable.
+
+For design work, choose UI structure from the app context: domain, target user, primary flow, data sensitivity, environment, accessibility needs and device class. Preserve ViewModels, navigation, Firebase, repositories and existing architecture unless the user asks for a functional change.
 
 ## Firebase rules
 

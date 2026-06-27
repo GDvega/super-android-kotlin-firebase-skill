@@ -41,6 +41,24 @@ Run `node scripts/generate-catalog.mjs` to refresh [CATEGORIES.md](CATEGORIES.md
 - `macrobenchmark-baseline-profiles`: Startup, scroll, jank measurement and Baseline Profiles.
 - `dependency-upgrade-safety`: Safer dependency upgrades with compatibility checks.
 
+## Design and UX skills added in v0.5.0
+
+The `v0.5.0` release adds a contextual design layer for AI-built Android apps. The rule is simple: **test first, design second**. If the app does not build or the relevant tests fail, the agent should stop and report the failure before changing UI.
+
+- `design-test-gate`: verifies build/tests before UI, UX or visual refactor work.
+- `context-aware-ui-design`: adapts UI decisions to domain, target users, primary flow, data sensitivity, environment and risk.
+- `compose-contextual-design-system`: shapes Material 3 Compose tokens and reusable components around the app context.
+- `screen-ux-audit`: reviews a screen for UX clarity, hierarchy, accessibility, state coverage and visual-performance risk.
+- `ui-state-design`: designs loading, empty, content, error, offline, permission and sensitive-data states as testable UI contracts.
+
+Use these skills in AI-generated apps before accepting visual changes. Start by asking the agent to run the gate, inspect the app context, and only then propose design changes that preserve ViewModels, navigation, Firebase, repositories and existing architecture.
+
+Example audit prompt:
+
+```text
+Use $super-android-kotlin-firebase to run design-test-gate, then audit this Android Compose app design before modifying files. If build/tests fail, stop and report the failure. If they pass, use context-aware-ui-design, screen-ux-audit and ui-state-design to recommend safe UX improvements.
+```
+
 ## Installation
 
 This repository is public, so the standard Agent Skills CLI can install it directly.
@@ -190,9 +208,9 @@ android, kotlin, firebase, jetpack-compose, agent-skills, claude-code, codex, cu
 
 ## Release
 
-The `v0.4.4` release hardens raw Markdown, YAML and JSON formatting checks for GitHub raw readability.
+The `v0.5.0` release adds contextual Android design and UX skills with a mandatory build/tests gate.
 
 ```bash
-git tag v0.4.4
-git push origin v0.4.4
+git tag v0.5.0
+git push origin v0.5.0
 ```
