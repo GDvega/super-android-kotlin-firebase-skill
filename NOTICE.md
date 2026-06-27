@@ -24,6 +24,57 @@ This repository contains original Agent Skills. External sources were used as in
 | Drjacky/claude-android-ninja | See upstream | Practical Android agent workflow inspiration |
 | new-silvermoon/awesome-android-agent-skills | See upstream | Discovery and curation inspiration |
 
+## Historical source references up to v0.4.4
+
+This repository was developed with reference to public Android, Kotlin, Firebase, Compose, Agent Skills, AI-agent and sample-code repositories.
+
+The repositories listed here informed structure, taxonomy, workflows, naming decisions, testing/release/security coverage and companion-skill strategy up to `v0.4.4`.
+
+External repositories are not vendored into this project. External `SKILL.md` bodies, source files, scripts, examples and reference guides are not intentionally copied into this repository.
+
+If any substantial external text or code is found, it must be removed, rewritten, or redistributed only with the required license and notices. Apache-2.0 and MIT source obligations must be respected when material is copied or redistributed.
+
+| repo | role | license detected | use boundary |
+|---|---|---|---|
+| AliAsadi/Android-Clean-Architecture | architecture reference | Apache-2.0 | inspiration only; no code copied |
+| Drjacky/claude-android-ninja | Android agent skill reference | Apache-2.0 | no skill body copied |
+| GetStream/agent-skills | companion skill catalog | Apache-2.0 | companion/reference only |
+| JetBrains/skills | skill ecosystem reference | Apache-2.0 per skill dirs | no bundled skill bodies copied |
+| Kotlin/kotlin-agent-skills | Kotlin companion skills | Apache-2.0 | companion/reference only |
+| Meet-Miyani/compose-skill | Compose skill reference | MIT | no skill body copied |
+| RevenueCat/play-billing-skills | billing skills reference | Apache-2.0 | companion/reference only |
+| VoltAgent/awesome-agent-skills | ecosystem index | MIT | discovery only |
+| addyosmani/web-quality-skills | quality skill reference | MIT | web-first checklist inspiration only |
+| affaan-m/everything-claude-code | agent workflow catalog | MIT | companion/reference only |
+| aldefy/compose-skill | Compose companion reference | MIT | no skill body copied |
+| android/ai-samples | Android AI samples | review required | technical reference only |
+| android/architecture-components-samples | Android samples | Apache-2.0 | no code copied |
+| android/architecture-samples | architecture samples | Apache-2.0 | no code copied |
+| android/compose-samples | Compose samples | Apache-2.0 | no code copied |
+| android/nowinandroid | architecture reference | Apache-2.0 | no code copied |
+| android/skills | official Android skills | Apache-2.0 | companion/reference only |
+| auth0/agent-skills | auth skills reference | Apache-2.0 | companion/reference only |
+| dpconde/claude-android-skill | Android skill reference | MIT | no skill body copied |
+| firebase/agent-skills | Firebase companion skills | Apache-2.0 | companion/reference only |
+| firebase/quickstart-android | Firebase samples | Apache-2.0 | no code copied |
+| firebase/skills | Firebase skills reference | Apache-2.0 | companion/reference only |
+| genkit-ai/genkit | SDK/library reference | Apache-2.0 | no code copied |
+| github/awesome-copilot | ecosystem index | MIT | discovery only |
+| google/adk-samples | agent samples | Apache-2.0 | no code copied |
+| google/agents-cli | agent tooling reference | Apache-2.0 | no code copied |
+| google/skills | Google skill catalog | Apache-2.0 | companion/reference only |
+| googlemaps/android-maps-compose | SDK/library reference | Apache-2.0 | no code copied |
+| joreilly/GeminiKMP | KMP sample reference | Apache-2.0 | no code copied |
+| new-silvermoon/awesome-android-agent-skills | Android skill index | Apache-2.0 | discovery only |
+| skydoves/android-skills-mcp | MCP/tooling reference | Apache-2.0 with NOTICE | no bundled content copied |
+| skydoves/android-testing-skills | testing companion skills | Apache-2.0 | companion/reference only |
+| skydoves/compose-performance-skills | performance companion skills | Apache-2.0 | companion/reference only |
+| thebushidocollective/han | Compose skill reference | FSL-1.1-ALv2 | review before reuse; copy nothing substantial |
+| vercel-labs/skills | Agent Skills CLI reference | MIT via package metadata | no code copied |
+| wshobson/agents | agent catalog reference | MIT | companion/reference only |
+
+See [docs/audits/HISTORICAL_SOURCE_PROVENANCE_V0_4_4.md](docs/audits/HISTORICAL_SOURCE_PROVENANCE_V0_4_4.md) for the full historical audit.
+
 ## Legal notes
 
 - No long protected text was copied intentionally.

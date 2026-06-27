@@ -47,6 +47,14 @@ Use `docs/audits/FUENTES_LOCALES.md` to locate the local reference repositories 
 - Do not copy external skill content into the answer.
 - If companion skills are not installed, provide a safe install/list command from `docs/COMPANION_SKILLS.md`.
 
+# Historical source awareness
+
+- This repository was built from original synthesis informed by historical reference repositories up to `v0.4.4`.
+- Do not quote or copy external repository content as if it belonged to this repo.
+- When a user asks about source lineage, point them to `NOTICE.md`, `docs/audits/HISTORICAL_SOURCE_PROVENANCE_V0_4_4.md`, `docs/LEGAL_AND_ATTRIBUTION_POLICY.md` and `docs/COMPANION_SKILLS.md`.
+- Prefer local skills first.
+- Suggest companion skills only when useful and do not assume they are installed.
+
 ## Global agent rules
 
 1. Understand the user's goal before editing.

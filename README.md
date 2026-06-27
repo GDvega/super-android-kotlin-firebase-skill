@@ -98,6 +98,16 @@ npx --yes skills@latest add android/skills -g -a codex -y
 
 Always review third-party skills before use. Agent skills can influence tool use and code changes. See [Companion Skills](docs/COMPANION_SKILLS.md) and [Legal and Attribution Policy](docs/LEGAL_AND_ATTRIBUTION_POLICY.md).
 
+## Historical sources and attribution
+
+This repository was built up to `v0.4.4` using a broad review of public Android, Kotlin, Firebase, Jetpack Compose, Agent Skills, AI-agent and sample-app repositories.
+
+The complete historical provenance audit is in [docs/audits/HISTORICAL_SOURCE_PROVENANCE_V0_4_4.md](docs/audits/HISTORICAL_SOURCE_PROVENANCE_V0_4_4.md).
+
+Those sources are used as reference and inspiration, not as vendored copies. External `SKILL.md` bodies, source files, scripts, examples and reference guides are not intentionally copied into this repo.
+
+For external companion skills, see [docs/COMPANION_SKILLS.md](docs/COMPANION_SKILLS.md). For legal boundaries, see [docs/LEGAL_AND_ATTRIBUTION_POLICY.md](docs/LEGAL_AND_ATTRIBUTION_POLICY.md) and [NOTICE.md](NOTICE.md).
+
 ## Installation
 
 This repository is public, so the standard Agent Skills CLI can install it directly.
@@ -197,6 +207,7 @@ The `agents/` directory stores agent-facing metadata, such as display names, sho
 - [docs/releases/](docs/releases/) keeps historical release notes.
 - [docs/COMPANION_SKILLS.md](docs/COMPANION_SKILLS.md) explains optional external companion skills.
 - [docs/LEGAL_AND_ATTRIBUTION_POLICY.md](docs/LEGAL_AND_ATTRIBUTION_POLICY.md) defines reuse and attribution boundaries.
+- [docs/EXTERNAL_SOURCE_MATRIX.md](docs/EXTERNAL_SOURCE_MATRIX.md) separates historical sources, companion skills, technical references and indexes.
 - [CATEGORIES.md](CATEGORIES.md) is generated from the current skill catalog.
 - [NOTICE.md](NOTICE.md) documents attribution and source-review boundaries.
 
@@ -249,9 +260,9 @@ android, kotlin, firebase, jetpack-compose, agent-skills, claude-code, codex, cu
 
 ## Release
 
-The `v0.5.1` release hardens companion skill routing, attribution policy and external-source boundaries.
+The `v0.5.2` release documents historical source provenance and attribution up to `v0.4.4`.
 
 ```bash
-git tag v0.5.1
-git push origin v0.5.1
+git tag v0.5.2
+git push origin v0.5.2
 ```

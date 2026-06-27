@@ -101,3 +101,57 @@ Treat these as review blockers until resolved:
 ## Preferred resolution
 
 When in doubt, rewrite. Keep the concept, remove the copied expression, cite the source as inspiration and validate that the result fits this repository's orchestration role.
+
+## Historical source provenance policy
+
+Document sources before a release whenever they materially influence taxonomy, skill naming, validation, workflow structure, examples, companion routing or release guidance.
+
+For sources used as inspiration:
+
+- Record the repository name, remote, audited commit, detected license and role.
+- Explain that inspiration is not vendoring.
+- Cite the source in `NOTICE.md` when it materially influenced the project.
+- Keep local guidance written in original language.
+
+If substantial external content was copied:
+
+- Stop the release until the copied material is reviewed.
+- Remove or rewrite it when the content is not necessary.
+- If redistribution is necessary, preserve the required license and notices.
+- Document the copied material explicitly in `NOTICE.md`.
+
+For MIT sources:
+
+- Preserve copyright and permission notices when substantial material is copied.
+- Prefer original summaries and attribution when only ideas are used.
+
+For Apache-2.0 sources:
+
+- Preserve license and notice obligations when redistributing substantial material.
+- Avoid copying source code, scripts, full examples or long prose unless there is a documented reason.
+
+For sample repositories:
+
+- Treat them as technical references.
+- Do not copy app code, Gradle setup, source snippets or sample assets into this repo.
+- Convert lessons into original checklists or workflows.
+
+For external skill repositories:
+
+- Treat them as companion skills or comparison sources.
+- Do not copy external `SKILL.md` bodies, frontmatter descriptions or detailed examples.
+- Use `--list` before suggesting installation when the structure is not already known.
+
+For awesome lists and indexes:
+
+- Use them only for discovery and taxonomy.
+- Do not copy indexed third-party content through the list.
+
+Future release checklist:
+
+- Update `docs/audits/` when new sources materially influence the repo.
+- Update `docs/EXTERNAL_SOURCE_MATRIX.md` when source classification changes.
+- Update `NOTICE.md` when attribution changes.
+- Run the full validation suite.
+- Confirm old tags were not moved.
+- Confirm no external source code, scripts or long examples were vendored accidentally.

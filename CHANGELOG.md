@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.5.2 - Historical source provenance and attribution audit
+
+- Added historical source provenance audit for the 36 reference repositories used up to v0.4.4.
+- Documented historical inspiration, companion-skill boundaries and technical-reference boundaries.
+- Updated NOTICE.md with historical source references.
+- Updated README.md with historical source and attribution notes.
+- Updated root SKILL.md with historical source awareness.
+- Updated legal and attribution policy for retrospective source documentation.
+- Added validation checks for historical provenance documentation.
+- No external skill bodies, source code, scripts or examples are intentionally vendored.
+
 ## 0.5.1 - 2026-06-27
 
 - Added companion skill routing across local skills.

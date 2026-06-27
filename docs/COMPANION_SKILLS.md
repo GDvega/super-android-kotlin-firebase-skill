@@ -68,6 +68,22 @@ If a repository does not expose installable skills in the expected structure, do
 | `android/skills` | Official Android workflow guidance for edge-to-edge, adaptive UI, Navigation 3, R8, AGP, testing setup and platform topics. |
 | `vercel-labs/skills` | Agent Skills CLI ecosystem, installation, discovery and multi-agent packaging patterns. |
 
+## Historical references versus companion skills
+
+Not every historical source is a companion skill. Some sources helped shape this repository before `v0.4.4`, but they should only be treated as technical references or ecosystem indexes.
+
+Sample repositories such as `android/nowinandroid`, `android/compose-samples`, `android/architecture-samples` and `firebase/quickstart-android` are technical references. They are not skills to install and should not be copied into this repository.
+
+Repositories such as `android/skills`, `firebase/agent-skills`, `Kotlin/kotlin-agent-skills`, `aldefy/compose-skill`, `skydoves/android-testing-skills` and `skydoves/compose-performance-skills` can be treated as companion skills when installed or when the user approves installing them.
+
+The agent must not assume companion skills are installed. For external sources that are not verified in the current environment, suggest a list command before installation:
+
+```bash
+npx --yes skills@latest add <repo> --list
+```
+
+Use [Historical Source Provenance up to v0.4.4](audits/HISTORICAL_SOURCE_PROVENANCE_V0_4_4.md) and [External Source Matrix](EXTERNAL_SOURCE_MATRIX.md) to distinguish historical inspiration, companion skills, technical references and ecosystem indexes.
+
 ## Reuse boundaries
 
 - Invoke or recommend companion skills when installed.

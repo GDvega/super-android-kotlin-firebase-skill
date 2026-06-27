@@ -89,7 +89,9 @@ const expectedAuditDocs = [
   'AUDIT_SECOND_PASS.md',
   'EXTERNAL_SKILL_ALIGNMENT_AUDIT.md',
   'EXTERNAL_SKILL_ALIGNMENT_FINAL_REPORT.md',
-  'FUENTES_LOCALES.md'
+  'FUENTES_LOCALES.md',
+  'HISTORICAL_SOURCE_PROVENANCE_FINAL_REPORT.md',
+  'HISTORICAL_SOURCE_PROVENANCE_V0_4_4.md'
 ];
 
 const expectedReleaseDocs = [
@@ -148,10 +150,12 @@ const auditedGlobs = [
   /^CHANGELOG\.md$/,
   /^CATEGORIES\.md$/,
   /^docs\/COMPANION_SKILLS\.md$/,
+  /^docs\/EXTERNAL_SOURCE_MATRIX\.md$/,
   /^docs\/LEGAL_AND_ATTRIBUTION_POLICY\.md$/,
   /^docs\/audits\/AUDIT.*\.md$/,
   /^docs\/audits\/EXTERNAL_SKILL_ALIGNMENT_.*\.md$/,
   /^docs\/audits\/FUENTES_LOCALES\.md$/,
+  /^docs\/audits\/HISTORICAL_SOURCE_PROVENANCE_.*\.md$/,
   /^docs\/releases\/RELEASE_NOTES_v[0-9]+\.[0-9]+\.[0-9]+\.md$/,
   /^package\.json$/,
   /^package-lock\.json$/,
@@ -403,21 +407,52 @@ function validateWorkflow() {
 
 function validateAttributionDocs() {
   const companion = path.join(root, 'docs', 'COMPANION_SKILLS.md');
+  const matrix = path.join(root, 'docs', 'EXTERNAL_SOURCE_MATRIX.md');
   const policy = path.join(root, 'docs', 'LEGAL_AND_ATTRIBUTION_POLICY.md');
+  const historicalAudit = path.join(root, 'docs', 'audits', 'HISTORICAL_SOURCE_PROVENANCE_V0_4_4.md');
   if (!fs.existsSync(companion)) errors.push('docs: missing docs/COMPANION_SKILLS.md');
+  if (!fs.existsSync(matrix)) errors.push('docs: missing docs/EXTERNAL_SOURCE_MATRIX.md');
   if (!fs.existsSync(policy)) errors.push('docs: missing docs/LEGAL_AND_ATTRIBUTION_POLICY.md');
+  if (!fs.existsSync(historicalAudit)) {
+    errors.push('docs: missing docs/audits/HISTORICAL_SOURCE_PROVENANCE_V0_4_4.md');
+  }
 
   const readme = readText(path.join(root, 'README.md'));
   if (!readme.includes('COMPANION_SKILLS.md')) {
     errors.push('README.md: must mention docs/COMPANION_SKILLS.md');
+  }
+  if (!readme.includes('Historical sources and attribution')) {
+    errors.push('README.md: must mention Historical sources and attribution');
   }
 
   const notice = readText(path.join(root, 'NOTICE.md')).toLowerCase();
   if (!notice.includes('external inspiration and companion skill sources')) {
     errors.push('NOTICE.md: must mention external inspiration and companion skill sources');
   }
+  if (!notice.includes('historical source references up to v0.4.4')) {
+    errors.push('NOTICE.md: must mention Historical source references up to v0.4.4');
+  }
   if (!notice.includes('reuse boundaries')) {
     errors.push('NOTICE.md: must document reuse boundaries');
+  }
+
+  const rootSkill = readText(path.join(root, 'SKILL.md'));
+  if (!rootSkill.includes('Historical source awareness')) {
+    errors.push('SKILL.md: must mention Historical source awareness');
+  }
+
+  if (fs.existsSync(policy)) {
+    const policyText = readText(policy);
+    if (!policyText.includes('Historical source provenance policy')) {
+      errors.push('docs/LEGAL_AND_ATTRIBUTION_POLICY.md: must mention Historical source provenance policy');
+    }
+  }
+
+  if (fs.existsSync(companion)) {
+    const companionText = readText(companion);
+    if (!companionText.includes('Historical references versus companion skills')) {
+      errors.push('docs/COMPANION_SKILLS.md: must mention Historical references versus companion skills');
+    }
   }
 }
 
