@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.1 - 2026-06-27
+
+- Added companion skill routing across local skills.
+- Added `docs/COMPANION_SKILLS.md`.
+- Added `docs/LEGAL_AND_ATTRIBUTION_POLICY.md`.
+- Updated `NOTICE.md` with external inspiration boundaries.
+- Updated `README.md` with companion skills strategy.
+- Improved validation for attribution and related skills sections.
+- Rewrote overly generic companion routing language into repo-specific guidance.
+
 ## 0.5.0 - 2026-06-27
 
 - Added contextual Android design and UX skills: `design-test-gate`, `context-aware-ui-design`, `compose-contextual-design-system`, `screen-ux-audit` and `ui-state-design`.

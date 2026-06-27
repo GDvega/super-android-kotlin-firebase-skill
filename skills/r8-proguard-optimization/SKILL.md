@@ -38,6 +38,21 @@ Fix release-only failures and optimize shrinking without disabling R8 or adding 
 - Validate release behavior, not only debug.
 - Preserve obfuscation unless debugging requires a temporary change.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- gradle-build
+- play-store-release
+- debugging
+- firebase-crashlytics-analytics
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- android/skills — use for official Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP or testing setup.
+
 # Files commonly touched
 
 - `app/build.gradle.kts`

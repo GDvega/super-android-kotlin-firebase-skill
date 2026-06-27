@@ -37,6 +37,22 @@ Reduce real security and privacy risks in Android/Firebase apps.
 - Do not log PII, tokens or sensitive health/financial data.
 - Use encryption only with a clear threat model.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- firebase-core
+- firestore
+- firebase-auth
+- code-review-refactor
+- testing
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- firebase/agent-skills — use for deeper Firebase product, Firestore, Security Rules or emulator workflow guidance when installed.
+
 # Files commonly touched
 
 - `firestore.rules`

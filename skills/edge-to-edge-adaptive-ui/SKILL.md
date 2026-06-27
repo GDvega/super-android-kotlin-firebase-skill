@@ -39,6 +39,23 @@ Modernize UI for current Android devices without content overlap, broken system 
 - Do not break accessibility while optimizing layout.
 - Consider tablets and foldables for core workflows.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- jetpack-compose
+- accessibility
+- android-core
+- context-aware-ui-design
+- screen-ux-audit
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- aldefy/compose-skill — use for deeper Jetpack Compose, Material 3, design-to-code, theming or Compose architecture guidance.
+- android/skills — use for official Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP or testing setup.
+
 # Files commonly touched
 
 - `MainActivity.kt`

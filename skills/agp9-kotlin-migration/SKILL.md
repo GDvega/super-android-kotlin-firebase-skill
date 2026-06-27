@@ -38,6 +38,21 @@ Upgrade Android build tooling in small verified steps while preserving module st
 - Keep version catalog aliases stable when possible.
 - Preserve build variants and signing boundaries.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- gradle-build
+- dependency-upgrade-safety
+- debugging
+- testing
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- android/skills — use for official Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP or testing setup.
+
 # Files commonly touched
 
 - `settings.gradle.kts`

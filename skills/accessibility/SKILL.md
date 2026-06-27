@@ -37,6 +37,21 @@ Make mobile UI understandable and operable for more users.
 - Prefer clear labels and recoverable errors.
 - Keep semantics aligned with visual order.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- jetpack-compose
+- testing
+- screen-ux-audit
+- context-aware-ui-design
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- aldefy/compose-skill — use for deeper Jetpack Compose, Material 3, design-to-code, theming or Compose architecture guidance.
+
 # Files commonly touched
 
 - `Compose screen files`

@@ -37,6 +37,22 @@ Provide senior review findings and turn risky refactors into small verifiable st
 - Preserve behavior unless asked to change it.
 - Mention test gaps honestly.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- testing
+- security-privacy
+- compose-performance
+- screen-ux-audit
+- debugging
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- vercel-labs/skills — use for Agent Skills CLI, packaging and multi-agent installation patterns when repository maintenance guidance is needed.
+
 # Files commonly touched
 
 - `Any changed files`

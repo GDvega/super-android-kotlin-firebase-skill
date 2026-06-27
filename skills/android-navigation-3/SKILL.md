@@ -37,6 +37,22 @@ Implement or migrate modern Android navigation without breaking screens, route a
 - Preserve existing deep links unless the user approves a migration.
 - Prefer typed route patterns when the project already uses them.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- jetpack-compose
+- android-core
+- testing
+- edge-to-edge-adaptive-ui
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- aldefy/compose-skill — use for deeper Jetpack Compose, Material 3, design-to-code, theming or Compose architecture guidance.
+- android/skills — use for official Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP or testing setup.
+
 # Files commonly touched
 
 - `settings.gradle.kts`

@@ -36,6 +36,21 @@ Find root causes with evidence and apply minimal fixes.
 - Preserve crash evidence.
 - Mention local-only issues separately.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- gradle-build
+- testing
+- firebase-crashlytics-analytics
+- code-review-refactor
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- skydoves/android-testing-skills — use for deeper Android or Compose UI testing, semantics, assertions or test workflow guidance.
+
 # Files commonly touched
 
 - `build.gradle.kts`

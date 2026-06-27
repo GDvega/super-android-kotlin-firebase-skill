@@ -40,6 +40,21 @@ Implement reliable Android background work without leaking scopes, draining batt
 - Use constraints for network/battery when relevant.
 - Make sync idempotent and retry-safe.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- room-datastore
+- networking-retrofit-ktor
+- firebase-core
+- testing
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- android/skills — use for official Android workflow alignment when a first-party companion skill exists for the task.
+
 # Files commonly touched
 
 - `*Worker.kt`

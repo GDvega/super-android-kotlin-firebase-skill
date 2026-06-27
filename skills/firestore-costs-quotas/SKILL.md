@@ -38,6 +38,21 @@ Design Firestore access patterns that are secure, queryable and cost-aware befor
 - Avoid huge arrays for complex relationships.
 - Design rules and indexes with the data model.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- firestore
+- firebase-core
+- android-architecture
+- workmanager-background-sync
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- firebase/agent-skills — use for deeper Firebase product, Firestore, Security Rules or emulator workflow guidance when installed.
+
 # Files commonly touched
 
 - Repository Firestore code

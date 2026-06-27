@@ -37,6 +37,22 @@ Persist local data with explicit migrations, Flow APIs and offline-first boundar
 - Use Flow for observed data.
 - Document conflict handling.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- android-architecture
+- kotlin-core
+- workmanager-background-sync
+- testing
+- ui-state-design
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- android/skills — use for official Android workflow alignment when a first-party companion skill exists for the task.
+
 # Files commonly touched
 
 - `Room entities`

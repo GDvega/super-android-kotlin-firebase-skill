@@ -37,6 +37,16 @@ Read only the relevant `skills/<name>/SKILL.md` files:
 
 Use `docs/audits/FUENTES_LOCALES.md` to locate the local reference repositories when deeper source context is needed.
 
+# Companion skill routing
+
+- If a user asks for deep Compose guidance, prefer local `jetpack-compose` first, then suggest `aldefy/compose-skill` as a companion if installed.
+- If a user asks for deep testing guidance, prefer local `testing` first, then suggest `skydoves/android-testing-skills` as a companion if installed.
+- If a user asks for deep Compose performance guidance, prefer local `compose-performance` first, then suggest `skydoves/compose-performance-skills` as a companion if installed.
+- If a user asks for official Android workflow alignment, prefer the relevant local skill first, then suggest `android/skills` as a companion if installed.
+- Do not assume companion skills are installed.
+- Do not copy external skill content into the answer.
+- If companion skills are not installed, provide a safe install/list command from `docs/COMPANION_SKILLS.md`.
+
 ## Global agent rules
 
 1. Understand the user's goal before editing.

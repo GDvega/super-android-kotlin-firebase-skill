@@ -37,6 +37,22 @@ Add Gemini/AI features to Android apps safely, with clear privacy and fallback b
 - Validate structured outputs.
 - Provide deterministic fallback.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- firebase-core
+- security-privacy
+- networking-retrofit-ktor
+- ui-state-design
+- testing
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- firebase/agent-skills — use for deeper Firebase product, Firestore, Security Rules or emulator workflow guidance when installed.
+
 # Files commonly touched
 
 - `AI repository/service`

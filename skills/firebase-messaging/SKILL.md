@@ -37,6 +37,21 @@ Integrate push messaging with clear permissions, safe payloads and testable toke
 - Avoid duplicate notifications.
 - Document backend and topic risks.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- firebase-core
+- firebase-cloud-functions
+- security-privacy
+- ui-state-design
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- firebase/agent-skills — use for deeper Firebase product, Firestore, Security Rules or emulator workflow guidance when installed.
+
 # Files commonly touched
 
 - `FirebaseMessagingService`

@@ -37,6 +37,23 @@ Design or review pragmatic Android architecture for real apps without over-engin
 - Add modules only when they reduce real coupling.
 - Prefer offline-first when product requirements need resilience.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- kotlin-core
+- dependency-injection
+- room-datastore
+- networking-retrofit-ktor
+- firebase-core
+- testing
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- android/skills — use for official Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP or testing setup.
+
 # Files commonly touched
 
 - `settings.gradle.kts`

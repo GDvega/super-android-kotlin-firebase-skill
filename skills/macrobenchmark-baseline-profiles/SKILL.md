@@ -40,6 +40,22 @@ Measure real release-like performance and create Baseline Profiles for user-crit
 - Keep benchmark code separate from production code.
 - Explain device and build conditions.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- compose-performance
+- gradle-build
+- play-store-release
+- testing
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- skydoves/android-testing-skills — use for deeper Android or Compose UI testing, semantics, assertions or test workflow guidance.
+- skydoves/compose-performance-skills — use for deeper Compose performance, recomposition, stability or release-mode measurement guidance.
+
 # Files commonly touched
 
 - `benchmark/build.gradle.kts`

@@ -43,13 +43,21 @@ Make every important UI state intentional, testable and accessible.
 
 # Related existing skills
 
-- `jetpack-compose`
-- `testing`
-- `accessibility`
-- `room-datastore`
-- `networking-retrofit-ktor`
-- `firebase-core`
+## Local skills to invoke
 
+- jetpack-compose
+- testing
+- accessibility
+- room-datastore
+- networking-retrofit-ktor
+- firebase-core
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- aldefy/compose-skill — use for deeper Jetpack Compose, Material 3, design-to-code, theming or Compose architecture guidance.
+- skydoves/android-testing-skills — use for deeper Android or Compose UI testing, semantics, assertions or test workflow guidance.
 # Files commonly touched
 
 - `*UiState.kt`

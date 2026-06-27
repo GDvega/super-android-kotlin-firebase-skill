@@ -14,6 +14,7 @@ const requiredSubskillSections = [
   '# Inputs to inspect',
   '# Required workflow',
   '# Rules',
+  '# Related existing skills',
   '# Files commonly touched',
   '# Commands to validate',
   '# Common mistakes to avoid',
@@ -24,9 +25,7 @@ const requiredSubskillSections = [
 ];
 
 const requiredDesignSkillSections = [
-  ...requiredSubskillSections.slice(0, 5),
-  '# Related existing skills',
-  ...requiredSubskillSections.slice(5)
+  ...requiredSubskillSections
 ];
 
 const expectedDesignSkills = [
@@ -88,6 +87,8 @@ const expectedRootFiles = [
 const expectedAuditDocs = [
   'AUDIT.md',
   'AUDIT_SECOND_PASS.md',
+  'EXTERNAL_SKILL_ALIGNMENT_AUDIT.md',
+  'EXTERNAL_SKILL_ALIGNMENT_FINAL_REPORT.md',
   'FUENTES_LOCALES.md'
 ];
 
@@ -146,7 +147,10 @@ const auditedGlobs = [
   /^CODE_OF_CONDUCT\.md$/,
   /^CHANGELOG\.md$/,
   /^CATEGORIES\.md$/,
+  /^docs\/COMPANION_SKILLS\.md$/,
+  /^docs\/LEGAL_AND_ATTRIBUTION_POLICY\.md$/,
   /^docs\/audits\/AUDIT.*\.md$/,
+  /^docs\/audits\/EXTERNAL_SKILL_ALIGNMENT_.*\.md$/,
   /^docs\/audits\/FUENTES_LOCALES\.md$/,
   /^docs\/releases\/RELEASE_NOTES_v[0-9]+\.[0-9]+\.[0-9]+\.md$/,
   /^package\.json$/,
@@ -260,6 +264,18 @@ function validateSkillFile(file, expectedName, requiredSections) {
     errors.push(`${fileRel}: description is too short or generic`);
   }
   if (!body.trim()) errors.push(`${fileRel}: missing Markdown body`);
+
+  for (const phrase of [
+    'copied from',
+    'verbatim from',
+    'exact copy',
+    'TODO attribution',
+    'license unknown'
+  ]) {
+    if (text.toLowerCase().includes(phrase.toLowerCase())) {
+      errors.push(`${fileRel}: contains risky attribution phrase '${phrase}'`);
+    }
+  }
 
   for (const section of requiredSections) {
     if (!body.includes(section)) errors.push(`${fileRel}: missing section ${section}`);
@@ -385,6 +401,26 @@ function validateWorkflow() {
   }
 }
 
+function validateAttributionDocs() {
+  const companion = path.join(root, 'docs', 'COMPANION_SKILLS.md');
+  const policy = path.join(root, 'docs', 'LEGAL_AND_ATTRIBUTION_POLICY.md');
+  if (!fs.existsSync(companion)) errors.push('docs: missing docs/COMPANION_SKILLS.md');
+  if (!fs.existsSync(policy)) errors.push('docs: missing docs/LEGAL_AND_ATTRIBUTION_POLICY.md');
+
+  const readme = readText(path.join(root, 'README.md'));
+  if (!readme.includes('COMPANION_SKILLS.md')) {
+    errors.push('README.md: must mention docs/COMPANION_SKILLS.md');
+  }
+
+  const notice = readText(path.join(root, 'NOTICE.md')).toLowerCase();
+  if (!notice.includes('external inspiration and companion skill sources')) {
+    errors.push('NOTICE.md: must mention external inspiration and companion skill sources');
+  }
+  if (!notice.includes('reuse boundaries')) {
+    errors.push('NOTICE.md: must document reuse boundaries');
+  }
+}
+
 for (const file of expectedRootFiles) {
   if (!fs.existsSync(path.join(root, file))) errors.push(`root: missing ${file}`);
 }
@@ -442,6 +478,7 @@ if (!fs.existsSync(skillsDir)) {
 validateSkillFile(path.join(root, 'SKILL.md'), 'super-android-kotlin-firebase', requiredRootSections);
 validatePackageJson();
 validateWorkflow();
+validateAttributionDocs();
 validateCategories();
 validateFormatting();
 

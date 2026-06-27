@@ -43,12 +43,21 @@ Design Android UI according to the app context, not generic aesthetics.
 
 # Related existing skills
 
-- `jetpack-compose`
-- `accessibility`
-- `edge-to-edge-adaptive-ui`
-- `compose-performance`
-- `security-privacy`
+## Local skills to invoke
 
+- jetpack-compose
+- accessibility
+- edge-to-edge-adaptive-ui
+- compose-performance
+- security-privacy
+- design-test-gate
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- aldefy/compose-skill — use for deeper Jetpack Compose, Material 3, design-to-code, theming or Compose architecture guidance.
+- skydoves/compose-performance-skills — use for deeper Compose performance, recomposition, stability or release-mode measurement guidance.
 # Files commonly touched
 
 - Compose screen and route files

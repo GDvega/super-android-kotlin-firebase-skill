@@ -43,11 +43,20 @@ Shape a Compose design system around the product context, while preserving archi
 
 # Related existing skills
 
-- `jetpack-compose`
-- `xml-to-compose-migration`
-- `edge-to-edge-adaptive-ui`
-- `compose-performance`
+## Local skills to invoke
 
+- jetpack-compose
+- xml-to-compose-migration
+- edge-to-edge-adaptive-ui
+- compose-performance
+- accessibility
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- aldefy/compose-skill — use for deeper Jetpack Compose, Material 3, design-to-code, theming or Compose architecture guidance.
+- skydoves/compose-performance-skills — use for deeper Compose performance, recomposition, stability or release-mode measurement guidance.
 # Files commonly touched
 
 - `ui/theme/*`

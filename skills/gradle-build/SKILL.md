@@ -37,6 +37,22 @@ Keep the Android build reproducible, compatible and easy to evolve.
 - Keep signing secrets out of Gradle files.
 - Use convention plugins only when the project already benefits from them.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- android-core
+- agp9-kotlin-migration
+- dependency-upgrade-safety
+- debugging
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- android/skills — use for official Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP or testing setup.
+- vercel-labs/skills — use for Agent Skills CLI, packaging and multi-agent installation patterns when repository maintenance guidance is needed.
+
 # Files commonly touched
 
 - `settings.gradle.kts`

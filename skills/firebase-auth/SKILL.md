@@ -37,6 +37,22 @@ Implement authentication without leaking SDK details or weakening authorization.
 - Rules must validate request.auth.uid.
 - Keep errors useful but not secret-revealing.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- firebase-core
+- firestore
+- security-privacy
+- ui-state-design
+- testing
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- firebase/agent-skills — use for deeper Firebase product, Firestore, Security Rules or emulator workflow guidance when installed.
+
 # Files commonly touched
 
 - `AuthRepository.kt`

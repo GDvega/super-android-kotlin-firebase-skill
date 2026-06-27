@@ -39,6 +39,23 @@ Run Firebase-sensitive tests locally and in CI without touching production proje
 - Keep service accounts out of the repo.
 - Fail CI on rules regressions.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- firebase-core
+- firestore
+- firebase-cloud-functions
+- testing
+- security-privacy
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- skydoves/android-testing-skills — use for deeper Android or Compose UI testing, semantics, assertions or test workflow guidance.
+- firebase/agent-skills — use for deeper Firebase product, Firestore, Security Rules or emulator workflow guidance when installed.
+
 # Files commonly touched
 
 - `firebase.json`

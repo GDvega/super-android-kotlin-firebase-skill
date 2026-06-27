@@ -59,6 +59,45 @@ Example audit prompt:
 Use $super-android-kotlin-firebase to run design-test-gate, then audit this Android Compose app design before modifying files. If build/tests fail, stop and report the failure. If they pass, use context-aware-ui-design, screen-ux-audit and ui-state-design to recommend safe UX improvements.
 ```
 
+## Companion skills strategy
+
+This repository does not try to replace deep specialist skill catalogs such as:
+
+- `aldefy/compose-skill`
+- `skydoves/android-testing-skills`
+- `skydoves/compose-performance-skills`
+- `android/skills`
+
+It complements them.
+
+This repository is an orchestration layer for Android, Kotlin, Jetpack Compose, Firebase, testing, security, performance and release workflows. For deep specialized guidance, it can coordinate with companion skills when installed.
+
+Install this repo:
+
+```bash
+npx --yes skills@latest add GDvega/super-android-kotlin-firebase-skill --full-depth -g -a codex -y
+```
+
+List companion skills before installing them:
+
+```bash
+npx --yes skills@latest add aldefy/compose-skill --list
+npx --yes skills@latest add skydoves/android-testing-skills --list
+npx --yes skills@latest add skydoves/compose-performance-skills --list
+npx --yes skills@latest add android/skills --list
+```
+
+Install companions only after reviewing what they expose:
+
+```bash
+npx --yes skills@latest add aldefy/compose-skill -g -a codex -y
+npx --yes skills@latest add skydoves/android-testing-skills -g -a codex -y
+npx --yes skills@latest add skydoves/compose-performance-skills -g -a codex -y
+npx --yes skills@latest add android/skills -g -a codex -y
+```
+
+Always review third-party skills before use. Agent skills can influence tool use and code changes. See [Companion Skills](docs/COMPANION_SKILLS.md) and [Legal and Attribution Policy](docs/LEGAL_AND_ATTRIBUTION_POLICY.md).
+
 ## Installation
 
 This repository is public, so the standard Agent Skills CLI can install it directly.
@@ -156,6 +195,8 @@ The `agents/` directory stores agent-facing metadata, such as display names, sho
 
 - [docs/audits/](docs/audits/) keeps repository audits and local-source review notes.
 - [docs/releases/](docs/releases/) keeps historical release notes.
+- [docs/COMPANION_SKILLS.md](docs/COMPANION_SKILLS.md) explains optional external companion skills.
+- [docs/LEGAL_AND_ATTRIBUTION_POLICY.md](docs/LEGAL_AND_ATTRIBUTION_POLICY.md) defines reuse and attribution boundaries.
 - [CATEGORIES.md](CATEGORIES.md) is generated from the current skill catalog.
 - [NOTICE.md](NOTICE.md) documents attribution and source-review boundaries.
 
@@ -185,7 +226,7 @@ Read [SECURITY.md](SECURITY.md). Never commit service accounts, keystores, token
 
 ## Attribution
 
-This repository is inspired by public Android, Firebase, Kotlin and Agent Skills repositories. See [NOTICE.md](NOTICE.md) for attribution and license notes.
+This repository is inspired by public Android, Firebase, Kotlin and Agent Skills repositories. See [NOTICE.md](NOTICE.md) for attribution, companion skill sources and license notes.
 
 ## License
 
@@ -208,9 +249,9 @@ android, kotlin, firebase, jetpack-compose, agent-skills, claude-code, codex, cu
 
 ## Release
 
-The `v0.5.0` release adds contextual Android design and UX skills with a mandatory build/tests gate.
+The `v0.5.1` release hardens companion skill routing, attribution policy and external-source boundaries.
 
 ```bash
-git tag v0.5.0
-git push origin v0.5.0
+git tag v0.5.1
+git push origin v0.5.1
 ```

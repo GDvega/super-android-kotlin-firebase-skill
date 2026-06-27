@@ -37,6 +37,22 @@ Diagnose and fix measurable Compose performance issues without guessing.
 - Use stable lazy keys and content types when needed.
 - Prefer release-mode measurement for meaningful performance claims.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- jetpack-compose
+- macrobenchmark-baseline-profiles
+- screen-ux-audit
+- testing
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- aldefy/compose-skill — use for deeper Jetpack Compose, Material 3, design-to-code, theming or Compose architecture guidance.
+- skydoves/compose-performance-skills — use for deeper Compose performance, recomposition, stability or release-mode measurement guidance.
+
 # Files commonly touched
 
 - `Compose screens`

@@ -38,6 +38,22 @@ Integrate remote APIs without coupling UI to transport details.
 - Keep DTOs out of domain unless intentionally shared.
 - Respect coroutine cancellation.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- android-architecture
+- kotlin-core
+- security-privacy
+- ui-state-design
+- testing
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- android/skills — use for official Android workflow alignment when a first-party companion skill exists for the task.
+
 # Files commonly touched
 
 - `network module`

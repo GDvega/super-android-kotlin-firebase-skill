@@ -37,6 +37,22 @@ Set up Firebase products safely and consistently in Android apps.
 - Use Emulator Suite for rules/functions when available.
 - Consider costs and quotas for realtime listeners and storage.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- gradle-build
+- security-privacy
+- firebase-emulator-ci
+- firestore
+- firebase-auth
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- firebase/agent-skills — use for deeper Firebase product, Firestore, Security Rules or emulator workflow guidance when installed.
+
 # Files commonly touched
 
 - `app/build.gradle.kts`

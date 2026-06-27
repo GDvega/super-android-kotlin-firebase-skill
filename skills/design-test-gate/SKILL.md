@@ -42,11 +42,19 @@ Protect Android design work with an engineering gate: build and tests first, des
 
 # Related existing skills
 
-- `testing`
-- `debugging`
-- `gradle-build`
-- `code-review-refactor`
+## Local skills to invoke
 
+- testing
+- debugging
+- gradle-build
+- code-review-refactor
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- aldefy/compose-skill — use for deeper Jetpack Compose, Material 3, design-to-code, theming or Compose architecture guidance.
+- skydoves/android-testing-skills — use for deeper Android or Compose UI testing, semantics, assertions or test workflow guidance.
 # Files commonly touched
 
 - `build.gradle.kts`

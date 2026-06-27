@@ -38,6 +38,22 @@ Move legacy XML UI to Compose incrementally while preserving resources, navigati
 - Preserve navigation contracts.
 - Prefer incremental migration over large rewrites.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- jetpack-compose
+- edge-to-edge-adaptive-ui
+- accessibility
+- testing
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- aldefy/compose-skill — use for deeper Jetpack Compose, Material 3, design-to-code, theming or Compose architecture guidance.
+- android/skills — use for official Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP or testing setup.
+
 # Files commonly touched
 
 - `res/layout/*.xml`

@@ -36,6 +36,21 @@ Keep Kotlin code idiomatic, cancellable, explicit and testable.
 - Keep extension functions focused and discoverable.
 - Expose immutable state to consumers.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- android-architecture
+- testing
+- dependency-injection
+- ui-state-design
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- android/skills — use for official Android workflow alignment when a first-party companion skill exists for the task.
+
 # Files commonly touched
 
 - `*.kt`

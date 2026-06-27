@@ -37,6 +37,23 @@ Create high-value tests with low fragility across Android layers.
 - Use Firebase Emulator for rules when available.
 - Keep UI tests focused.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- debugging
+- gradle-build
+- firebase-emulator-ci
+- jetpack-compose
+- code-review-refactor
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- skydoves/android-testing-skills — use for deeper Android or Compose UI testing, semantics, assertions or test workflow guidance.
+- android/skills — use for official Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP or testing setup.
+
 # Files commonly touched
 
 - `src/test`

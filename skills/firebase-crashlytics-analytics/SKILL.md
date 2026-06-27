@@ -38,6 +38,21 @@ Observe Android app quality and behavior without collecting unnecessary sensitiv
 - Respect consent/opt-out requirements.
 - Keep breadcrumbs useful and minimal.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- firebase-core
+- debugging
+- security-privacy
+- play-store-release
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- firebase/agent-skills — use for deeper Firebase product, Firestore, Security Rules or emulator workflow guidance when installed.
+
 # Files commonly touched
 
 - `analytics wrapper`

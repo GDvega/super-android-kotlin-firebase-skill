@@ -42,11 +42,21 @@ Review a screen like a senior Android UX maintainer: findings first, evidence-ba
 
 # Related existing skills
 
-- `code-review-refactor`
-- `accessibility`
-- `jetpack-compose`
-- `compose-performance`
+## Local skills to invoke
 
+- code-review-refactor
+- accessibility
+- jetpack-compose
+- compose-performance
+- design-test-gate
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- aldefy/compose-skill — use for deeper Jetpack Compose, Material 3, design-to-code, theming or Compose architecture guidance.
+- skydoves/android-testing-skills — use for deeper Android or Compose UI testing, semantics, assertions or test workflow guidance.
+- skydoves/compose-performance-skills — use for deeper Compose performance, recomposition, stability or release-mode measurement guidance.
 # Files commonly touched
 
 - `*Screen.kt`

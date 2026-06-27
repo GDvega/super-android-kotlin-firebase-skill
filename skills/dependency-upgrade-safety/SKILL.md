@@ -38,6 +38,22 @@ Upgrade dependencies with compatibility checks, grouped changes, validation comm
 - Preserve BoM usage where appropriate.
 - Document rollback commands.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- gradle-build
+- agp9-kotlin-migration
+- testing
+- debugging
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- android/skills — use for official Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP or testing setup.
+- vercel-labs/skills — use for Agent Skills CLI, packaging and multi-agent installation patterns when repository maintenance guidance is needed.
+
 # Files commonly touched
 
 - `gradle/libs.versions.toml`

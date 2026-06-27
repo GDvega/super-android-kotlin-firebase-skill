@@ -36,6 +36,21 @@ Guide base Android decisions before touching Compose, Firebase, architecture or 
 - Do not add platform APIs that conflict with minSdk without guards.
 - Prefer official Android skills for AGP, R8, Play, edge-to-edge, Navigation and security tasks.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- gradle-build
+- debugging
+- edge-to-edge-adaptive-ui
+- security-privacy
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- android/skills — use for official Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP or testing setup.
+
 # Files commonly touched
 
 - `settings.gradle.kts`

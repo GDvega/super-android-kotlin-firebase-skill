@@ -36,6 +36,22 @@ Build Compose UI that is maintainable, state-driven, accessible and aligned with
 - Use Material 3 theme tokens.
 - Add stable keys for lazy lists.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- kotlin-core
+- accessibility
+- compose-performance
+- edge-to-edge-adaptive-ui
+- ui-state-design
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- aldefy/compose-skill — use for deeper Jetpack Compose, Material 3, design-to-code, theming or Compose architecture guidance.
+
 # Files commonly touched
 
 - `feature/*/*Screen.kt`

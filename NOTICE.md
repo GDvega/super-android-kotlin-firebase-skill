@@ -2,6 +2,8 @@
 
 This project contains original guidance for Android/Kotlin/Firebase Agent Skills. It was inspired by public repositories and documentation, but the content here was summarized, reorganized and rewritten for this repository.
 
+This repository contains original Agent Skills. External sources were used as inspiration, comparison and companion-skill references. External `SKILL.md` bodies, source files, detailed examples, scripts and reference guides are not copied into this repository. When external skills are needed, agents should install or invoke them as companion skills rather than treating this repo as a vendored copy.
+
 ## Sources reviewed
 
 | Source | Known license | Content type used |
@@ -32,6 +34,27 @@ This project contains original guidance for Android/Kotlin/Firebase Agent Skills
 - If substantial upstream content is incorporated, prefer one of these options: change this repository to Apache-2.0, keep MIT only for original content with a clearer NOTICE, or rewrite the content as original summaries.
 - Original content in this repository is licensed under MIT unless a file says otherwise.
 - Review upstream licenses before copying code, examples or long prose.
+
+## External inspiration and companion skill sources
+
+The following sources informed comparison, attribution and optional companion routing:
+
+- `aldefy/compose-skill` for Jetpack Compose, Material 3, design-to-code, theming, accessibility, Compose architecture and design-system inspiration. Known license: MIT, with notes around AndroidX/AOSP source references under Apache-2.0.
+- `skydoves/android-testing-skills` for Android testing, Compose UI testing, semantics, assertions, gestures, accessibility checks, previews and test workflow inspiration. Known license: Apache-2.0.
+- `skydoves/compose-performance-skills` for Compose performance, recomposition, stability, lazy layouts, baseline profiles and release-mode measurement inspiration. Known license: Apache-2.0.
+- `android/skills` for official Android skill structure and Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP, testing setup, theming and platform topics. Known license: Apache-2.0.
+- `vercel-labs/skills` for Agent Skills CLI, installation, discovery, global/project usage and multi-agent packaging ideas. License signal reviewed locally: MIT from package metadata plus third-party notices.
+- Android Developers documentation for Jetpack Compose, Material 3, accessibility, testing, adaptive UI, R8, Navigation and Firebase-related Android guidance where relevant.
+
+This repository does not redistribute those companion repositories. It recommends them when installed and keeps local guidance written as original Android/Kotlin/Firebase orchestration.
+
+## Reuse boundaries
+
+- Ideas, workflows and high-level patterns may be adapted with attribution.
+- Substantial text, code, examples, scripts or reference documents from external repositories must not be copied without preserving the required license and notices.
+- Apache-2.0 sources require preservation of license and notice obligations when redistributed.
+- MIT sources require preserving copyright and permission notices when substantial portions are copied.
+- If external content is needed, prefer linking, installing or invoking the companion source instead of vendoring it into this repo.
 
 ## Additional references for v0.4.0
 

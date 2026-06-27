@@ -37,6 +37,23 @@ Prepare Android apps for release without compromising signing, privacy or runtim
 - Data Safety must match actual collection.
 - Use tracks before broad production rollout.
 
+# Related existing skills
+
+## Local skills to invoke
+
+- gradle-build
+- r8-proguard-optimization
+- security-privacy
+- firebase-crashlytics-analytics
+- testing
+
+## External companion skills to use when installed
+
+Do not assume these companion skills are installed. Prefer the local skills above first, then consult [Companion Skills](../../docs/COMPANION_SKILLS.md) for install and verification commands.
+
+- android/skills — use for official Android workflow alignment around edge-to-edge, adaptive UI, Navigation 3, R8, AGP or testing setup.
+- vercel-labs/skills — use for Agent Skills CLI, packaging and multi-agent installation patterns when repository maintenance guidance is needed.
+
 # Files commonly touched
 
 - `app/build.gradle.kts`
